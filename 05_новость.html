@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Страница новости — универсальный шаблон, макет шага 2, направление Б</title>
+<title>Страница новости — универсальный шаблон, макет сайта, вариант Б</title>
 <link rel="stylesheet" href="b.css">
 <style>
 .crumbs { font-size: 14px; color: var(--muted); padding: 24px 0 0; }
@@ -72,9 +72,6 @@
 .cl:hover, .cl.is-hover { border-color: var(--accent); }
 .cl b { display: block; font-size: 15px; }
 .cl small { display: block; font-size: 13px; color: var(--muted); line-height: 1.35; }
-.cl.off { background: transparent; border-style: dashed; }
-.cl.off b, .cl.off .chi { color: var(--muted); }
-
 .share-end { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px; padding-top: 24px; border-top: 1px solid var(--line); }
 .share-end .back { font-size: 16px; }
 
@@ -158,7 +155,6 @@
       <div class="crumbs"><a href="01_главная.html">Главная</a><i>/</i><a href="10_новости.html">Новости</a><i>/</i><span class="ph">Рубрика</span></div>
 
       <div class="n-grid">
-        <!-- 1. Рубрика, дата, заголовок, лид -->
         <div class="n-head">
           <div class="n-meta">
             <a class="tag dir ph" href="10_новости.html#r=proekty">Рубрика</a>
@@ -170,13 +166,11 @@
           <p class="n-lead ph">Аннотация — 1–2 предложения, до 250 знаков. Это же поле выводится в карточке новости и в превью ссылки в каналах. Плейсхолдер, не публиковать.</p>
         </div>
 
-        <!-- 2. Обложка -->
         <figure class="n-cover">
           <div class="photo-ph safe"><span>Обложка новости · 16:9 · загрузка 1920×1080 px, JPG/WebP до 400 КБ<br>реальное фото события или исследования · генеративные изображения запрещены</span></div>
           <figcaption class="ph">Подпись к обложке и автор фото — необязательное поле.</figcaption>
         </figure>
 
-        <!-- 3. Поделиться -->
         <div class="share-top">
           <div class="share" aria-label="Поделиться">
             <span>Поделиться</span>
@@ -187,7 +181,6 @@
           </div>
         </div>
 
-        <!-- 4. Основной текст — типовые элементы редактора CMS -->
         <div class="n-body">
           <p class="ph">Первый абзац раскрывает аннотацию: что произошло, где и когда, кто участвовал. Длина строки ограничена колонкой 760 px — около 70 знаков, удобных для чтения. Плейсхолдер, не публиковать.</p>
           <p class="ph">Второй абзац — подробности. В тексте может быть <a href="#">ссылка на страницу проекта</a> или на внешний источник; ссылка всегда подчёркнута и выделена цветом, чтобы её не путали с акцентом.</p>
@@ -214,7 +207,6 @@
           <p class="ph">Завершающий абзац: что дальше, где следить за новостями. Если новость о проекте медицинского изделия, текст проходит чек-лист compliance до публикации.</p>
         </div>
 
-        <!-- 5. Теги, проекты, каналы -->
         <div class="n-foot">
           <div>
             <div class="n-lbl">Теги</div>
@@ -256,7 +248,6 @@
     </div>
   </article>
 
-  <!-- 6. Ещё новости -->
   <section class="block band" style="margin-top:96px">
     <div class="wrap">
       <div class="sec-head"><div><div class="sec-num">Новости</div><h2>Ещё новости</h2></div><div></div></div>

@@ -24,8 +24,6 @@ body { background: var(--band); font-size: 16px; }
 .m-b .inp { font-size: 16px; }
 .m-b textarea.inp { min-height: 190px; font-size: 15px; }
 .m-b .btn { width: 100%; }
-.src { font-size: 14px; color: var(--muted); border-left: 3px solid var(--accent); padding: 6px 0 6px 12px; line-height: 1.45; }
-.src b { color: var(--text); font-weight: 700; }
 .opt-h { font-size: 12px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); border-top: 1px solid var(--line); padding-top: 18px; }
 .summary { border: 1.5px solid var(--error); background: var(--error-bg); border-radius: var(--r); padding: 14px 16px; font-size: 14px; }
 .summary b { color: var(--error); display: block; margin-bottom: 6px; }
@@ -51,7 +49,6 @@ body { background: var(--band); font-size: 16px; }
   <p>Поля и подсказки — ТЗ, 4.2.6, и бриф, приложение Ж.2. Фамилии, должности, телефона, бюджета и загрузки файлов нет. Заявка уходит на e.p.bubnova@samsmu.ru и не хранится на сайте. Экраны ниже — форма на телефоне: блок «Заявка» на главной и всплывающая форма на остальных страницах (на телефоне открывается на весь экран). Заголовок окна повторяет нажатую кнопку. Источник заявки уходит скрытым полем и на экране не показывается (правка 02.10.2026).</p>
   <div class="frames">
 
-    <!-- 1. Заполнение -->
     <div>
       <div class="cap">01 · Заполнение<span>Кнопка «Обсудить похожую задачу» на странице проекта: окно с тем же заголовком, проект — скрытым полем</span></div>
       <div class="phone">
@@ -70,7 +67,6 @@ body { background: var(--band); font-size: 16px; }
       </div>
     </div>
 
-    <!-- 2. Ошибка -->
     <div>
       <div class="cap">02 · Ошибка<span>После нажатия «Отправить»: пустое поле и неверный e-mail</span></div>
       <div class="phone">
@@ -89,7 +85,6 @@ body { background: var(--band); font-size: 16px; }
       </div>
     </div>
 
-    <!-- 3. Спасибо -->
     <div>
       <div class="cap">03 · Спасибо<span>Заявка отправлена письмом, на сайте не сохранена</span></div>
       <div class="phone">
@@ -107,7 +102,6 @@ body { background: var(--band); font-size: 16px; }
       </div>
     </div>
 
-    <!-- 4. Сбой отправки -->
     <div>
       <div class="cap">04 · Сбой отправки<span>Почтовый сервер недоступен, введённый текст сохранён</span></div>
       <div class="phone">

@@ -54,7 +54,7 @@
 .plist2 a:hover .go { background: var(--accent); color: #fff; }
 .plist-head { display: grid; grid-template-columns: 1fr 180px 140px 32px; gap: 24px; font-size: 12px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); padding-bottom: 10px; }
 
-/* Нейромаркетинг — расширенный шаблон [Бриф, В.3] */
+/* Нейромаркетинг — расширенный шаблон */
 .problem { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
 .problem blockquote { font-size: 34px; font-weight: 800; line-height: 1.2; letter-spacing: -.02em; border-left: 4px solid var(--mark); padding-left: 28px; }
 .problem p { font-size: 18px; color: var(--muted); }
@@ -118,7 +118,7 @@
   .plist-head { display: none; }
   .plist2 a { grid-template-columns: 1fr 32px; gap: 8px 16px; padding: 18px 0; }
   .plist2 a > div:first-child { grid-column: 1; }
-  .plist2 .st, .plist2 .per { grid-column: 1; }
+  .plist2 .per { grid-column: 1; }
   .plist2 .go { grid-column: 2; grid-row: 1; }
   .plist2 h3 { font-size: 17px; }
   .problem { grid-template-columns: 1fr; gap: 24px; }

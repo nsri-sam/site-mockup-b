@@ -2,6 +2,8 @@
 (function () {
   var menu = document.getElementById("menu");
   var burger = document.querySelector(".burger");
+  var reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var EMAIL = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
 
   function closeMenu() {
     menu.classList.remove("open");
@@ -19,7 +21,7 @@
     document.addEventListener("keydown", function (e) { if (e.key === "Escape") closeMenu(); });
   }
 
-  // Фокус на заголовок блока формы после перехода к нему (ФРМ-13)
+  // Фокус на заголовок блока формы после перехода к нему
   function focusForm() {
     if (location.hash === "#obsudit-nir") {
       var h = document.getElementById("obsudit-nir-h");
@@ -33,8 +35,7 @@
     var items = [];
     links.forEach(function (a) {
       var href = a.getAttribute("href") || "";
-      var i = href.indexOf("#");
-      if (i !== 0) return;
+      if (href.indexOf("#") !== 0) return;
       var el = document.getElementById(href.slice(1));
       if (el) items.push({ a: a, el: el });
     });
@@ -62,8 +63,7 @@
   function formIsOnScreen() {
     if (!formBlock) return false;
     var r = formBlock.getBoundingClientRect();
-    var header = 88;
-    var visibleTop = Math.max(r.top, header);
+    var visibleTop = Math.max(r.top, 88);
     var visibleBottom = Math.min(r.bottom, window.innerHeight);
     return visibleBottom - visibleTop > window.innerHeight * 0.4;
   }
@@ -116,6 +116,11 @@
     inp.setAttribute("aria-invalid", String(bad));
     inp.parentNode.querySelector(".err").hidden = !bad;
   }
+  function bindCounter(area, counter) {
+    area.addEventListener("input", function () {
+      counter.textContent = area.value.length.toLocaleString("ru-RU") + " / 2 000";
+    });
+  }
   function openModal() {
     lastFocus = document.activeElement;
     formView.hidden = false;
@@ -156,14 +161,12 @@
     if (e.shiftKey && document.activeElement === f[0]) { e.preventDefault(); f[f.length - 1].focus(); }
     else if (!e.shiftKey && document.activeElement === f[f.length - 1]) { e.preventDefault(); f[0].focus(); }
   });
-  text.addEventListener("input", function () {
-    counter.textContent = text.value.length.toLocaleString("ru-RU") + " / 2 000";
-  });
+  bindCounter(text, counter);
   form.addEventListener("submit", function (e) {
     e.preventDefault();
     var name = modal.querySelector("#mf-name"), mail = modal.querySelector("#mf-mail");
     setErr(name, !name.value.trim());
-    setErr(mail, !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(mail.value.trim()));
+    setErr(mail, !EMAIL.test(mail.value.trim()));
     setErr(text, text.value.trim().length < 5);
     var bad = form.querySelector(".is-error");
     if (bad) { bad.focus(); return; }
@@ -180,14 +183,12 @@
     var hfOk = document.getElementById("hf-ok");
     var hfText = document.getElementById("hf-text");
     var hfCnt = hf.querySelector(".counter");
-    hfText.addEventListener("input", function () {
-      hfCnt.textContent = hfText.value.length.toLocaleString("ru-RU") + " / 2 000";
-    });
+    bindCounter(hfText, hfCnt);
     hf.addEventListener("submit", function (e) {
       e.preventDefault();
       var nm = document.getElementById("hf-name"), ml = document.getElementById("hf-mail");
       setErr(nm, !nm.value.trim());
-      setErr(ml, !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(ml.value.trim()));
+      setErr(ml, !EMAIL.test(ml.value.trim()));
       setErr(hfText, hfText.value.trim().length < 5);
       var bad = hf.querySelector(".is-error");
       if (bad) { bad.focus(); return; }
@@ -205,7 +206,7 @@
   }
 
   // Кнопка «Наверх» на длинных страницах с оглавлением (телефон)
-  if (document.querySelector(".toc")) {
+  if (toc) {
     var up = document.createElement("a");
     up.className = "to-top";
     up.href = "#";
@@ -213,8 +214,7 @@
     document.body.appendChild(up);
     up.addEventListener("click", function (e) {
       e.preventDefault();
-      var rm = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-      window.scrollTo({ top: 0, behavior: rm ? "auto" : "smooth" });
+      window.scrollTo({ top: 0, behavior: reduced ? "auto" : "smooth" });
     });
     var upCheck = function () { up.classList.toggle("show", window.scrollY > window.innerHeight * 1.5); };
     window.addEventListener("scroll", upCheck, { passive: true });
@@ -223,8 +223,7 @@
 
   // Плавный переход между страницами макета. Якоря на той же странице не перехватываются.
   document.addEventListener("click", function (e) {
-    if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || reduced) return;
     var a = e.target.closest("a[href]");
     if (!a || a.target === "_blank" || a.hasAttribute("download")) return;
     var raw = a.getAttribute("href") || "";

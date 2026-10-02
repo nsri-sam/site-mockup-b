@@ -1,4 +1,4 @@
-/* Направление Б «Лабораторная строгость» — общие стили макетов шага 2 */
+/* Направление Б «Лабораторная строгость» — общие стили макета */
 @font-face { font-family: "Manrope"; src: url("fonts/Manrope.ttf") format("truetype"); font-weight: 200 800; }
 :root {
   --bg: #FFFFFF; --band: #F4F1F7; --text: #1C1830; --muted: #55506A;
@@ -152,7 +152,6 @@ h3 { font-size: 24px; line-height: 1.25; font-weight: 800; letter-spacing: -.01e
 .field { display: flex; flex-direction: column; gap: 6px; }
 .field label { font-size: 15px; font-weight: 700; }
 .field label .req { color: var(--mark); }
-.field label .opt { font-weight: 500; color: var(--muted); }
 .hint { font-size: 13px; color: var(--muted); line-height: 1.45; }
 .inp { font-family: inherit; font-size: 16px; color: var(--text); background: #fff; border: 1.5px solid var(--field); border-radius: var(--r); padding: 13px 14px; width: 100%; line-height: 1.4; }
 .inp::placeholder { color: var(--muted); }
@@ -238,12 +237,11 @@ footer .chi { background: transparent; border-color: #4A4460; color: #fff; }
 
 .ft-note { margin-top: 12px; font-size: 13px; line-height: 1.5; opacity: .75; }
 
-/* UX-проверка 02.10.2026 */
-/* UX-17: ссылка «Перейти к содержанию» — видна только при фокусе */
+/* ссылка «Перейти к содержанию» — видна только при фокусе */
 .skip { position: absolute; left: 16px; top: -64px; z-index: 100; background: var(--accent); color: #fff; font-weight: 700; padding: 12px 16px; border-radius: var(--r); }
 .skip:focus { top: 12px; outline: 3px solid var(--mark); outline-offset: 2px; }
 
-/* UX-08: «О НИИ» с подменю */
+/* «О НИИ» с подменю */
 .has-sub { position: relative; display: flex; align-items: center; }
 .has-sub > .sub-t::after { content: ""; display: inline-block; width: 6px; height: 6px; border-right: 1.5px solid currentColor; border-bottom: 1.5px solid currentColor; transform: rotate(45deg); margin: 0 0 4px 8px; }
 .nav-sub { display: none; position: absolute; top: 100%; left: -16px; min-width: 220px; background: #fff; border: 1px solid var(--line); border-radius: var(--r); box-shadow: 0 12px 24px rgba(28,24,48,.08); padding: 8px 0; z-index: 7; }
@@ -251,7 +249,7 @@ footer .chi { background: transparent; border-color: #4A4460; color: #fff; }
 nav .nav-sub a { padding: 10px 16px; border-bottom: 0; font-weight: 500; white-space: nowrap; }
 nav .nav-sub a:hover, nav .nav-sub a.on { color: var(--accent); background: var(--band); }
 
-/* UX-02: компактная кнопка заявки в шапке, когда меню свёрнуто в бургер */
+/* компактная кнопка заявки в шапке, когда меню свёрнуто в бургер */
 @media (max-width: 1199px) {
   .hd-right > .btn-hd { display: inline-flex; padding: 10px 14px; font-size: 15px; }
   .hd-right > .btn-hd::after { content: none; }
@@ -266,25 +264,25 @@ nav .nav-sub a:hover, nav .nav-sub a.on { color: var(--accent); background: var(
   .hd-right { gap: 8px; }
 }
 
-/* UX-04: строка «что решает» на карточке проекта видна всегда */
+/* строка «что решает» на карточке проекта видна всегда */
 .pcard .nc-lead { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
 @media (hover: none) { .pcard .nc-lead { -webkit-line-clamp: 3; } }
 
-/* UX-09: следующий шаг после блока задач */
+/* следующий шаг после блока задач */
 .tasks-cta { display: flex; align-items: center; justify-content: space-between; gap: 24px; margin-top: 32px; padding: 20px 24px; background: var(--band); border-radius: var(--r); }
 .tasks-cta p { font-size: 18px; font-weight: 700; }
 .tasks-cta p span { display: block; font-size: 15px; font-weight: 400; color: var(--muted); margin-top: 4px; }
 .band .tasks-cta { background: #fff; border: 1px solid var(--line); }
 
-/* UX-11: оглавление и «Наверх» на телефоне */
+/* оглавление и «Наверх» на телефоне */
 .toc-m, .to-top { display: none; }
 
-/* UX-18: экран «Спасибо» в блоке формы на главной */
+/* экран «Спасибо» в блоке формы на главной */
 .fbox.mf-ok { display: grid; gap: 16px; align-content: start; }
 .fbox.mf-ok[hidden], .err[hidden] { display: none; }
 .fbox.mf-ok h3 { font-size: 26px; }
 
-/* UX-23: ссылка на Клиники СамГМУ в футере */
+/* ссылка на Клиники СамГМУ в футере */
 .ft-note a { text-decoration: underline; text-underline-offset: 2px; }
 
 @media (max-width: 767px) {
@@ -296,7 +294,7 @@ nav .nav-sub a:hover, nav .nav-sub a.on { color: var(--accent); background: var(
   .to-top.show { display: inline-flex; position: fixed; right: 16px; bottom: 16px; z-index: 20; align-items: center; gap: 6px; padding: 12px 16px; min-height: 44px; background: #fff; color: var(--accent); font-weight: 700; font-size: 15px; border: 1.5px solid var(--accent); border-radius: var(--r); box-shadow: 0 6px 16px rgba(28,24,48,.12); }
   .to-top.show::before { content: "↑"; }
 
-  /* UX-22: капс-метки на телефоне не меньше 13 px */
+  /* капс-метки на телефоне не меньше 13 px */
   html body .status, html body .counter, html body .eyebrow, html body .facts small, html body .sub-part .lbl,
   html body .cycle-bar b, html body .mi-note b, html body .rid small, html body .flt-l, html body .flt button b,
   html body .sortw label, html body .svc dt, html body .fmt small, html body .plist-head, html body .case-b .lbl,

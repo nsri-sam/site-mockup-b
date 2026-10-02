@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Главная — макет шага 2, направление Б</title>
+<title>Главная — макет сайта, вариант Б</title>
 <link rel="stylesheet" href="b.css">
 <style>
 .hero { position: relative; border-bottom: 1px solid var(--line); }
@@ -72,13 +72,6 @@
 .nums .num:nth-child(2) { padding-left: 0; }
 .nums .num b { display: block; font-size: 48px; font-weight: 800; color: var(--accent); line-height: 1; margin-bottom: 10px; letter-spacing: -.02em; white-space: nowrap; }
 .nums .num small { display: block; font-size: 15px; line-height: 1.4; color: var(--muted); }
-.nums-off { border: 1.5px dashed var(--field); border-radius: var(--r); padding: 28px 32px; display: grid; grid-template-columns: 1.3fr repeat(4, 1fr); gap: 24px; align-items: center; background: repeating-linear-gradient(-45deg, #fff 0 12px, #FAF9FB 12px 24px); }
-.nums-off .lbl { font-size: 13px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
-.nums-off .lbl span { display: block; font-weight: 500; letter-spacing: 0; text-transform: none; font-size: 14px; margin-top: 6px; }
-.nums-off .num { border-left: 1px solid var(--line); padding-left: 20px; }
-.nums-off .num b { display: block; font-size: 40px; font-weight: 800; color: var(--disabled); line-height: 1; }
-.nums-off .num small { font-size: 13px; color: var(--muted); }
-
 .news { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
 
 .channels { display: grid; grid-template-columns: repeat(6, 1fr); border: 1px solid var(--line); background: #fff; }
@@ -107,7 +100,7 @@
   .hero-cta .link { align-self: flex-start; }
   .tasks { grid-template-columns: 1fr; }
   .task, .task:nth-child(even) { grid-template-columns: 36px 1fr; padding: 20px 0; border-right: 0; }
-    .task h3 { font-size: 17px; }
+  .task h3 { font-size: 17px; }
   .task p { font-size: 15px; }
   .dirs { grid-template-columns: 1fr; border: 0; background: transparent; gap: 20px; }
   .dir { border: 1px solid var(--line); background: #fff; }
@@ -129,15 +122,12 @@
   .flag { grid-template-columns: 1fr; gap: 16px; }
   .team-photo img { aspect-ratio: 3/2; object-position: 50% 50%; }
   .team-photo figcaption { font-size: 13px; }
-          .sec-foot { justify-content: flex-start; margin-top: 28px; }
+  .sec-foot { justify-content: flex-start; margin-top: 28px; }
   .nums { grid-template-columns: 1fr 1fr; row-gap: 24px; padding-top: 24px; }
   .nums .num, .nums .num:nth-child(2) { padding: 0 12px; }
   .nums .num:nth-child(even) { padding-left: 0; border-left: 0; }
   .nums .num b { font-size: 34px; }
   .nums .num small { font-size: 13px; }
-  .nums-off { grid-template-columns: 1fr 1fr; padding: 20px; gap: 16px; }
-  .nums-off .lbl { grid-column: 1 / -1; }
-  .nums-off .num b { font-size: 30px; }
   .news { grid-template-columns: 1fr; gap: 28px; }
   .channels { grid-template-columns: 1fr 1fr; }
   .chcell { padding: 20px 16px; border-bottom: 1px solid var(--line); }
@@ -169,7 +159,6 @@
 </header>
 
 <main id="main">
-  <!-- 1. Первый экран -->
   <section class="hero">
     <div class="hero-img imgw"><img src="img_только_для_макета/01_hero.jpg" alt="Временная иллюстрация: ЭЭГ-исследование в лаборатории" style="object-position: 70% 50%"><span class="tmp">ВРЕМЕННАЯ ИЛЛЮСТРАЦИЯ · НЕ ПУБЛИКОВАТЬ<small>Заменить на фото: ЭЭГ-исследование в лаборатории НИИ</small></span></div>
     <div class="wrap hero-in">
@@ -182,7 +171,6 @@
     </div>
   </section>
 
-  <!-- 2. Задачи -->
   <section class="block">
     <div class="wrap">
       <div class="sec-head"><div><div class="sec-num">Задачи</div><h2>С какими задачами к нам приходят</h2></div><p class="sub ph">Это для вас, если нужно проверить идею измерениями, а не мнениями, — и довести её до прототипа.</p></div>
@@ -198,7 +186,6 @@
     </div>
   </section>
 
-  <!-- 3. Направления -->
   <section class="block band" id="napravleniya">
     <div class="wrap">
       <div class="sec-head"><div><div class="sec-num">Направления</div><h2>Направления прикладных исследований</h2></div><p class="sub ph">От нейрофизиологической оценки до исследований поведения потребителей — полным циклом, от гипотезы до прототипа.</p></div>
@@ -213,7 +200,6 @@
     </div>
   </section>
 
-  <!-- 4. Полный цикл -->
   <section class="block" id="o-centre">
     <div class="wrap">
       <div class="sec-head"><div><div class="sec-num">Наш подход</div><h2>Полный цикл — от гипотезы до прототипа</h2></div><p class="sub ph">Можно зайти на любом этапе: с идеей, с данными или с готовым решением, которое нужно проверить.</p></div>
@@ -226,7 +212,6 @@
     </div>
   </section>
 
-  <!-- 5. Флагманские проекты -->
   <section class="block band" id="proekty">
     <div class="wrap">
       <div class="sec-head"><div><div class="sec-num">Проекты</div><h2>Флагманские проекты</h2></div><p class="sub ph">Три проекта — по одному из каждого направления. Остальные — на странице «Все проекты».</p></div>
@@ -245,7 +230,6 @@
     </div>
   </section>
 
-  <!-- 5а. О НИИ: история и ссылка на структуру -->
   <section class="block" id="o-nii">
     <div class="wrap">
       <div class="hist">
@@ -276,7 +260,6 @@
     </div>
   </section>
 
-  <!-- 5б. Команда -->
   <section class="block band" id="komanda">
     <div class="wrap">
       <div class="sec-head"><div><div class="sec-num">Команда</div><h2>Команда НИИ</h2></div><p class="sub ph">Нейрофизиологи, врачи, инженеры и аналитики данных ведут исследование от протокола до прототипа.</p></div>
@@ -288,7 +271,6 @@
     </div>
   </section>
 
-  <!-- 6. Цифры центра (скрыт) -->
   <section class="block" style="padding-top:72px;padding-bottom:72px">
     <div class="wrap">
       <div class="nums">
@@ -304,7 +286,6 @@
     </div>
   </section>
 
-  <!-- 7. Новости -->
   <section class="block band" id="novosti">
     <div class="wrap">
       <div class="sec-head"><div><div class="sec-num">Новости</div><h2>Жизнь НИИ нейронаук</h2></div><p class="sub ph">Публикации, события и результаты исследований.</p></div>
@@ -317,7 +298,6 @@
     </div>
   </section>
 
-  <!-- 8. Каналы -->
   <section class="block">
     <div class="wrap">
       <div class="sec-head"><div><div class="sec-num">Каналы</div><h2>Мы в каналах</h2></div><p class="sub ph">Короткие новости, видео с исследований и подкасты.</p></div>
@@ -332,7 +312,6 @@
     </div>
   </section>
 
-  <!-- 9. Форма «Обсудить исследование» — единственная форма сайта, якорь #obsudit-nir -->
   <section class="block band" id="obsudit-nir" aria-labelledby="obsudit-nir-h">
     <div class="wrap cform">
       <div>
@@ -370,7 +349,6 @@
   </section>
 </main>
 
-<!-- 10. Футер -->
 <footer id="kontakty">
   <div class="wrap">
     <div class="ft">
