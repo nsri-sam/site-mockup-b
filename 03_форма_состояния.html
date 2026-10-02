@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Форма «Обсудить исследование» — состояния, мобильный 360 px</title>
+<link rel="stylesheet" href="b.css">
+<style>
+body { background: var(--band); font-size: 16px; }
+.board { max-width: 1400px; margin: 0 auto; padding: 40px 20px 64px; }
+.board > h1 { font-size: 32px; margin-bottom: 8px; }
+.board > p { color: var(--muted); margin-bottom: 36px; }
+.frames { display: grid; grid-template-columns: repeat(3, 360px); gap: 48px 60px; justify-content: center; align-items: start; }
+.cap { font-size: 13px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; color: var(--mark); margin-bottom: 10px; }
+.cap span { display: block; color: var(--muted); font-weight: 600; letter-spacing: 0; text-transform: none; font-size: 14px; margin-top: 2px; }
+.phone { width: 360px; background: #fff; border: 1px solid var(--line); box-shadow: 0 1px 0 var(--line); overflow: hidden; }
+.m-hd { display: flex; align-items: center; justify-content: space-between; height: 64px; padding: 0 20px; border-bottom: 1px solid var(--line); }
+.m-hd .logo-samsmu { width: 38px; height: 38px; }
+.m-hd .logo-name { font-size: 15px; padding-left: 10px; }
+.m-hd .burger { display: grid; }
+.m-b { padding: 24px 20px 32px; display: grid; gap: 18px; }
+.m-b h2 { font-size: 28px; }
+.m-b .intro { font-size: 15px; color: var(--muted); margin-top: -8px; }
+.m-b .inp { font-size: 16px; }
+.m-b textarea.inp { min-height: 190px; font-size: 15px; }
+.m-b .btn { width: 100%; }
+.src { font-size: 14px; color: var(--muted); border-left: 3px solid var(--accent); padding: 6px 0 6px 12px; line-height: 1.45; }
+.src b { color: var(--text); font-weight: 700; }
+.opt-h { font-size: 12px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); border-top: 1px solid var(--line); padding-top: 18px; }
+.summary { border: 1.5px solid var(--error); background: var(--error-bg); border-radius: var(--r); padding: 14px 16px; font-size: 14px; }
+.summary b { color: var(--error); display: block; margin-bottom: 6px; }
+.summary ul { padding-left: 18px; }
+.summary a { color: var(--error); font-weight: 700; text-decoration: underline; }
+.ok { padding: 40px 20px 36px; display: grid; gap: 20px; }
+.ok .mark { width: 56px; height: 56px; border-radius: 50%; background: var(--accent); color: #fff; display: grid; place-items: center; font-size: 26px; font-weight: 800; }
+.ok h2 { font-size: 28px; }
+.ok .num { border-top: 2px solid var(--text); padding-top: 14px; display: grid; gap: 4px; }
+.ok .num small { font-size: 12px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+.ok .num b { font-size: 22px; letter-spacing: .02em; }
+.ok p { font-size: 16px; color: var(--muted); }
+.ok .chs { gap: 8px; }
+.ok .chi.lg { width: 44px; height: 44px; }.fail { border: 1.5px solid var(--error); border-left-width: 4px; background: var(--error-bg); border-radius: var(--r); padding: 14px 16px; font-size: 14px; line-height: 1.5; }
+.fail b { display: block; color: var(--error); margin-bottom: 4px; font-size: 15px; }
+.fail a { color: var(--accent); font-weight: 700; text-decoration: underline; }
+</style>
+</head>
+<body>
+<div class="mock">МАКЕТ · шаг 2 · форма «Обсудить исследование» · мобильный 360 px · пунктир — плейсхолдер, не публиковать</div>
+<div class="board">
+  <h1>Форма «Обсудить исследование» — состояния</h1>
+  <p>Поля и подсказки — ТЗ, 4.2.6, и бриф, приложение Ж.2. Фамилии, должности, телефона, бюджета и загрузки файлов нет. Заявка уходит на e.p.bubnova@samsmu.ru и не хранится на сайте. Экраны ниже — форма на телефоне: блок «Заявка» на главной и всплывающая форма на остальных страницах (на телефоне открывается на весь экран). Заголовок окна повторяет нажатую кнопку. Источник заявки уходит скрытым полем и на экране не показывается (правка 02.10.2026).</p>
+  <div class="frames">
+
+    <!-- 1. Заполнение -->
+    <div>
+      <div class="cap">01 · Заполнение<span>Кнопка «Обсудить похожую задачу» на странице проекта: окно с тем же заголовком, проект — скрытым полем</span></div>
+      <div class="phone">
+        <div class="m-hd"><span class="logo"><span class="logo-samsmu">лого<br>СамГМУ</span><span class="logo-name">НИИ нейронаук<small>СамГМУ Минздрава России</small></span></span><span class="burger"><i></i></span></div>
+        <form class="m-b" onsubmit="return false">
+          <h2>Обсудить похожую задачу</h2>
+          <p class="intro ph">Опишите задачу своими словами — ответим и предложим, как её проверить.</p>
+          <div class="field"><label>Как к вам обращаться? <span class="req">*</span></label><input class="inp" value="Анна"><span class="hint">Имя или как вам удобно — фамилия и должность не нужны</span></div>
+          <div class="field"><label>Контактный e-mail <span class="req">*</span></label><input class="inp" value="anna@company.ru"><span class="hint">Для ответа по заявке</span></div>
+          <div class="field"><label>Какое исследование вам нужно? <span class="req">*</span></label>
+            <textarea class="inp is-focus">Хотим понять, на каком шаге оформления заявки пользователи теряются</textarea>
+            <span class="counter">71 / 2 000</span></div>
+          <div class="consent">Место под согласие или уведомление об обработке данных — по заключению юриста</div>
+          <button class="btn" type="button">Отправить заявку</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- 2. Ошибка -->
+    <div>
+      <div class="cap">02 · Ошибка<span>После нажатия «Отправить»: пустое поле и неверный e-mail</span></div>
+      <div class="phone">
+        <div class="m-hd"><span class="logo"><span class="logo-samsmu">лого<br>СамГМУ</span><span class="logo-name">НИИ нейронаук<small>СамГМУ Минздрава России</small></span></span><span class="burger"><i></i></span></div>
+        <form class="m-b" onsubmit="return false">
+          <h2>Обсудить исследование</h2>
+          <div class="summary" role="alert"><b>Заявка не отправлена — проверьте 2 поля</b><ul><li><a href="#">Контактный e-mail</a></li><li><a href="#">Какое исследование вам нужно?</a></li></ul></div>
+          <div class="field"><label>Как к вам обращаться? <span class="req">*</span></label><input class="inp" value="Анна"></div>
+          <div class="field"><label>Контактный e-mail <span class="req">*</span></label><input class="inp is-error" value="anna@company"><span class="err">Проверьте адрес: в нём не хватает домена, например anna@company.ru</span></div>
+          <div class="field"><label>Какое исследование вам нужно? <span class="req">*</span></label>
+            <textarea class="inp is-error" placeholder="Что вы хотите проверить или измерить? На ком или на чём? Для чего нужен результат? Не указывайте данные пациентов и третьих лиц."></textarea>
+            <span class="err">Опишите задачу хотя бы в одном предложении — без этого мы не сможем ответить</span></div>
+          <div class="consent">Место под согласие или уведомление — по заключению юриста</div>
+          <button class="btn" type="button">Отправить заявку</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- 3. Спасибо -->
+    <div>
+      <div class="cap">03 · Спасибо<span>Заявка отправлена письмом, на сайте не сохранена</span></div>
+      <div class="phone">
+        <div class="m-hd"><span class="logo"><span class="logo-samsmu">лого<br>СамГМУ</span><span class="logo-name">НИИ нейронаук<small>СамГМУ Минздрава России</small></span></span><span class="burger"><i></i></span></div>
+        <div class="ok">
+          <span class="mark">✓</span>
+          <h2>Спасибо, заявка отправлена</h2>
+          <div class="num"><small>Номер заявки</small><b class="ph">20260930-017</b><span class="hint">Пример формата: дата + порядковый номер</span></div>
+          <p class="ph">Ответим на указанный e-mail в течение [срок — решение руководителя].</p>
+          <p>Если вопрос срочный, напишите на e.p.bubnova@samsmu.ru и укажите номер заявки.</p>
+          <div class="opt-h">Пока ждёте ответа</div>
+          <div class="chs"><span class="chi lg">TG</span><span class="chi lg">MAX</span><span class="chi lg">VK</span><span class="chi lg">Дз</span><span class="chi lg">ЯП</span><span class="chi lg">RT</span></div>
+          <a class="btn-sec" href="01_главная.html#proekty">Смотреть проекты</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4. Сбой отправки -->
+    <div>
+      <div class="cap">04 · Сбой отправки<span>Почтовый сервер недоступен, введённый текст сохранён</span></div>
+      <div class="phone">
+        <div class="m-hd"><span class="logo"><span class="logo-samsmu">лого<br>СамГМУ</span><span class="logo-name">НИИ нейронаук<small>СамГМУ Минздрава России</small></span></span><span class="burger"><i></i></span></div>
+        <form class="m-b" onsubmit="return false">
+          <h2>Обсудить исследование</h2>
+          <div class="fail" role="alert"><b>Не удалось отправить заявку</b>Текст сохранён в форме — попробуйте ещё раз через минуту или напишите напрямую на <a href="#">e.p.bubnova@samsmu.ru</a>.</div>
+          <div class="field"><label>Как к вам обращаться? <span class="req">*</span></label><input class="inp" value="Анна"></div>
+          <div class="field"><label>Контактный e-mail <span class="req">*</span></label><input class="inp" value="anna@company.ru"></div>
+          <div class="field"><label>Какое исследование вам нужно? <span class="req">*</span></label><textarea class="inp" style="min-height:120px">Хотим понять, на каком шаге оформления заявки пользователи теряются</textarea></div>
+          <div class="consent">Место под согласие или уведомление — по заключению юриста</div>
+          <button class="btn" type="button">Отправить ещё раз</button>
+          <button class="btn is-disabled" type="button" disabled>Отправка…</button>
+          <span class="hint">Второе состояние кнопки — во время отправки (неактивна, защита от повторного клика)</span>
+        </form>
+      </div>
+    </div>
+
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Структура НИИ — макет шага 2, направление Б</title>
+<link rel="stylesheet" href="b.css">
+<style>
+.crumbs { font-size: 14px; color: var(--muted); padding: 24px 0 0; }
+.crumbs a { color: var(--accent); font-weight: 600; }
+.crumbs i { font-style: normal; margin: 0 8px; color: var(--line); }
+.lhead { padding: 40px 0 32px; display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: end; }
+.lhead h1 { font-size: 52px; }
+.lhead p { font-size: 18px; color: var(--muted); }
+.toc { display: flex; flex-wrap: wrap; gap: 8px 12px; padding-bottom: 56px; }
+.toc a { font-size: 15px; font-weight: 600; color: var(--accent); border: 1px solid var(--line); border-radius: 999px; padding: 8px 16px; }
+.toc a:hover { background: var(--band); }
+
+.lbl { font-size: 13px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin-bottom: 10px; }
+.labs { padding-bottom: 96px; }
+.lab { border-top: 2px solid var(--text); padding: 32px 0 48px; scroll-margin-top: 96px; }
+.lab-top { display: grid; grid-template-columns: 64px 1fr; gap: 16px; align-items: baseline; margin-bottom: 28px; }
+.lab-n { font-size: 14px; font-weight: 800; color: var(--mark); letter-spacing: .1em; }
+.lab-top h2 { font-size: 30px; line-height: 1.25; }
+.lab-in { display: grid; grid-template-columns: 1.2fr 1fr; gap: 48px; padding-left: 80px; }
+.lab-about p { font-size: 17px; margin-bottom: 20px; max-width: 36em; }
+.meth { list-style: none; display: grid; gap: 6px; font-size: 15px; color: var(--muted); }
+.meth li { padding-left: 16px; position: relative; }
+.meth li::before { content: ""; position: absolute; left: 0; top: .7em; width: 8px; height: 2px; background: var(--mark); }
+.lab-head { display: grid; grid-template-columns: 160px 1fr; gap: 24px; align-items: start; background: var(--band); padding: 24px; border-radius: var(--r); }
+.lab-head .photo-ph { aspect-ratio: 4/5; border-radius: var(--r); }
+.lab-head b { display: block; font-size: 20px; line-height: 1.3; margin-bottom: 8px; }
+.lab-head p { font-size: 14px; color: var(--muted); margin-bottom: 12px; }
+.lab-head a { font-size: 15px; font-weight: 600; color: var(--accent); }
+
+.cta-band { background: var(--text); color: #fff; padding: 64px 0; }
+.cta-band .in { display: flex; justify-content: space-between; align-items: center; gap: 48px; }
+.cta-band h2 { color: #fff; font-size: 34px; }
+.cta-band p { color: var(--foot-text); margin-top: 12px; font-size: 17px; }
+.cta-band .btn { background: #fff; color: var(--accent); }
+
+.spec { padding: 56px 0 72px; border-top: 2px dashed var(--line); }
+.spec h2 { font-size: 28px; margin-bottom: 8px; }
+.spec > .wrap > p { color: var(--muted); font-size: 16px; margin-bottom: 32px; max-width: 46em; }
+.spec-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.spec-card { border: 1px solid var(--line); border-radius: var(--r); padding: 24px; background: #fff; }
+.spec-card h3 { font-size: 18px; margin-bottom: 12px; }
+.spec-card ul { list-style: none; display: grid; gap: 8px; font-size: 14px; }
+.spec-card li { padding-left: 16px; position: relative; }
+.spec-card li::before { content: ""; position: absolute; left: 0; top: .65em; width: 8px; height: 2px; background: var(--mark); }
+
+@media (max-width: 767px) {
+  .crumbs { font-size: 13px; padding-top: 16px; }
+  .lhead { grid-template-columns: 1fr; gap: 12px; padding: 24px 0 20px; }
+  .lhead h1 { font-size: 32px; }
+  .lhead p { font-size: 16px; }
+  .toc { padding-bottom: 36px; }
+  .toc a { font-size: 14px; padding: 6px 12px; }
+  .labs { padding-bottom: 56px; }
+  .lab { padding: 24px 0 36px; scroll-margin-top: 72px; }
+  .lab-top { grid-template-columns: 1fr; gap: 6px; margin-bottom: 16px; }
+  .lab-top h2 { font-size: 22px; }
+  .lab-in { grid-template-columns: 1fr; gap: 20px; padding-left: 0; }
+  .lab-about p { font-size: 15px; }
+  .lab-head { grid-template-columns: 96px 1fr; gap: 16px; padding: 16px; }
+  .lab-head b { font-size: 17px; }
+  .lab-head p { font-size: 13px; }
+  .cta-band { padding: 48px 0; }
+  .cta-band .in { flex-direction: column; align-items: stretch; gap: 24px; }
+  .cta-band h2 { font-size: 26px; }
+  .spec { padding: 36px 0 48px; }
+  .spec-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body data-source="Страница «Структура НИИ»">
+<a class="skip" href="#main">Перейти к содержанию</a>
+<div class="mock">МАКЕТ · шаг 2 · страница «Структура НИИ» · пунктирная рамка — плейсхолдер текста, не публиковать · серые поля — места под портреты</div>
+
+<header>
+  <div class="wrap hd">
+    <a class="logo" href="01_главная.html"><span class="logo-samsmu">логотип<br>СамГМУ</span><span class="logo-name">НИИ нейронаук<small>СамГМУ Минздрава России</small></span></a>
+    <nav id="menu" aria-label="Главное меню"><a href="01_главная.html">Главная</a><a href="01_главная.html#napravleniya">Направления</a><a href="06_проекты.html">Проекты</a><div class="has-sub"><a href="01_главная.html#o-nii" class="sub-t on">О НИИ</a><div class="nav-sub" aria-label="О НИИ"><a href="01_главная.html#o-centre">Наш подход</a><a href="01_главная.html#o-nii">История НИИ</a><a href="12_структура.html" class="on" aria-current="page">Структура НИИ</a><a href="11_команда.html">Команда</a></div></div><a href="10_новости.html">Новости</a><a href="#kontakty">Контакты</a><a class="btn nav-cta" href="01_главная.html#obsudit-nir">Обсудить исследование</a></nav>
+    <div class="hd-right">
+      <div class="chs"><span class="chi">TG</span><span class="chi">MAX</span><a class="chi" href="https://vk.com/nsri_samsmu" target="_blank" rel="noopener">VK</a><span class="chi">Дз</span></div>
+      <a class="btn btn-hd" href="01_главная.html#obsudit-nir">Обсудить</a>
+      <button class="burger" type="button" aria-label="Открыть меню" aria-controls="menu" aria-expanded="false"><i></i></button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+  <div class="wrap">
+    <div class="crumbs"><a href="01_главная.html">Главная</a><i>/</i><a href="01_главная.html#o-nii">О НИИ</a><i>/</i><span>Структура НИИ</span></div>
+    <div class="lhead">
+      <h1>Структура НИИ</h1>
+      <p>Четыре научные лаборатории: чем занимается каждая, какими методами и кто ею руководит.</p>
+    </div>
+    <nav class="toc" aria-label="Лаборатории"><a href="#lab-model">Математического нейромоделирования</a><a href="#lab-nif">Нейроинтерфейсов и нейротехнологий</a><a href="#lab-trans">Трансляционных исследований и персонализированной медицины</a><a href="#lab-nmorph">Нейроморфных систем</a></nav>
+  </div>
+
+  <section class="labs" aria-label="Лаборатории">
+    <div class="wrap">
+      <article class="lab" id="lab-model">
+        <div class="lab-top"><span class="lab-n">01</span><h2>Лаборатория математического нейромоделирования</h2></div>
+        <div class="lab-in">
+          <div class="lab-about"><p>Разработка математических и нейросетевых моделей, описывающих динамику нейронных систем мозга, процессы обучения, памяти и обработки информации.</p><div class="lbl">Методы исследования</div><ul class="meth"><li>моделирование нейросистем через многомерные системы обыкновенных дифференциальных уравнений</li><li>методы нелинейной динамики и бифуркационного анализа</li><li>вычислительные комплексы и симуляторы для расчёта моделей</li></ul></div>
+          <div class="lab-head"><div class="photo-ph"><span>Фото сотрудника<br>портрет 4:5</span></div><div><div class="lbl">Руководитель</div><b>Казанцев Виктор Борисович</b><p>Заведующий лабораторией, заведующий кафедрой нейротехнологий Университета Лобачевского (Нижний Новгород), доктор физико-математических наук, доцент</p><a href="mailto:v.b.kazantsev@samsmu.ru">v.b.kazantsev@samsmu.ru</a></div></div>
+        </div>
+      </article>
+      <article class="lab" id="lab-nif">
+        <div class="lab-top"><span class="lab-n">02</span><h2>Лаборатория нейроинтерфейсов и нейротехнологий</h2></div>
+        <div class="lab-in">
+          <div class="lab-about"><p>Исследование функциональной организации центральной нервной системы, разработка нейроинтерфейсов и сенсорных технологий для диагностики и реабилитации.</p><div class="lbl">Методы исследования</div><ul class="meth"><li>электроэнцефалография (ЭЭГ)</li><li>мультимодальные вызванные потенциалы</li><li>транскраниальная магнитная стимуляция (ТМС) — исследовательский метод</li><li>ближняя инфракрасная спектроскопия (БИКС)</li><li>функциональная МРТ</li></ul></div>
+          <div class="lab-head"><div class="photo-ph"><span>Фото сотрудника<br>портрет 4:5</span></div><div><div class="lbl">Руководитель</div><b>Пятин Василий Фёдорович</b><p>Заведующий лабораторией, доктор медицинских наук, профессор, заслуженный деятель науки Самарской области</p><a href="mailto:v.f.pyatin@samsmu.ru">v.f.pyatin@samsmu.ru</a></div></div>
+        </div>
+      </article>
+      <article class="lab" id="lab-trans">
+        <div class="lab-top"><span class="lab-n">03</span><h2>Лаборатория трансляционных исследований и персонализированной медицины</h2></div>
+        <div class="lab-in">
+          <div class="lab-about"><p>Персонализированные подходы к диагностике и профилактике нейродегенеративных и когнитивных нарушений на основе анализа данных и трансляционных исследований.</p><div class="lbl">Методы исследования</div><ul class="meth"><li>спектральный и временно-частотный анализ нейрофизиологических данных</li><li>методы машинного обучения и искусственного интеллекта</li><li>кластеризация и моделирование нейрофизиологических профилей</li><li>поиск биомаркеров когнитивных и нейродегенеративных нарушений</li></ul></div>
+          <div class="lab-head"><div class="photo-ph"><span>Фото сотрудника<br>портрет 4:5</span></div><div><div class="lbl">Руководитель</div><b>Широлапов Игорь Викторович</b><p>Заведующий лабораторией, кандидат медицинских наук, доцент</p><a href="mailto:i.v.shirolapov@samsmu.ru">i.v.shirolapov@samsmu.ru</a></div></div>
+        </div>
+      </article>
+      <article class="lab" id="lab-nmorph">
+        <div class="lab-top"><span class="lab-n">04</span><h2>Лаборатория нейроморфных систем</h2></div>
+        <div class="lab-in">
+          <div class="lab-about"><p>Исследование и разработка нейроморфных систем на принципах работы биологических нейронных сетей — для искусственного интеллекта, робототехники и когнитивных вычислений.</p><div class="lbl">Методы исследования</div><ul class="meth"><li>нейробиологический дизайн нейроморфных архитектур</li><li>экспериментальная валидация</li><li>математическое моделирование</li><li>бенчмаркинг с традиционными архитектурами</li><li>анализ этических и социальных последствий внедрения</li></ul></div>
+          <div class="lab-head"><div class="photo-ph"><span>Фото сотрудника<br>портрет 4:5</span></div><div><div class="lbl">Руководитель</div><b>Романчук Наталья Петровна</b><p>Заведующий лабораторией, кандидат медицинских наук, доцент</p><a href="mailto:n.p.romanchuk@samsmu.ru">n.p.romanchuk@samsmu.ru</a></div></div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="cta-band">
+    <div class="wrap in">
+      <div><h2>Нужна консультация специалиста?</h2><p class="ph">Опишите задачу — подберём лабораторию и предложим, как её проверить.</p></div>
+      <a class="btn" href="01_главная.html#obsudit-nir">Обсудить исследование</a>
+    </div>
+  </section>
+
+  <!-- Спецификация шаблона: только для макета -->
+  <section class="spec" aria-label="Спецификация шаблона для разработчика">
+    <div class="wrap">
+      <div class="sec-num">Только в макете</div>
+      <h2>Спецификация страницы «Структура НИИ»</h2>
+      <p>Страница раздела «О НИИ». Ведёт сюда ссылка «Структура НИИ» на главной и ссылка «Лаборатории и руководители» на странице «Команда». Данные лабораторий и руководителей — с официальной страницы НИИ нейронаук на samsmu.ru.</p>
+      <div class="spec-grid">
+        <div class="spec-card">
+          <h3>Лаборатория</h3>
+          <ul>
+            <li>Поля: порядковый номер, название, описание до 400 знаков, методы исследования списком.</li>
+            <li>Якорь у каждой лаборатории; оглавление-чипы сверху ведут к ним.</li>
+            <li>Порядок — полем «порядок» в CMS.</li>
+          </ul>
+        </div>
+        <div class="spec-card">
+          <h3>Руководитель</h3>
+          <ul>
+            <li>Портрет 4:5, ФИО, должность и учёная степень, e-mail ссылкой mailto.</li>
+            <li>Портрет и ФИО — только с письменного согласия (ст. 152.1 ГК РФ, 152-ФЗ). Нет портрета — серая заглушка.</li>
+          </ul>
+        </div>
+        <div class="spec-card">
+          <h3>Адаптив</h3>
+          <ul>
+            <li>Десктоп: описание и карточка руководителя в две колонки.</li>
+            <li>Мобильный: одна колонка, портрет руководителя 96 px слева от текста.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer id="kontakty">
+  <div class="wrap">
+    <div class="ft">
+      <div>
+        <a class="logo" href="01_главная.html"><span class="logo-samsmu">логотип<br>СамГМУ</span><span class="logo-name">НИИ нейронаук<small>СамГМУ Минздрава России</small></span></a>
+        <p style="margin-top:20px">Научно-исследовательский институт нейронаук ФГБОУ ВО СамГМУ Минздрава России</p><p class="ft-note">НИИ не оказывает медицинскую помощь. Запись на приём — в <a href="https://clinica.samsmu.ru/" target="_blank" rel="noopener">Клиниках СамГМУ</a>.</p>
+      </div>
+      <div><h4>Разделы</h4><ul><li><a href="01_главная.html">Главная</a></li><li><a href="01_главная.html#napravleniya">Направления</a></li><li><a href="01_главная.html#o-centre">Наш подход</a></li><li><a href="06_проекты.html">Проекты</a></li><li><a href="01_главная.html#o-nii">О НИИ</a></li><li><a href="11_команда.html">Команда</a></li><li><a href="10_новости.html">Новости</a></li><li><a href="#kontakty">Контакты</a></li></ul></div>
+      <div><h4>Каналы</h4><div class="chs" style="flex-wrap:wrap"><span class="chi">TG</span><span class="chi">MAX</span><a class="chi" href="https://vk.com/nsri_samsmu" target="_blank" rel="noopener">VK</a><span class="chi">Дз</span><span class="chi">ЯП</span><span class="chi">RT</span></div></div>
+      <div><h4>Контакты</h4><ul><li>e.p.bubnova@samsmu.ru</li><li>+7 (846) 374-10-04 доб. 4132</li><li>443079, Самара, ул. Гагарина, 18</li><li><a href="https://vk.com/nsri_samsmu" target="_blank" rel="noopener">vk.com/nsri_samsmu</a></li></ul></div>
+    </div>
+    <div class="ft-bottom"><span>© ФГБОУ ВО СамГМУ Минздрава России</span><span class="ph">Политика обработки данных — ссылка после заключения юриста</span></div>
+  </div>
+</footer>
+<script src="nav.js"></script>
+</body>
+</html>

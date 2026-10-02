@@ -1,0 +1,312 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Новости — макет шага 2, направление Б</title>
+<link rel="stylesheet" href="b.css">
+<style>
+.crumbs { font-size: 14px; color: var(--muted); padding: 24px 0 0; }
+.crumbs a { color: var(--accent); font-weight: 600; }
+.crumbs i { font-style: normal; margin: 0 8px; color: var(--line); }
+.lhead { padding: 40px 0 40px; display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: end; }
+.lhead h1 { font-size: 52px; }
+.lhead p { font-size: 18px; color: var(--muted); }
+
+.fbar { position: sticky; top: 80px; z-index: 3; background: rgba(255,255,255,.97); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.fbar .wrap { display: grid; gap: 12px; padding-top: 16px; padding-bottom: 16px; }
+.frow { display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+.flt { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+.flt-l { font-size: 12px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); width: 88px; flex: none; }
+.flt button { font-family: inherit; font-size: 15px; font-weight: 700; line-height: 1.2; color: var(--text); background: #fff; border: 1.5px solid var(--line); border-radius: var(--r); padding: 10px 14px; cursor: pointer; display: inline-flex; gap: 8px; align-items: center; white-space: nowrap; transition: border-color .2s, background .2s; }
+.flt button b { font-size: 12px; font-weight: 800; color: var(--muted); }
+.flt button:hover { border-color: var(--accent); }
+.flt button:focus-visible, .sel:focus-visible, .reset:focus-visible { outline: 3px solid var(--mark); outline-offset: 2px; }
+.flt button[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: #fff; }
+.flt button[aria-pressed="true"] b { color: #E3D6EF; }
+.flt.tg button { font-size: 14px; font-weight: 600; padding: 8px 12px; }
+.flt.tg button[aria-pressed="true"]::before { content: "✓"; font-weight: 800; }
+.flt.tg:not(.open) button.extra:not([aria-pressed="true"]) { display: none; }
+.flt.tg .tg-more { border-style: dashed; color: var(--accent); }
+.sortw { display: flex; align-items: center; gap: 10px; flex: none; }
+.sortw label { font-size: 12px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+.sel { font-family: inherit; font-size: 15px; font-weight: 700; color: var(--text); background: #fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%235B2A86' stroke-width='2'/%3E%3C/svg%3E") no-repeat right 14px center; border: 1.5px solid var(--field); border-radius: var(--r); padding: 10px 40px 10px 14px; appearance: none; cursor: pointer; min-height: 44px; }
+.fside { display: flex; align-items: center; gap: 20px; flex: none; }
+.count { font-size: 14px; color: var(--muted); white-space: nowrap; }
+.count b { color: var(--text); }
+.reset { font-family: inherit; font-size: 14px; font-weight: 700; color: var(--accent); background: none; border: 0; border-bottom: 1.5px solid var(--mark); padding: 2px 0; cursor: pointer; }
+.reset[hidden] { display: none; }
+
+.list { padding: 48px 0 96px; }
+.grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 48px 24px; }
+.grid .ncard[hidden] { display: none; }
+.nmeta { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.ncard .tags { display: flex; gap: 6px; flex-wrap: wrap; }
+.ncard .tag.on { border-color: var(--accent); color: var(--accent); background: var(--band); }
+.more { display: flex; justify-content: center; margin-top: 56px; }
+.more[hidden] { display: none; }
+.empty { border: 1.5px dashed var(--field); border-radius: var(--r); padding: 48px; text-align: center; display: grid; gap: 16px; justify-items: center; }
+.empty[hidden] { display: none; }
+.empty h2 { font-size: 26px; }
+.empty p { color: var(--muted); font-size: 16px; max-width: 34em; }
+
+.chan { background: var(--band); padding: 56px 0; }
+.chan .in { display: flex; justify-content: space-between; align-items: center; gap: 48px; }
+.chan h2 { font-size: 30px; }
+.chan p { color: var(--muted); margin-top: 10px; font-size: 17px; }
+.chan .chs { gap: 10px; }
+.chan .chi { width: 48px; height: 48px; font-size: 12px; }
+
+.spec { padding: 56px 0 72px; border-top: 2px dashed var(--line); }
+.spec h2 { font-size: 28px; margin-bottom: 8px; }
+.spec > .wrap > p { color: var(--muted); font-size: 16px; margin-bottom: 32px; max-width: 46em; }
+.spec-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.spec-card { border: 1px solid var(--line); border-radius: var(--r); padding: 24px; background: #fff; }
+.spec-card h3 { font-size: 18px; margin-bottom: 12px; }
+.spec-card ul { list-style: none; display: grid; gap: 8px; font-size: 14px; }
+.spec-card li { padding-left: 16px; position: relative; }
+.spec-card li::before { content: ""; position: absolute; left: 0; top: .65em; width: 8px; height: 2px; background: var(--mark); }
+
+@media (max-width: 767px) {
+  .crumbs { font-size: 13px; padding-top: 16px; }
+  .lhead { grid-template-columns: 1fr; gap: 12px; padding: 24px 0 28px; }
+  .lhead h1 { font-size: 32px; }
+  .lhead p { font-size: 16px; }
+  .fbar { position: static; }
+  .fbar .wrap { gap: 10px; padding-top: 12px; padding-bottom: 12px; }
+  .frow { flex-direction: column; align-items: stretch; gap: 10px; }
+  .flt { flex-wrap: wrap; }
+  .flt-l { display: none; }
+  .flt button { padding: 10px 12px; font-size: 14px; min-height: 44px; }
+  .sortw label { display: none; }
+  .sortw, .sel { width: 100%; }
+  .fside { justify-content: space-between; }
+  .list { padding: 28px 0 56px; }
+  .grid { grid-template-columns: 1fr; gap: 32px; }
+  .more { margin-top: 32px; }
+  .more .btn-sec { width: 100%; justify-content: center; }
+  .empty { padding: 28px 20px; }
+  .chan { padding: 40px 0; }
+  .chan .in { flex-direction: column; align-items: flex-start; gap: 20px; }
+  .chan h2 { font-size: 24px; }
+  .spec { padding: 36px 0 48px; }
+  .spec-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Перейти к содержанию</a>
+<div class="mock">МАКЕТ · шаг 2 · лента новостей с сортировкой по дате и фильтром по рубрикам и тегам · пунктирная рамка — плейсхолдер текста, не публиковать · серые поля — места под реальные фото</div>
+
+<header>
+  <div class="wrap hd">
+    <a class="logo" href="01_главная.html"><span class="logo-samsmu">логотип<br>СамГМУ</span><span class="logo-name">НИИ нейронаук<small>СамГМУ Минздрава России</small></span></a>
+    <nav id="menu" aria-label="Главное меню"><a href="01_главная.html">Главная</a><a href="01_главная.html#napravleniya">Направления</a><a href="06_проекты.html">Проекты</a><div class="has-sub"><a href="01_главная.html#o-nii" class="sub-t">О НИИ</a><div class="nav-sub" aria-label="О НИИ"><a href="01_главная.html#o-centre">Наш подход</a><a href="01_главная.html#o-nii">История НИИ</a><a href="12_структура.html">Структура НИИ</a><a href="11_команда.html">Команда</a></div></div><a href="10_новости.html" class="on" aria-current="page">Новости</a><a href="#kontakty">Контакты</a><a class="btn nav-cta" href="01_главная.html#obsudit-nir">Обсудить исследование</a></nav>
+    <div class="hd-right">
+      <div class="chs"><span class="chi">TG</span><span class="chi">MAX</span><a class="chi" href="https://vk.com/nsri_samsmu" target="_blank" rel="noopener">VK</a><span class="chi">Дз</span></div>
+      <a class="btn btn-hd" href="01_главная.html#obsudit-nir">Обсудить</a>
+      <button class="burger" type="button" aria-label="Открыть меню" aria-controls="menu" aria-expanded="false"><i></i></button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+  <div class="wrap">
+    <div class="crumbs"><a href="01_главная.html">Главная</a><i>/</i><span>Новости</span></div>
+    <div class="lhead">
+      <h1>Жизнь НИИ нейронаук</h1>
+      <p class="ph">Публикации, события и результаты исследований. Выберите рубрику или теги, чтобы увидеть только нужные материалы.</p>
+    </div>
+  </div>
+
+  <div class="fbar">
+    <div class="wrap">
+      <div class="frow">
+        <div class="flt rb" role="group" aria-label="Фильтр по рубрике">
+          <span class="flt-l">Рубрика</span>
+          <button type="button" data-r="all" aria-pressed="true">Все <b>12</b></button><button type="button" data-r="proekty" aria-pressed="false">Проекты <b>3</b></button><button type="button" data-r="sobytiya" aria-pressed="false">События и выступления <b>3</b></button><button type="button" data-r="publikacii" aria-pressed="false">Публикации <b>2</b></button><button type="button" data-r="biznes" aria-pressed="false">Разборы <b>2</b></button><button type="button" data-r="partnery" aria-pressed="false">Партнёрства <b>2</b></button>
+        </div>
+        <div class="sortw">
+          <label for="sort">Сортировка</label>
+          <select id="sort" class="sel">
+            <option value="new">Сначала новые</option>
+            <option value="old">Сначала старые</option>
+          </select>
+        </div>
+      </div>
+      <div class="frow">
+        <div class="flt tg" role="group" aria-label="Фильтр по тегам, можно выбрать несколько">
+          <span class="flt-l">Теги</span>
+          <button type="button" data-tag="eeg" aria-pressed="false">ЭЭГ</button><button type="button" data-tag="eye" aria-pressed="false">айтрекинг</button><button type="button" data-tag="bio" aria-pressed="false">биосигналы</button><button type="button" data-tag="bci" aria-pressed="false">нейроинтерфейс</button><button type="button" data-tag="vr" aria-pressed="false">VR</button><button type="button" class="extra" data-tag="cv" aria-pressed="false">компьютерное зрение</button><button type="button" data-tag="ai" aria-pressed="false">ИИ</button><button type="button" class="extra" data-tag="tms" aria-pressed="false">ТМС</button><button type="button" class="extra" data-tag="biks" aria-pressed="false">БИКС</button><button type="button" class="extra" data-tag="son" aria-pressed="false">сон</button><button type="button" class="extra" data-tag="model" aria-pressed="false">моделирование</button><button type="button" class="extra" data-tag="nmorph" aria-pressed="false">нейроморфные системы</button><button type="button" class="tg-more" aria-expanded="false">Ещё теги <b>6</b></button>
+        </div>
+        <div class="fside">
+          <div class="count" aria-live="polite">Найдено: <b id="cnt">12</b> из 12</div>
+          <button type="button" class="reset" hidden>Сбросить</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <section class="list" aria-label="Список новостей">
+    <div class="wrap">
+      <div class="grid">
+        <a class="ncard" href="05_новость.html" data-date="2026-09-24" data-r="proekty" data-t="eeg ai"><div class="nc-media"><div class="photo-ph"><span>Фото к новости</span></div><div class="nc-sum"><p class="ph">Краткая суть новости — аннотация из CMS, до 200 знаков: что произошло и почему это важно.</p><span class="more-l">Читать новость →</span></div></div><div class="nmeta"><span class="tag dir">Проекты</span><time class="ph" datetime="2026-09-24">24.09.2026</time></div><h3 class="ph">Пример: промежуточные результаты проекта по оценке когнитивного состояния</h3><p class="nc-lead ph">Краткая суть новости — аннотация из CMS, до 200 знаков: что произошло и почему это важно.</p><div class="tags"><span class="tag" data-tag="eeg">ЭЭГ</span><span class="tag" data-tag="ai">ИИ</span></div></a>
+        <a class="ncard" href="05_новость.html" data-date="2026-09-17" data-r="biznes" data-t="eye bio"><div class="nc-media"><div class="photo-ph"><span>Фото к новости</span></div><div class="nc-sum"><p class="ph">Разбор из Telegram-канала: что показали айтрекинг и биосигналы на типовом пути клиента.</p><span class="more-l">Читать новость →</span></div></div><div class="nmeta"><span class="tag dir">Разборы</span><time class="ph" datetime="2026-09-17">17.09.2026</time></div><h3 class="ph">Пример: на каком шаге оформления заявки пользователь теряет внимание</h3><p class="nc-lead ph">Разбор из Telegram-канала: что показали айтрекинг и биосигналы на типовом пути клиента.</p><div class="tags"><span class="tag" data-tag="eye">айтрекинг</span><span class="tag" data-tag="bio">биосигналы</span></div></a>
+        <a class="ncard" href="05_новость.html" data-date="2026-09-05" data-r="sobytiya" data-t="vr bci tms biks"><div class="nc-media"><div class="photo-ph"><span>Фото к новости</span></div><div class="nc-sum"><p class="ph">Аннотация события: где, кто выступал и с какой темой.</p><span class="more-l">Читать новость →</span></div></div><div class="nmeta"><span class="tag dir">События и выступления</span><time class="ph" datetime="2026-09-05">05.09.2026</time></div><h3 class="ph">Пример: выступление сотрудников НИИ на научной конференции</h3><p class="nc-lead ph">Аннотация события: где, кто выступал и с какой темой.</p><div class="tags"><span class="tag" data-tag="vr">VR</span><span class="tag" data-tag="bci">нейроинтерфейс</span><span class="tag" data-tag="tms">ТМС</span><span class="tag" data-tag="biks">БИКС</span></div></a>
+        <a class="ncard" href="05_новость.html" data-date="2026-08-28" data-r="publikacii" data-t="eeg model"><div class="nc-media"><div class="photo-ph"><span>Фото к новости</span></div><div class="nc-sum"><p class="ph">Аннотация публикации: тема, журнал, ключевой вывод — по согласованию с авторами.</p><span class="more-l">Читать новость →</span></div></div><div class="nmeta"><span class="tag dir">Публикации</span><time class="ph" datetime="2026-08-28">28.08.2026</time></div><h3 class="ph">Пример: статья лаборатории в рецензируемом журнале</h3><p class="nc-lead ph">Аннотация публикации: тема, журнал, ключевой вывод — по согласованию с авторами.</p><div class="tags"><span class="tag" data-tag="eeg">ЭЭГ</span><span class="tag" data-tag="model">моделирование</span></div></a>
+        <a class="ncard" href="05_новость.html" data-date="2026-08-14" data-r="partnery" data-t="ai cv"><div class="nc-media"><div class="photo-ph"><span>Фото к новости</span></div><div class="nc-sum"><p class="ph">Аннотация: с кем, о чём договорились и что это даст заказчикам НИР.</p><span class="more-l">Читать новость →</span></div></div><div class="nmeta"><span class="tag dir">Партнёрства</span><time class="ph" datetime="2026-08-14">14.08.2026</time></div><h3 class="ph">Пример: соглашение о сотрудничестве с индустриальным партнёром</h3><p class="nc-lead ph">Аннотация: с кем, о чём договорились и что это даст заказчикам НИР.</p><div class="tags"><span class="tag" data-tag="ai">ИИ</span><span class="tag" data-tag="cv">компьютерное зрение</span></div></a>
+        <a class="ncard" href="05_новость.html" data-date="2026-07-30" data-r="proekty" data-t="cv"><div class="nc-media"><div class="photo-ph"><span>Фото к новости</span></div><div class="nc-sum"><p class="ph">Краткая суть: какой этап полного цикла пройден и что дальше.</p><span class="more-l">Читать новость →</span></div></div><div class="nmeta"><span class="tag dir">Проекты</span><time class="ph" datetime="2026-07-30">30.07.2026</time></div><h3 class="ph">Пример: новый этап проекта по анализу походки по видео</h3><p class="nc-lead ph">Краткая суть: какой этап полного цикла пройден и что дальше.</p><div class="tags"><span class="tag" data-tag="cv">компьютерное зрение</span></div></a>
+        <a class="ncard" href="05_новость.html" data-date="2026-07-10" data-r="biznes" data-t="eye"><div class="nc-media"><div class="photo-ph"><span>Фото к новости</span></div><div class="nc-sum"><p class="ph">Разбор: какие элементы страницы забирают внимание и как это проверить нейротестом.</p><span class="more-l">Читать новость →</span></div></div><div class="nmeta"><span class="tag dir">Разборы</span><time class="ph" datetime="2026-07-10">10.07.2026</time></div><h3 class="ph">Пример: почему пользователи не дочитывают карточку продукта</h3><p class="nc-lead ph">Разбор: какие элементы страницы забирают внимание и как это проверить нейротестом.</p><div class="tags"><span class="tag" data-tag="eye">айтрекинг</span></div></a>
+        <a class="ncard" href="05_новость.html" data-date="2026-06-26" data-r="sobytiya" data-t="vr"><div class="nc-media"><div class="photo-ph"><span>Фото к новости</span></div><div class="nc-sum"><p class="ph">Аннотация события: формат демо, кто мог попробовать, контакты для заказчиков.</p><span class="more-l">Читать новость →</span></div></div><div class="nmeta"><span class="tag dir">События и выступления</span><time class="ph" datetime="2026-06-26">26.06.2026</time></div><h3 class="ph">Пример: демонстрация VR-тренажёра на выставке</h3><p class="nc-lead ph">Аннотация события: формат демо, кто мог попробовать, контакты для заказчиков.</p><div class="tags"><span class="tag" data-tag="vr">VR</span></div></a>
+        <a class="ncard" href="05_новость.html" data-date="2026-06-11" data-r="publikacii" data-t="bio ai nmorph"><div class="nc-media"><div class="photo-ph"><span>Фото к новости</span></div><div class="nc-sum"><p class="ph">Аннотация публикации: метод, данные, ограничения.</p><span class="more-l">Читать новость →</span></div></div><div class="nmeta"><span class="tag dir">Публикации</span><time class="ph" datetime="2026-06-11">11.06.2026</time></div><h3 class="ph">Пример: препринт о методике анализа биосигналов</h3><p class="nc-lead ph">Аннотация публикации: метод, данные, ограничения.</p><div class="tags"><span class="tag" data-tag="bio">биосигналы</span><span class="tag" data-tag="ai">ИИ</span><span class="tag" data-tag="nmorph">нейроморфные системы</span></div></a>
+        <a class="ncard" href="05_новость.html" data-date="2026-05-22" data-r="proekty" data-t="bci eeg"><div class="nc-media"><div class="photo-ph"><span>Фото к новости</span></div><div class="nc-sum"><p class="ph">Краткая суть: что проверяли, на ком (без персональных данных), что получилось.</p><span class="more-l">Читать новость →</span></div></div><div class="nmeta"><span class="tag dir">Проекты</span><time class="ph" datetime="2026-05-22">22.05.2026</time></div><h3 class="ph">Пример: исследование нейроинтерфейса в лабораторных условиях</h3><p class="nc-lead ph">Краткая суть: что проверяли, на ком (без персональных данных), что получилось.</p><div class="tags"><span class="tag" data-tag="bci">нейроинтерфейс</span><span class="tag" data-tag="eeg">ЭЭГ</span></div></a>
+        <a class="ncard" href="05_новость.html" data-date="2026-04-30" data-r="partnery" data-t="vr"><div class="nc-media"><div class="photo-ph"><span>Фото к новости</span></div><div class="nc-sum"><p class="ph">Аннотация: формат партнёрства и где об этом узнать подробнее.</p><span class="more-l">Читать новость →</span></div></div><div class="nmeta"><span class="tag dir">Партнёрства</span><time class="ph" datetime="2026-04-30">30.04.2026</time></div><h3 class="ph">Пример: совместная программа с клиникой-партнёром</h3><p class="nc-lead ph">Аннотация: формат партнёрства и где об этом узнать подробнее.</p><div class="tags"><span class="tag" data-tag="vr">VR</span></div></a>
+        <a class="ncard" href="05_новость.html" data-date="2026-04-08" data-r="sobytiya" data-t="eeg eye son"><div class="nc-media"><div class="photo-ph"><span>Фото к новости</span></div><div class="nc-sum"><p class="ph">Аннотация события: тема, лектор, запись в каналах НИИ.</p><span class="more-l">Читать новость →</span></div></div><div class="nmeta"><span class="tag dir">События и выступления</span><time class="ph" datetime="2026-04-08">08.04.2026</time></div><h3 class="ph">Пример: открытая лекция о нейротехнологиях для студентов</h3><p class="nc-lead ph">Аннотация события: тема, лектор, запись в каналах НИИ.</p><div class="tags"><span class="tag" data-tag="eeg">ЭЭГ</span><span class="tag" data-tag="eye">айтрекинг</span><span class="tag" data-tag="son">сон</span></div></a>
+      </div>
+      <div class="more"><button type="button" class="btn-sec" id="more">Показать ещё</button></div>
+      <div class="empty" hidden>
+        <h2>По выбранным условиям новостей нет</h2>
+        <p>Уберите часть тегов или выберите другую рубрику.</p>
+        <button type="button" class="btn-sec reset-all">Сбросить фильтр</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="chan">
+    <div class="wrap in">
+      <div><h2>Новости раньше — в каналах НИИ</h2><p class="ph">Короткие заметки, разборы и анонсы выходят в каналах до публикации на сайте.</p></div>
+      <div class="chs"><span class="chi">TG</span><span class="chi">MAX</span><a class="chi" href="https://vk.com/nsri_samsmu" target="_blank" rel="noopener">VK</a><span class="chi">Дз</span><span class="chi">ЯП</span><span class="chi">RT</span></div>
+    </div>
+  </section>
+
+  <!-- Спецификация шаблона: только для макета -->
+  <section class="spec" aria-label="Спецификация шаблона для разработчика">
+    <div class="wrap">
+      <div class="sec-num">Только в макете</div>
+      <h2>Спецификация страницы «Новости»</h2>
+      <p>Лента собирается из CMS автоматически: все опубликованные новости. Карточка — по НОВ-1: обложка 16:9, рубрика, дата, заголовок, аннотация до 200 знаков, теги. Заголовки и даты в макете — примеры для проверки сортировки, не публиковать.</p>
+      <div class="spec-grid">
+        <div class="spec-card">
+          <h3>Сортировка по дате</h3>
+          <ul>
+            <li>Выпадающий список: «Сначала новые» (по умолчанию) и «Сначала старые». Сортировка — по дате публикации.</li>
+            <li>Нативный элемент select: работает с клавиатуры и экранного диктора, на телефоне открывается системный выбор.</li>
+            <li>Сортировка применяется к уже отфильтрованному списку и не сбрасывает фильтр.</li>
+          </ul>
+        </div>
+        <div class="spec-card">
+          <h3>Фильтр по рубрикам и тегам</h3>
+          <ul>
+            <li>Рубрика — одна из списка НОВ-2 или «Все»; число в кнопке — сколько новостей в рубрике.</li>
+            <li>Видны 6 самых частых тегов (по числу новостей), остальные — под «Ещё теги»; выбранный тег виден всегда.</li>
+            <li>Теги — словарь методов из ТЕГ-1; можно выбрать несколько, каждый следующий сужает список (новость должна содержать все выбранные теги).</li>
+            <li>Выбранные теги подсвечиваются и на карточках. «Сбросить» появляется, когда выбран хотя бы один фильтр.</li>
+            <li>Состояние хранится в адресе: <code>10_новости.html#r=biznes&amp;t=eye,bio&amp;s=old</code>. Клик по тегу или рубрике на странице новости ведёт сюда с включённым фильтром.</li>
+            <li>На десктопе панель прилипает под шапкой; на мобильном не прилипает, кнопки переносятся на новую строку.</li>
+          </ul>
+        </div>
+        <div class="spec-card">
+          <h3>Состояния</h3>
+          <ul>
+            <li>Первая загрузка — 9 карточек; «Показать ещё» добавляет по 9. Кнопка исчезает, когда показаны все.</li>
+            <li>Ничего не найдено — блок с кнопкой «Сбросить фильтр»; панель фильтра остаётся на месте.</li>
+            <li>Строка «Найдено: N из M» озвучивается экранным диктором при каждом изменении.</li>
+            <li>Наведение и фокус на карточке — аннотация поверх фото и «Читать новость →», как на главной; на тач-экранах аннотация под заголовком, 3 строки.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer id="kontakty">
+  <div class="wrap">
+    <div class="ft">
+      <div>
+        <a class="logo" href="01_главная.html"><span class="logo-samsmu">логотип<br>СамГМУ</span><span class="logo-name">НИИ нейронаук<small>СамГМУ Минздрава России</small></span></a>
+        <p style="margin-top:20px">Научно-исследовательский институт нейронаук ФГБОУ ВО СамГМУ Минздрава России</p><p class="ft-note">НИИ не оказывает медицинскую помощь. Запись на приём — в <a href="https://clinica.samsmu.ru/" target="_blank" rel="noopener">Клиниках СамГМУ</a>.</p>
+      </div>
+      <div><h4>Разделы</h4><ul><li><a href="01_главная.html">Главная</a></li><li><a href="01_главная.html#napravleniya">Направления</a></li><li><a href="01_главная.html#o-centre">Наш подход</a></li><li><a href="06_проекты.html">Проекты</a></li><li><a href="01_главная.html#o-nii">О НИИ</a></li><li><a href="11_команда.html">Команда</a></li><li><a href="10_новости.html">Новости</a></li><li><a href="#kontakty">Контакты</a></li></ul></div>
+      <div><h4>Каналы</h4><div class="chs" style="flex-wrap:wrap"><span class="chi">TG</span><span class="chi">MAX</span><a class="chi" href="https://vk.com/nsri_samsmu" target="_blank" rel="noopener">VK</a><span class="chi">Дз</span><span class="chi">ЯП</span><span class="chi">RT</span></div></div>
+      <div><h4>Контакты</h4><ul><li>e.p.bubnova@samsmu.ru</li><li>+7 (846) 374-10-04 доб. 4132</li><li>443079, Самара, ул. Гагарина, 18</li><li><a href="https://vk.com/nsri_samsmu" target="_blank" rel="noopener">vk.com/nsri_samsmu</a></li></ul></div>
+    </div>
+    <div class="ft-bottom"><span>© ФГБОУ ВО СамГМУ Минздрава России</span><span class="ph">Политика обработки данных — ссылка после заключения юриста</span></div>
+  </div>
+</footer>
+<script src="nav.js"></script>
+<script>
+// Макет: лента новостей — рубрика, теги (несколько), сортировка по дате; состояние в адресе
+(function () {
+  var PAGE = 9;
+  var grid = document.querySelector(".grid");
+  var cards = Array.prototype.slice.call(grid.querySelectorAll(".ncard"));
+  var rBtns = document.querySelectorAll(".flt.rb button");
+  var tBtns = document.querySelectorAll(".flt.tg button[data-tag]");
+  var sel = document.getElementById("sort");
+  var cnt = document.getElementById("cnt");
+  var empty = document.querySelector(".empty");
+  var moreW = document.querySelector(".more");
+  var reset = document.querySelector(".reset");
+  var st = { r: "all", t: [], s: "new", n: PAGE };
+
+  function render() {
+    cards.sort(function (a, b) {
+      return st.s === "new" ? b.dataset.date.localeCompare(a.dataset.date) : a.dataset.date.localeCompare(b.dataset.date);
+    }).forEach(function (c) { grid.appendChild(c); });
+    var found = 0;
+    cards.forEach(function (c) {
+      var ct = c.dataset.t.split(" ");
+      var ok = (st.r === "all" || c.dataset.r === st.r) && st.t.every(function (t) { return ct.indexOf(t) > -1; });
+      if (ok) found++;
+      c.hidden = !ok || found > st.n;
+      c.querySelectorAll(".tag[data-tag]").forEach(function (g) { g.classList.toggle("on", st.t.indexOf(g.dataset.tag) > -1); });
+    });
+    rBtns.forEach(function (b) { b.setAttribute("aria-pressed", String(b.dataset.r === st.r)); });
+    tBtns.forEach(function (b) { b.setAttribute("aria-pressed", String(st.t.indexOf(b.dataset.tag) > -1)); });
+    sel.value = st.s;
+    cnt.textContent = found;
+    empty.hidden = found > 0;
+    moreW.hidden = found <= st.n;
+    reset.hidden = st.r === "all" && !st.t.length;
+    var h = [];
+    if (st.r !== "all") h.push("r=" + st.r);
+    if (st.t.length) h.push("t=" + st.t.join(","));
+    if (st.s !== "new") h.push("s=" + st.s);
+    history.replaceState(null, "", h.length ? "#" + h.join("&") : location.pathname);
+  }
+  function fromHash() {
+    var p = {};
+    location.hash.slice(1).split("&").forEach(function (kv) { var a = kv.split("="); if (a[1]) p[a[0]] = decodeURIComponent(a[1]); });
+    st.r = Array.prototype.some.call(rBtns, function (b) { return b.dataset.r === p.r; }) ? p.r : "all";
+    st.t = (p.t || "").split(",").filter(function (t) { return Array.prototype.some.call(tBtns, function (b) { return b.dataset.tag === t; }); });
+    st.s = p.s === "old" ? "old" : "new";
+    st.n = PAGE;
+    render();
+  }
+  document.addEventListener("click", function (e) {
+    var tm = e.target.closest(".tg-more");
+    if (tm) {
+      var open = tm.parentNode.classList.toggle("open");
+      tm.setAttribute("aria-expanded", String(open));
+      tm.innerHTML = open ? "Свернуть" : "Ещё теги <b>6</b>";
+      return;
+    }
+    var b = e.target.closest(".flt button[data-r], .flt button[data-tag], .reset, .reset-all, #more");
+    if (!b) return;
+    if (b.dataset.r) { st.r = b.dataset.r; st.n = PAGE; }
+    else if (b.dataset.tag) {
+      var i = st.t.indexOf(b.dataset.tag);
+      if (i > -1) st.t.splice(i, 1); else st.t.push(b.dataset.tag);
+      st.n = PAGE;
+    }
+    else if (b.id === "more") st.n += PAGE;
+    else { st.r = "all"; st.t = []; st.n = PAGE; }
+    render();
+  });
+  sel.addEventListener("change", function () { st.s = sel.value; render(); });
+  window.addEventListener("hashchange", fromHash);
+  fromHash();
+})();
+</script>
+</body>
+</html>

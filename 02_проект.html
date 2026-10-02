@@ -1,0 +1,373 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Страница проекта — макет шага 2, направление Б</title>
+<link rel="stylesheet" href="b.css">
+<style>
+.crumbs { font-size: 14px; color: var(--muted); padding: 24px 0 0; }
+.crumbs a { color: var(--accent); font-weight: 600; }
+.crumbs i { font-style: normal; margin: 0 8px; color: var(--line); }
+.phead { padding: 40px 0 56px; border-bottom: 1px solid var(--line); }
+.phead .top { display: flex; gap: 16px; align-items: center; margin-bottom: 24px; }
+.phead h1 { font-size: 52px; max-width: 16em; margin-bottom: 16px; }
+.phead .fullname { font-size: 15px; color: var(--muted); max-width: 52em; margin-bottom: 24px; }
+.phead .lead { font-size: 20px; color: var(--muted); max-width: 40em; }
+.ptags { margin-top: 24px; }
+.facts { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 2px solid var(--text); margin-top: 40px; }
+.facts div { padding: 18px 20px 0 0; }
+.facts div + div { padding-left: 20px; border-left: 1px solid var(--line); }
+.facts small { display: block; font-size: 12px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin-bottom: 6px; }
+.facts b { font-size: 16px; font-weight: 700; line-height: 1.4; }
+.cover { margin: 0; }
+.cover .photo-ph { aspect-ratio: 16/9; border-radius: var(--r); }
+
+.body { display: grid; grid-template-columns: 240px 1fr; gap: 80px; padding: 80px 0 96px; }
+.toc { position: sticky; top: 104px; align-self: start; display: grid; gap: 2px; font-size: 15px; font-weight: 600; }
+.toc a { padding: 8px 0 8px 14px; border-left: 2px solid var(--line); color: var(--muted); }
+.toc a.on { border-color: var(--accent); color: var(--text); }
+.art { display: grid; gap: 64px; max-width: 780px; }
+.art section h2 { font-size: 30px; margin-bottom: 20px; }
+.art .sec-num { margin-bottom: 8px; }
+.art p { font-size: 18px; }
+.art p + p { margin-top: 14px; }
+.methods { display: grid; grid-template-columns: repeat(2, 1fr); border-top: 1px solid var(--line); margin-top: 28px; }
+.methods div { padding: 18px 20px 18px 0; border-bottom: 1px solid var(--line); font-size: 17px; font-weight: 700; display: flex; gap: 14px; align-items: baseline; }
+.methods div:nth-child(even) { padding-left: 20px; border-left: 1px solid var(--line); }
+.methods span { font-size: 13px; font-weight: 800; color: var(--mark); }
+.sub-part { border: 1px solid var(--line); border-left: 4px solid var(--accent); border-radius: var(--r); padding: 32px; background: var(--band); }
+.sub-part .lbl { font-size: 12px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; color: var(--accent); margin-bottom: 10px; }
+.sub-part h3 { font-size: 24px; margin-bottom: 12px; }
+.sub-part p { font-size: 17px !important; color: var(--text); }
+.sub-part .tags { margin-top: 20px; }
+.cycle-bar { display: grid; grid-template-columns: repeat(4, 1fr); gap: 4px; margin-top: 20px; }
+.cycle-bar div { padding: 12px 14px; font-size: 14px; font-weight: 700; line-height: 1.3; background: var(--band); color: var(--muted); border-top: 3px solid var(--line); }
+.cycle-bar div.on { background: #fff; color: var(--text); border-top-color: var(--accent); box-shadow: inset 0 0 0 1px var(--line); }
+.cycle-bar b { display: block; font-size: 11px; color: var(--mark); letter-spacing: .08em; }
+.team { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+.person { display: flex; gap: 16px; align-items: center; border: 1px solid var(--line); border-radius: var(--r); padding: 16px; }
+.person .ava { width: 64px; height: 64px; border-radius: 50%; background: var(--ph); flex: none; display: grid; place-items: center; font-size: 10px; color: var(--muted); text-align: center; }
+.person b { display: block; font-size: 16px; }
+.person small { font-size: 14px; color: var(--muted); }
+.gal { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+.gal .photo-ph { border-radius: var(--r); aspect-ratio: 4/3; font-size: 12px; }
+.note { font-size: 14px; color: var(--muted); border-left: 3px solid var(--line); padding: 4px 0 4px 14px; }
+.rid { border-top: 1px solid var(--line); }
+.rid a { display: grid; grid-template-columns: 150px 1fr auto; gap: 20px; align-items: baseline; padding: 16px 0; border-bottom: 1px solid var(--line); }
+.rid small { font-size: 12px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+.rid b { font-size: 17px; font-weight: 700; line-height: 1.4; }
+.rid span { font-size: 14px; font-weight: 700; color: var(--accent); border-bottom: 1.5px solid var(--mark); white-space: nowrap; }
+.rid a:hover b { color: var(--accent); }
+.equip { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+.equip a { border: 1px solid var(--line); border-radius: var(--r); padding: 16px; display: grid; gap: 6px; }
+.equip a:hover { border-color: var(--accent); }
+.equip b { font-size: 16px; }
+.equip small { font-size: 13px; color: var(--muted); }
+.mi-note { display: flex; gap: 14px; align-items: flex-start; margin-top: 24px; padding: 14px 18px; border: 1px solid var(--line); border-left: 4px solid var(--mark); border-radius: var(--r); background: #fff; font-size: 15px; line-height: 1.5; max-width: 52em; }
+.mi-note b { white-space: nowrap; font-size: 12px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; color: var(--mark); padding-top: 2px; }
+
+.spec { padding: 56px 0 72px; border-top: 2px dashed var(--line); }
+.spec h2 { font-size: 28px; margin-bottom: 8px; }
+.spec > .wrap > p { color: var(--muted); font-size: 16px; margin-bottom: 32px; max-width: 46em; }
+.spec-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+.spec-card { border: 1px solid var(--line); border-radius: var(--r); padding: 24px; background: #fff; }
+.spec-card h3 { font-size: 18px; margin-bottom: 12px; }
+.spec-card table { width: 100%; border-collapse: collapse; font-size: 14px; }
+.spec-card td { padding: 7px 0; border-bottom: 1px solid var(--line); vertical-align: top; }
+.spec-card td:first-child { color: var(--muted); width: 42%; padding-right: 12px; }
+.spec-card ul { list-style: none; display: grid; gap: 8px; font-size: 14px; }
+.spec-card li { padding-left: 16px; position: relative; }
+.spec-card li::before { content: ""; position: absolute; left: 0; top: .65em; width: 8px; height: 2px; background: var(--mark); }
+.st-demo { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; margin-top: 24px; }
+.st-demo .lbl { font-size: 12px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; color: var(--mark); margin-bottom: 10px; }
+.mini { border: 1px solid var(--line); border-radius: var(--r); padding: 20px; background: #fff; }
+.mini h4 { font-size: 22px; font-weight: 800; line-height: 1.2; letter-spacing: -.01em; margin: 10px 0 8px; }
+.mini p { font-size: 14px; color: var(--muted); }
+.mini .mf { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 2px solid var(--text); margin-top: 14px; font-size: 13px; }
+.mini .mf div { padding: 8px 8px 0 0; }
+.mini .mf small { display: block; font-size: 10px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+.mini .mi-note { font-size: 13px; padding: 10px 12px; margin-top: 14px; }
+
+.cta-band { background: var(--text); color: #fff; padding: 72px 0; }
+.cta-band .in { display: flex; justify-content: space-between; align-items: center; gap: 48px; }
+.cta-band h2 { color: #fff; font-size: 36px; }
+.cta-band p { color: var(--foot-text); margin-top: 12px; font-size: 17px; }
+.cta-band .btn { background: #fff; color: var(--accent); }
+.cta-band .btn:hover { background: var(--band); }
+.more { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+
+@media (max-width: 767px) {
+  .crumbs { font-size: 13px; padding-top: 16px; }
+  .phead { padding: 24px 0 36px; }
+  .phead .top { flex-wrap: wrap; gap: 10px; margin-bottom: 16px; }
+  .phead h1 { font-size: 30px; margin-bottom: 16px; }
+  .phead .lead { font-size: 17px; }
+  .facts { grid-template-columns: 1fr 1fr; margin-top: 32px; }
+  .facts div, .facts div + div { padding: 14px 12px 14px 0; border-left: 0; border-bottom: 1px solid var(--line); }
+  .facts div:nth-child(even) { padding-left: 12px; border-left: 1px solid var(--line); }
+  .phead .fullname { font-size: 14px; margin-bottom: 16px; }
+  .ptags { margin-top: 18px; }
+  .rid a { grid-template-columns: 1fr; gap: 6px; }
+  .rid b { font-size: 16px; }
+  .rid span { justify-self: start; }
+  .equip { grid-template-columns: 1fr; }
+  .mi-note { flex-direction: column; gap: 6px; font-size: 14px; }
+  .spec { padding: 36px 0 48px; }
+  .spec-grid, .st-demo { grid-template-columns: 1fr; }
+  .spec-card { padding: 18px; }
+  .cover .photo-ph { aspect-ratio: 16/9; }
+  .body { grid-template-columns: 1fr; gap: 0; padding: 48px 0 56px; }
+  .toc { display: none; }
+  .art { gap: 44px; }
+  .art section h2 { font-size: 24px; margin-bottom: 14px; }
+  .art p { font-size: 16px; }
+  .methods { grid-template-columns: 1fr; }
+  .methods div, .methods div:nth-child(even) { padding: 14px 0; border-left: 0; font-size: 16px; }
+  .sub-part { padding: 20px; }
+  .sub-part h3 { font-size: 20px; }
+  .sub-part p { font-size: 16px !important; }
+  .cycle-bar { grid-template-columns: 1fr 1fr; }
+  .team { grid-template-columns: 1fr; }
+  .gal { grid-template-columns: 1fr 1fr; }
+  .cta-band { padding: 48px 0; }
+  .cta-band .in { flex-direction: column; align-items: stretch; gap: 24px; }
+  .cta-band h2 { font-size: 26px; }
+  .more { grid-template-columns: 1fr; gap: 16px; }
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Перейти к содержанию</a>
+<div class="mock">МАКЕТ · шаг 2 · страница проекта — универсальный шаблон, пример «Нейроисследование пользовательского пути» · пунктирная рамка — плейсхолдер текста, не публиковать · серые поля — места под реальные фото</div>
+
+<header>
+  <div class="wrap hd">
+    <a class="logo" href="01_главная.html"><span class="logo-samsmu">логотип<br>СамГМУ</span><span class="logo-name">НИИ нейронаук<small>СамГМУ Минздрава России</small></span></a>
+    <nav id="menu" aria-label="Главное меню"><a href="01_главная.html">Главная</a><a href="01_главная.html#napravleniya">Направления</a><a href="06_проекты.html" class="on" aria-current="page">Проекты</a><div class="has-sub"><a href="01_главная.html#o-nii" class="sub-t">О НИИ</a><div class="nav-sub" aria-label="О НИИ"><a href="01_главная.html#o-centre">Наш подход</a><a href="01_главная.html#o-nii">История НИИ</a><a href="12_структура.html">Структура НИИ</a><a href="11_команда.html">Команда</a></div></div><a href="10_новости.html">Новости</a><a href="#kontakty">Контакты</a><a class="btn nav-cta" href="01_главная.html#obsudit-nir">Обсудить исследование</a></nav>
+    <div class="hd-right">
+      <div class="chs"><span class="chi">TG</span><span class="chi">MAX</span><a class="chi" href="https://vk.com/nsri_samsmu" target="_blank" rel="noopener">VK</a><span class="chi">Дз</span></div>
+      <a class="btn btn-hd" href="01_главная.html#obsudit-nir">Обсудить</a>
+      <button class="burger" type="button" aria-label="Открыть меню" aria-controls="menu" aria-expanded="false"><i></i></button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+  <div class="wrap">
+    <div class="crumbs"><a href="01_главная.html">Главная</a><i>/</i><a href="06_проекты.html">Проекты</a><i>/</i><a href="06_проекты.html#neiromarketing">Нейромаркетинг</a><i>/</i><span>Нейроисследование пользовательского пути</span></div>
+    <div class="phead">
+      <div class="top"><span class="tag dir">Нейромаркетинг</span><span class="status done">Завершён</span></div>
+      <h1>Нейроисследование пользовательского пути</h1>
+      <p class="fullname ph">Место под полное название — выводится, если отличается от краткого и не содержит имени заказчика без его согласия (у этого проекта не выводится)</p>
+      <p class="lead ph">Как потенциальные клиенты банка реагируют на этапы оформления услуги на сайте — и где путь можно упростить.</p>
+      <div class="tags ptags"><span class="tag">айтрекинг</span><span class="tag">ЭЭГ</span><span class="tag">биометрия</span><span class="tag">пользовательский путь</span><span class="tag">эмоциональное состояние</span></div>
+      <div class="facts">
+        <div><small>Направление</small><b>Нейромаркетинг</b></div>
+        <div><small>Период</small><b>Май–июнь 2025</b></div>
+        <div><small>Заказчик</small><b>Крупный федеральный банк</b></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="wrap body">
+    <nav class="toc" aria-label="Разделы страницы">
+      <a class="on" href="#zadacha">Задача</a><a href="#metody">Решение и методы</a><a href="#sostavnaya-chast">Составная часть</a><a href="#rezultat">Результат</a><a href="#komanda">Команда</a><a href="#rid">РИД и публикации</a><a href="#oborudovanie">Оборудование</a><a href="#galereya">Галерея</a>
+    </nav>
+    <div class="art">
+      <details class="toc-m"><summary>Содержание страницы</summary><nav aria-label="Разделы страницы"><a href="#zadacha">Задача</a><a href="#metody">Решение и методы</a><a href="#sostavnaya-chast">Составная часть</a><a href="#rezultat">Результат</a><a href="#komanda">Команда</a><a href="#rid">РИД и публикации</a><a href="#oborudovanie">Оборудование</a><a href="#galereya">Галерея</a></nav></details>
+      <section id="zadacha">
+        <div class="sec-num">Задача</div>
+        <h2>Что нужно было выяснить</h2>
+        <p class="ph">Как потенциальные клиенты реагируют на этапы оформления услуги на сайте банка: где внимание теряется, где растёт напряжение, какие шаги вызывают затруднения. Текст — от руководителя проекта.</p>
+      </section>
+      <div class="cover"><div class="photo-ph"><span>Обложка проекта: реальное фото исследования в лаборатории<br>без логотипов и интерфейса заказчика · генеративные изображения запрещены</span></div></div>
+
+      <section id="metody">
+        <div class="sec-num">Решение и методы</div>
+        <h2>Как мы это измеряли</h2>
+        <p class="ph">Респонденты проходили этапы оформления услуги, а мы одновременно фиксировали направление взгляда, электрическую активность мозга и физиологические реакции. После — интервью и анкета.</p>
+        <div class="methods">
+          <div><span>01</span>Айтрекинг</div>
+          <div><span>02</span>ЭЭГ</div>
+          <div><span>03</span>Биометрические датчики</div>
+          <div><span>04</span>Интервью и анкетирование</div>
+        </div>
+        <div class="cycle-bar ph" aria-label="Этап полного цикла">
+          <div><b>01</b>Гипотеза</div><div><b>02</b>Научная проработка идеи</div><div class="on"><b>03</b>Экспериментальная проверка гипотез</div><div><b>04</b>Разработка прототипа</div>
+        </div>
+      </section>
+
+      <section id="sostavnaya-chast">
+        <div class="sec-num">Составная часть исследования</div>
+        <div class="sub-part">
+          <div class="lbl">Входит в этот проект</div>
+          <h3>Оценка эмоциональных реакций</h3>
+          <p>Мультимодальная оценка эмоциональных реакций респондента: анализ видео с веб-камеры и ЭЭГ.</p>
+          <div class="tags"><span class="tag">ЭЭГ</span><span class="tag">анализ видео</span><span class="tag">эмоциональные реакции</span></div>
+        </div>
+      </section>
+
+      <section id="rezultat">
+        <div class="sec-num">Результат</div>
+        <h2>Что получил заказчик</h2>
+        <p class="ph">Рекомендации по улучшению пользовательского пути. Формулировку результата без цифр подтверждает руководитель проекта.</p>
+        <p class="note">Название заказчика не публикуется до его письменного согласия.</p>
+      </section>
+
+      <section id="komanda">
+        <div class="sec-num">Команда</div>
+        <h2>Кто вёл проект</h2>
+        <div class="team">
+          <div class="person"><span class="ava">фото</span><div><b class="ph">Руководитель проекта</b><small>Карточка специалиста — после согласия</small></div></div>
+          <div class="person"><span class="ava">фото</span><div><b class="ph">Исследователь</b><small>Карточка специалиста — после согласия</small></div></div>
+        </div>
+      </section>
+
+      <section id="rid">
+        <div class="sec-num">РИД и публикации</div>
+        <h2>Что зарегистрировано и опубликовано</h2>
+        <div class="rid">
+          <a href="#"><small>Программа для ЭВМ</small><b class="ph">Название результата интеллектуальной деятельности</b><span>№ в реестре ФИПС</span></a>
+          <a href="#"><small>Статья</small><b class="ph">Авторы. Название статьи // Журнал. 2025. Т. 0, № 0</b><span>DOI</span></a>
+          <a href="https://gisnauka.ru/" target="_blank" rel="noopener"><small>НИОКТР</small><b class="ph">Карточка НИОКТР в ГИС «Наука» — для проектов по госзаданию</b><span>gisnauka.ru</span></a>
+          <a href="#"><small>Доклад</small><b class="ph">Название доклада — конференция, город, 2025</b><span>Материалы</span></a>
+        </div>
+      </section>
+
+      <section id="oborudovanie">
+        <div class="sec-num">Оборудование</div>
+        <h2>На чём проводили исследование</h2>
+        <div class="equip">
+          <a href="#"><b>Айтрекер</b><small class="ph">Модель — по данным лаборатории</small></a>
+          <a href="#"><b>ЭЭГ-система</b><small class="ph">Модель — по данным лаборатории</small></a>
+          <a href="#"><b>Биометрические датчики</b><small class="ph">Модель — по данным лаборатории</small></a>
+        </div>
+        <p class="note" style="margin-top:16px">Карточка ведёт на страницу оборудования, когда она появится; до этого — без ссылки.</p>
+      </section>
+
+      <section id="galereya">
+        <div class="sec-num">Галерея</div>
+        <h2>Как проходило исследование</h2>
+        <div class="gal">
+          <div class="photo-ph"><span>Фото: установка айтрекинга</span></div>
+          <div class="photo-ph"><span>Фото: ЭЭГ-запись</span></div>
+          <div class="photo-ph"><span>Фото: интервью</span></div>
+        </div>
+        <p class="note" style="margin-top:16px">Только реальные фото без лиц респондентов и без интерфейса заказчика.</p>
+      </section>
+    </div>
+  </div>
+
+  <section class="cta-band">
+    <div class="wrap in">
+      <div><h2>Нужно похожее исследование?</h2><p class="ph">Опишите продукт или интерфейс — предложим дизайн нейротеста.</p></div>
+      <a class="btn" href="01_главная.html?project=neiroissledovanie-polzovatelskogo-puti&amp;direction=neiromarketing#obsudit-nir">Обсудить похожую задачу</a>
+    </div>
+  </section>
+
+  <section class="block band">
+    <div class="wrap">
+      <div class="sec-head"><div><div class="sec-num">Ещё проекты</div><h2>Другие проекты</h2></div><div class="sec-foot" style="margin:0"><a class="link" href="06_проекты.html">Все проекты</a></div></div>
+      <div class="more">
+        <a class="pcard" href="13_проект_Нейро-зеркало.html"><div class="pc-media"><div class="photo-ph"><span>Фото проекта</span></div><div class="nc-sum"><p>Разрабатываемая система для регулярного скрининга и мониторинга когнитивного состояния людей 60 лет и старше и подбора когнитивных тренировок. Диагноз не ставит: результаты интерпретирует специалист.</p><span class="more-b">Подробнее</span></div></div><div class="pcard-b"><span class="tag dir">Нейродиагностика и мониторинг</span><h3>«Нейро-зеркало»</h3><p class="nc-lead">Разрабатываемая система для регулярного скрининга и мониторинга когнитивного состояния людей 60 лет и старше и подбора когнитивных тренировок. Диагноз не ставит: результаты интерпретирует специалист.</p></div></a>
+        <a class="pcard" href="14_проект_CROATLE.html"><div class="pc-media"><div class="photo-ph"><span>Фото проекта</span></div><div class="nc-sum"><p>Оценка подвижности суставов конечностей по видео с обычной веб-камеры: компьютерное зрение измеряет углы и амплитуду движений при стандартизированных упражнениях и показывает динамику восстановления. Исследовательский прототип.</p><span class="more-b">Подробнее</span></div></div><div class="pcard-b"><span class="tag dir">Реабилитация</span><h3>CROATLE</h3><p class="nc-lead">Оценка подвижности суставов конечностей по видео с обычной веб-камеры: компьютерное зрение измеряет углы и амплитуду движений при стандартизированных упражнениях и показывает динамику восстановления. Исследовательский прототип.</p></div></a>
+        <a class="pcard" href="02_проект.html"><div class="pc-media"><div class="photo-ph"><span>Фото проекта</span></div><div class="nc-sum"><p class="ph">Краткое описание проекта — поле «что решает» из CMS, до 250 знаков.</p><span class="more-b">Подробнее</span></div></div><div class="pcard-b"><span class="tag dir">Нейродиагностика и мониторинг</span><h3>Портативная ЭЭГ-гарнитура в виде наушников-вкладышей</h3><p class="nc-lead ph">Краткое описание проекта — поле «что решает» из CMS.</p></div></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Спецификация шаблона: только для макета -->
+  <section class="spec" aria-label="Спецификация шаблона для разработчика">
+    <div class="wrap">
+      <div class="sec-num">Только в макете</div>
+      <h2>Спецификация шаблона проекта</h2>
+      <p>Шаблон один для всех проектов портфеля; на любой карточке проекта — переход сюда. Поля совпадают с таблицей Г.2 брифа (ПРТ-3). Необязательные блоки без данных скрываются целиком вместе с пунктом оглавления.</p>
+      <div class="spec-grid">
+        <div class="spec-card">
+          <h3>Обложка</h3>
+          <table>
+            <tr><td>Файл</td><td>один на карточку и страницу: 1920×1080 px (16:9), JPG или WebP, до 400 КБ</td></tr>
+            <tr><td>Карточка</td><td>16:9 целиком (ПРТ-1)</td></tr>
+            <tr><td>Страница, десктоп</td><td>16:9 целиком в колонке текста, после раздела «Задача» (правка 02.10.2026)</td></tr>
+            <tr><td>Страница, мобильный</td><td>16:9 целиком</td></tr>
+            <tr><td>Безопасная зона</td><td>не нужна: на карточке и странице кадр 16:9 целиком</td></tr>
+            <tr><td>Содержание</td><td>только реальные фото; без логотипов и интерфейса заказчика, без лиц пациентов и респондентов</td></tr>
+            <tr><td>Нет обложки</td><td>блок скрыт, под паспортом сразу текст</td></tr>
+          </table>
+        </div>
+        <div class="spec-card">
+          <h3>Поля проекта → блоки страницы</h3>
+          <ul>
+            <li>Название краткое — H1 (до 70 знаков); полное — строкой под ним, если отличается.</li>
+            <li>Направление и статус — плашки над заголовком; направление ещё и в паспорте.</li>
+            <li>Теги — под аннотацией, без ссылок: фильтра по тегам в «Всех проектах» в релизе 1 нет.</li>
+            <li>Паспорт: направление, период, заказчик. Нет заказчика или нет согласия и обезличенного описания — 2 ячейки.</li>
+            <li>Задача, решение и методы, результат — обязательные разделы.</li>
+            <li>Составные части, РИД и публикации, оборудование, галерея — необязательные.</li>
+            <li>Поле «Карточка НИОКТР в ГИС „Наука“» — ссылка, выводится в разделе «РИД и публикации».</li>
+            <li>Команда — карточки специалистов; фото и ФИО только после согласия.</li>
+            <li>CTA «Обсудить похожую задачу» — передаёт проект и направление в форму.</li>
+          </ul>
+        </div>
+        <div class="spec-card">
+          <h3>Статус и этап</h3>
+          <ul>
+            <li>Статусы на сайте: «НИР», «В разработке», «Завершён». «Заморожен» и «Требуется уточнение» не публикуются (ПРТ-7).</li>
+            <li>Цвет точки: розовая — идёт работа, фиолетовая — завершён.</li>
+            <li>Этап полного цикла — шкалой из 4 шагов в разделе «Решение и методы»; в паспорте его нет.</li>
+            <li>Уровень готовности (УГТ) на сайте не отображается (ПРТ-4, правка 01.10.2026).</li>
+          </ul>
+        </div>
+        <div class="spec-card">
+          <h3>Проект медицинского изделия</h3>
+          <ul>
+            <li>Для проектов МИ под паспортом — статус и плашка «Медицинское изделие в разработке, не зарегистрировано» (см. вариант ниже). Место фиксированное: под паспортом, до обложки.</li>
+            <li>Текст плашки и всех разделов проходит чек-лист compliance ПМ Продвижения и сверку с RA до публикации.</li>
+            <li>В разделах нет свойств, показаний и обещаний эффекта или точности; цифры — только с источником.</li>
+            <li>CTA тот же — «Обсудить похожую задачу»; призывов купить или применить изделие нет.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="st-demo">
+        <div>
+          <div class="lbl">Вариант · проект медицинского изделия в разработке</div>
+          <div class="mini">
+            <span class="tag dir">Нейродиагностика и мониторинг</span> <span class="status">В разработке</span>
+            <h4>Аппаратно-программный комплекс для ранней диагностики травматического повреждения головного мозга (разработка)</h4>
+            <p>Исследование окуломоторных показателей и зрачковой реакции.</p>
+            <div class="mf"><div><small>Направление</small>Нейродиагностика</div><div><small>Период</small>2025–2027</div><div><small>Заказчик</small>Минздрав России, ГЗД</div></div>
+            <div class="mi-note"><b>МИ в разработке</b><span>Медицинское изделие в разработке, не зарегистрировано.</span></div>
+          </div>
+        </div>
+        <div>
+          <div class="lbl">Вариант · минимум полей</div>
+          <div class="mini">
+            <span class="tag dir">Реабилитация</span> <span class="status">НИР</span>
+            <h4>Проект без заказчика, РИД, оборудования и галереи</h4>
+            <p>Паспорт из 2 ячеек (без заказчика); в тексте только задача, решение и методы, результат, команда. Оглавление — 4 пункта. CTA и «Ещё проекты» остаются всегда.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer id="kontakty">
+  <div class="wrap">
+    <div class="ft">
+      <div>
+        <a class="logo" href="01_главная.html"><span class="logo-samsmu">логотип<br>СамГМУ</span><span class="logo-name">НИИ нейронаук<small>СамГМУ Минздрава России</small></span></a>
+        <p style="margin-top:20px">Научно-исследовательский институт нейронаук ФГБОУ ВО СамГМУ Минздрава России</p><p class="ft-note">НИИ не оказывает медицинскую помощь. Запись на приём — в <a href="https://clinica.samsmu.ru/" target="_blank" rel="noopener">Клиниках СамГМУ</a>.</p>
+      </div>
+      <div><h4>Разделы</h4><ul><li><a href="01_главная.html">Главная</a></li><li><a href="01_главная.html#napravleniya">Направления</a></li><li><a href="01_главная.html#o-centre">Наш подход</a></li><li><a href="01_главная.html#proekty">Проекты</a></li><li><a href="01_главная.html#o-nii">О НИИ</a></li><li><a href="11_команда.html">Команда</a></li><li><a href="10_новости.html">Новости</a></li><li><a href="#kontakty">Контакты</a></li></ul></div>
+      <div><h4>Каналы</h4><div class="chs" style="flex-wrap:wrap"><span class="chi">TG</span><span class="chi">MAX</span><a class="chi" href="https://vk.com/nsri_samsmu" target="_blank" rel="noopener">VK</a><span class="chi">Дз</span><span class="chi">ЯП</span><span class="chi">RT</span></div></div>
+      <div><h4>Контакты</h4><ul><li>e.p.bubnova@samsmu.ru</li><li>+7 (846) 374-10-04 доб. 4132</li><li>443079, Самара, ул. Гагарина, 18</li><li><a href="https://vk.com/nsri_samsmu" target="_blank" rel="noopener">vk.com/nsri_samsmu</a></li></ul></div>
+    </div>
+    <div class="ft-bottom"><span>© ФГБОУ ВО СамГМУ Минздрава России</span><span class="ph">Политика обработки данных — ссылка после заключения юриста</span></div>
+  </div>
+</footer>
+<script src="nav.js"></script>
+</body>
+</html>

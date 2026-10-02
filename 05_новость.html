@@ -1,0 +1,366 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Страница новости — универсальный шаблон, макет шага 2, направление Б</title>
+<link rel="stylesheet" href="b.css">
+<style>
+.crumbs { font-size: 14px; color: var(--muted); padding: 24px 0 0; }
+.crumbs a { color: var(--accent); font-weight: 600; }
+.crumbs i { font-style: normal; margin: 0 8px; color: var(--line); }
+
+/* Шапка статьи — колонка чтения 760 px, сдвинута в сетке под текст */
+.n-grid { display: grid; grid-template-columns: 1fr 760px 1fr; gap: 0 48px; }
+.n-grid > * { grid-column: 2; }
+.n-head { padding: 40px 0 0; }
+.n-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 16px; margin-bottom: 20px; }
+.n-meta time { font-size: 15px; font-weight: 700; color: var(--muted); letter-spacing: .04em; }
+.n-meta .sep { width: 4px; height: 4px; border-radius: 50%; background: var(--line); }
+.n-meta .read { font-size: 15px; color: var(--muted); }
+.n-head h1 { font-size: 48px; line-height: 1.12; margin-bottom: 24px; }
+.n-lead { font-size: 21px; line-height: 1.55; color: var(--muted); }
+
+/* Обложка — шире колонки текста */
+.n-cover { grid-column: 1 / -1; margin: 48px 0 0; }
+.n-cover .photo-ph { aspect-ratio: 16/9; border-radius: var(--r); }
+.n-cover figcaption { font-size: 14px; color: var(--muted); margin-top: 12px; max-width: 760px; margin-left: auto; margin-right: auto; }
+.safe { position: relative; }
+.safe::after { content: "безопасная зона 4:3 — кадр карточки"; position: absolute; top: 0; bottom: 0; left: 12.5%; right: 12.5%; border-left: 1.5px dashed var(--mark); border-right: 1.5px dashed var(--mark); font-size: 11px; font-weight: 700; color: var(--mark); display: flex; align-items: flex-start; justify-content: center; padding-top: 10px; pointer-events: none; }
+
+/* Полоса «поделиться» под шапкой */
+.share-top { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 20px 0; margin-top: 32px; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.share { display: flex; align-items: center; gap: 8px; }
+.share > span { font-size: 14px; font-weight: 700; color: var(--muted); margin-right: 4px; }
+.sh { display: inline-flex; align-items: center; gap: 8px; height: 40px; padding: 0 14px; border: 1px solid var(--line); border-radius: var(--r); font-size: 14px; font-weight: 700; color: var(--text); background: #fff; }
+.sh b { font-size: 10px; font-weight: 800; color: var(--accent); width: 22px; height: 22px; border: 1px solid var(--line); border-radius: var(--r); display: grid; place-items: center; }
+.sh:hover, .sh.is-hover { border-color: var(--accent); color: var(--accent); }
+.sh.copy { color: var(--muted); }
+
+/* Текст статьи */
+.n-body { padding: 48px 0 0; }
+.n-body > * + * { margin-top: 20px; }
+.n-body p { font-size: 19px; line-height: 1.7; }
+.n-body h2 { font-size: 30px; line-height: 1.2; margin-top: 48px; }
+.n-body h3 { font-size: 22px; margin-top: 36px; }
+.n-body a { color: var(--accent); font-weight: 600; border-bottom: 1.5px solid currentColor; }
+.n-body ul { padding-left: 0; list-style: none; display: grid; gap: 10px; }
+.n-body li { font-size: 19px; line-height: 1.6; padding-left: 28px; position: relative; }
+.n-body li::before { content: ""; position: absolute; left: 4px; top: .7em; width: 10px; height: 2px; background: var(--mark); }
+.n-body blockquote { margin-top: 36px; margin-bottom: 36px; padding: 4px 0 4px 28px; border-left: 4px solid var(--accent); }
+.n-body blockquote p { font-size: 24px; line-height: 1.45; font-weight: 600; letter-spacing: -.01em; }
+.n-body blockquote cite { display: block; margin-top: 14px; font-size: 15px; font-style: normal; font-weight: 700; color: var(--muted); }
+.n-body figure { margin-top: 36px; margin-bottom: 36px; }
+.n-body figure .photo-ph { border-radius: var(--r); }
+.n-body figcaption { font-size: 14px; color: var(--muted); margin-top: 10px; }
+
+/* Низ статьи: теги, проекты, каналы */
+.n-foot { padding: 56px 0 0; display: grid; gap: 48px; }
+.n-lbl { font-size: 13px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; }
+.rel { display: grid; gap: 12px; }
+.rel a { display: grid; grid-template-columns: 120px 1fr; gap: 20px; align-items: center; border: 1px solid var(--line); border-radius: var(--r); padding: 12px; transition: border-color .2s; }
+.rel a:hover, .rel a.is-hover { border-color: var(--accent); }
+.rel .photo-ph { aspect-ratio: 4/3; font-size: 11px; padding: 6px; border-radius: 2px; }
+.rel .rt { display: flex; flex-wrap: wrap; gap: 8px 12px; align-items: center; margin-bottom: 6px; }
+.rel h3 { font-size: 18px; line-height: 1.3; }
+
+.chan { border: 1px solid var(--line); border-radius: var(--r); background: var(--band); padding: 28px; }
+.chan h2 { font-size: 24px; margin-bottom: 6px; }
+.chan > p { font-size: 16px; color: var(--muted); margin-bottom: 20px; }
+.chan-list { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+.cl { display: flex; align-items: center; gap: 12px; background: #fff; border: 1px solid var(--line); border-radius: var(--r); padding: 12px 14px; }
+.cl:hover, .cl.is-hover { border-color: var(--accent); }
+.cl b { display: block; font-size: 15px; }
+.cl small { display: block; font-size: 13px; color: var(--muted); line-height: 1.35; }
+.cl.off { background: transparent; border-style: dashed; }
+.cl.off b, .cl.off .chi { color: var(--muted); }
+
+.share-end { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px; padding-top: 24px; border-top: 1px solid var(--line); }
+.share-end .back { font-size: 16px; }
+
+.more { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
+
+/* Спецификация шаблона — видна только в макете */
+.spec { margin-top: 96px; padding: 48px 0 64px; border-top: 2px dashed var(--line); }
+.spec h2 { font-size: 28px; margin-bottom: 8px; }
+.spec > .wrap > p { color: var(--muted); font-size: 16px; margin-bottom: 32px; max-width: 46em; }
+.spec-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+.spec-card { border: 1px solid var(--line); border-radius: var(--r); padding: 24px; background: #fff; }
+.spec-card h3 { font-size: 18px; margin-bottom: 12px; }
+.spec-card table { width: 100%; border-collapse: collapse; font-size: 14px; }
+.spec-card td { padding: 7px 0; border-bottom: 1px solid var(--line); vertical-align: top; }
+.spec-card td:first-child { color: var(--muted); width: 42%; padding-right: 12px; }
+.spec-card ul { list-style: none; display: grid; gap: 8px; font-size: 14px; }
+.spec-card li { padding-left: 16px; position: relative; }
+.spec-card li::before { content: ""; position: absolute; left: 0; top: .65em; width: 8px; height: 2px; background: var(--mark); }
+.st-demo { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; margin-top: 24px; }
+.st-demo .lbl { font-size: 12px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; color: var(--mark); margin-bottom: 10px; }
+.mini { border: 1px solid var(--line); border-radius: var(--r); padding: 20px; background: #fff; }
+.mini h4 { font-size: 22px; font-weight: 800; line-height: 1.2; letter-spacing: -.01em; margin: 10px 0 8px; }
+.mini p { font-size: 14px; color: var(--muted); }
+.mini .bar { height: 8px; background: var(--ph); border-radius: 2px; margin-top: 8px; }
+
+@media (max-width: 767px) {
+  .crumbs { font-size: 13px; padding-top: 16px; }
+  .n-grid { grid-template-columns: 1fr; gap: 0; }
+  .n-grid > *, .n-cover { grid-column: 1; }
+  .n-head { padding-top: 24px; }
+  .n-meta { margin-bottom: 14px; gap: 10px 12px; }
+  .n-meta time, .n-meta .read { font-size: 14px; }
+  .n-head h1 { font-size: 30px; margin-bottom: 16px; }
+  .n-lead { font-size: 17px; }
+  .n-cover { margin: 28px -20px 0; }
+  .n-cover .photo-ph { border-radius: 0; }
+  .n-cover figcaption { padding: 0 20px; font-size: 13px; }
+  .share-top { flex-direction: column; align-items: flex-start; gap: 12px; margin-top: 24px; padding: 16px 0; }
+  .share { flex-wrap: wrap; }
+  .share > span { width: 100%; margin-bottom: 2px; }
+  .sh { height: 44px; }
+  .n-body { padding-top: 32px; }
+  .n-body p, .n-body li { font-size: 17px; }
+  .n-body h2 { font-size: 24px; margin-top: 36px; }
+  .n-body h3 { font-size: 20px; }
+  .n-body blockquote { padding-left: 18px; }
+  .n-body blockquote p { font-size: 20px; }
+  .n-foot { padding-top: 40px; gap: 36px; }
+  .rel a { grid-template-columns: 88px 1fr; gap: 14px; }
+  .rel h3 { font-size: 16px; }
+  .chan { padding: 20px; }
+  .chan h2 { font-size: 21px; }
+  .chan-list { grid-template-columns: 1fr; }
+  .cl { padding: 12px; min-height: 56px; }
+  .share-end { flex-direction: column; align-items: flex-start; }
+  .more { grid-template-columns: 1fr; gap: 28px; }
+  .spec { margin-top: 56px; padding: 36px 0 48px; }
+  .spec-grid, .st-demo { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Перейти к содержанию</a>
+<div class="mock">МАКЕТ · шаг 2 · страница новости — универсальный шаблон · пунктирная рамка — плейсхолдер текста, не публиковать · серые поля — места под реальные фото</div>
+
+<header>
+  <div class="wrap hd">
+    <a class="logo" href="01_главная.html"><span class="logo-samsmu">логотип<br>СамГМУ</span><span class="logo-name">НИИ нейронаук<small>СамГМУ Минздрава России</small></span></a>
+    <nav id="menu" aria-label="Главное меню"><a href="01_главная.html">Главная</a><a href="01_главная.html#napravleniya">Направления</a><a href="06_проекты.html">Проекты</a><div class="has-sub"><a href="01_главная.html#o-nii" class="sub-t">О НИИ</a><div class="nav-sub" aria-label="О НИИ"><a href="01_главная.html#o-centre">Наш подход</a><a href="01_главная.html#o-nii">История НИИ</a><a href="12_структура.html">Структура НИИ</a><a href="11_команда.html">Команда</a></div></div><a href="10_новости.html" class="on" aria-current="page">Новости</a><a href="#kontakty">Контакты</a><a class="btn nav-cta" href="01_главная.html#obsudit-nir">Обсудить исследование</a></nav>
+    <div class="hd-right">
+      <div class="chs"><span class="chi">TG</span><span class="chi">MAX</span><a class="chi" href="https://vk.com/nsri_samsmu" target="_blank" rel="noopener">VK</a><span class="chi">Дз</span></div>
+      <a class="btn btn-hd" href="01_главная.html#obsudit-nir">Обсудить</a>
+      <button class="burger" type="button" aria-label="Открыть меню" aria-controls="menu" aria-expanded="false"><i></i></button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+  <article>
+    <div class="wrap">
+      <div class="crumbs"><a href="01_главная.html">Главная</a><i>/</i><a href="10_новости.html">Новости</a><i>/</i><span class="ph">Рубрика</span></div>
+
+      <div class="n-grid">
+        <!-- 1. Рубрика, дата, заголовок, лид -->
+        <div class="n-head">
+          <div class="n-meta">
+            <a class="tag dir ph" href="10_новости.html#r=proekty">Рубрика</a>
+            <time class="ph" datetime="2026-10-01">ДД месяц ГГГГ</time>
+            <span class="sep" aria-hidden="true"></span>
+            <span class="read ph">N мин чтения</span>
+          </div>
+          <h1 class="ph">Заголовок новости — до 90 знаков, плейсхолдер, не публиковать</h1>
+          <p class="n-lead ph">Аннотация — 1–2 предложения, до 250 знаков. Это же поле выводится в карточке новости и в превью ссылки в каналах. Плейсхолдер, не публиковать.</p>
+        </div>
+
+        <!-- 2. Обложка -->
+        <figure class="n-cover">
+          <div class="photo-ph safe"><span>Обложка новости · 16:9 · загрузка 1920×1080 px, JPG/WebP до 400 КБ<br>реальное фото события или исследования · генеративные изображения запрещены</span></div>
+          <figcaption class="ph">Подпись к обложке и автор фото — необязательное поле.</figcaption>
+        </figure>
+
+        <!-- 3. Поделиться -->
+        <div class="share-top">
+          <div class="share" aria-label="Поделиться">
+            <span>Поделиться</span>
+            <a class="sh" href="#"><b>TG</b>Telegram</a>
+            <a class="sh" href="#"><b>VK</b>VK</a>
+            <a class="sh" href="#"><b>MAX</b>MAX</a>
+            <a class="sh copy" href="#">Скопировать ссылку</a>
+          </div>
+        </div>
+
+        <!-- 4. Основной текст — типовые элементы редактора CMS -->
+        <div class="n-body">
+          <p class="ph">Первый абзац раскрывает аннотацию: что произошло, где и когда, кто участвовал. Длина строки ограничена колонкой 760 px — около 70 знаков, удобных для чтения. Плейсхолдер, не публиковать.</p>
+          <p class="ph">Второй абзац — подробности. В тексте может быть <a href="#">ссылка на страницу проекта</a> или на внешний источник; ссылка всегда подчёркнута и выделена цветом, чтобы её не путали с акцентом.</p>
+
+          <h2 class="ph">Подзаголовок раздела</h2>
+          <p class="ph">Абзац после подзаголовка. Подзаголовки делят длинный материал на смысловые части; в коротких новостях их нет.</p>
+          <ul class="ph">
+            <li>Пункт списка — одна мысль в строку.</li>
+            <li>Второй пункт списка; длинный пункт переносится и держит отступ от маркера.</li>
+            <li>Третий пункт.</li>
+          </ul>
+
+          <blockquote class="ph">
+            <p>«Цитата спикера — один-два предложения, которые хочется вынести отдельно».</p>
+            <cite>Имя Фамилия, должность</cite>
+          </blockquote>
+
+          <figure>
+            <div class="photo-ph"><span>Фото в тексте · 16:9 или 4:3 · ширина колонки 760 px<br>без лиц респондентов и пациентов</span></div>
+            <figcaption class="ph">Подпись к фото в тексте.</figcaption>
+          </figure>
+
+          <h3 class="ph">Подзаголовок второго уровня</h3>
+          <p class="ph">Завершающий абзац: что дальше, где следить за новостями. Если новость о проекте медицинского изделия, текст проходит чек-лист compliance до публикации.</p>
+        </div>
+
+        <!-- 5. Теги, проекты, каналы -->
+        <div class="n-foot">
+          <div>
+            <div class="n-lbl">Теги</div>
+            <div class="tags"><a class="tag" href="10_новости.html#t=eeg">ЭЭГ</a><a class="tag" href="10_новости.html#t=eye">айтрекинг</a><a class="tag dir" href="09_направление_нейромаркетинг.html">Нейромаркетинг</a><a class="tag" href="#">этап цикла</a></div>
+          </div>
+
+          <div>
+            <div class="n-lbl">Связанные проекты</div>
+            <div class="rel">
+              <a href="02_проект.html"><div class="photo-ph"><span>фото проекта</span></div><div><div class="rt"><span class="tag dir">Нейромаркетинг</span><span class="status done">Завершён</span></div><h3>Нейроисследование пользовательского пути</h3></div></a>
+              <a href="13_проект_Нейро-зеркало.html"><div class="photo-ph"><span>фото проекта</span></div><div><div class="rt"><span class="tag dir">Нейродиагностика и мониторинг</span><span class="status">НИР</span></div><h3>«Нейро-зеркало»</h3></div></a>
+            </div>
+          </div>
+
+          <section class="chan" aria-labelledby="chan-h">
+            <h2 id="chan-h">Обсудить в канале</h2>
+            <p>Эта новость опубликована в каналах НИИ — задайте вопрос или оставьте комментарий там.</p>
+            <div class="chan-list">
+              <a class="cl" href="#"><span class="chi lg">TG</span><span><b>Telegram</b><small>Пост с этой новостью</small></span></a>
+              <a class="cl" href="#"><span class="chi lg">MAX</span><span><b>MAX</b><small>Пост с этой новостью</small></span></a>
+              <a class="cl" href="#"><span class="chi lg">VK</span><span><b>VK</b><small>Пост с этой новостью</small></span></a>
+              <a class="cl" href="#"><span class="chi lg">Дз</span><span><b>Дзен</b><small>Статья-колонка</small></span></a>
+              <a class="cl" href="#"><span class="chi lg">ЯП</span><span><b>Яндекс Подкасты</b><small>Выпуск по теме</small></span></a>
+              <a class="cl" href="#"><span class="chi lg">RT</span><span><b>Rutube</b><small>Видео с исследования</small></span></a>
+            </div>
+          </section>
+
+          <div class="share-end">
+            <div class="share" aria-label="Поделиться">
+              <span>Поделиться</span>
+              <a class="sh" href="#"><b>TG</b>Telegram</a>
+              <a class="sh" href="#"><b>VK</b>VK</a>
+              <a class="sh" href="#"><b>MAX</b>MAX</a>
+            </div>
+            <a class="link back" href="10_новости.html">← Все новости</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- 6. Ещё новости -->
+  <section class="block band" style="margin-top:96px">
+    <div class="wrap">
+      <div class="sec-head"><div><div class="sec-num">Новости</div><h2>Ещё новости</h2></div><div></div></div>
+      <div class="more">
+        <a class="ncard" href="05_новость.html"><div class="photo-ph"><span>Фото к новости</span></div><time class="ph">ДД.ММ.ГГГГ</time><h3 class="ph">Заголовок новости — плейсхолдер</h3><div class="tags"><span class="tag">тег</span></div></a>
+        <a class="ncard" href="05_новость.html"><div class="photo-ph"><span>Фото к новости</span></div><time class="ph">ДД.ММ.ГГГГ</time><h3 class="ph">Заголовок новости в две строки — проверка длинного заголовка</h3><div class="tags"><span class="tag">тег</span><span class="tag">тег</span></div></a>
+        <a class="ncard" href="05_новость.html"><div class="photo-ph"><span>Фото к новости</span></div><time class="ph">ДД.ММ.ГГГГ</time><h3 class="ph">Заголовок новости — плейсхолдер</h3><div class="tags"><span class="tag">тег</span></div></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Спецификация шаблона: только для макета -->
+  <section class="spec" aria-label="Спецификация шаблона для разработчика">
+    <div class="wrap">
+      <div class="sec-num">Только в макете</div>
+      <h2>Спецификация шаблона новости</h2>
+      <p>Шаблон один для всех новостей. Блоки без данных скрываются целиком, без пустых заголовков. Поля совпадают с формой публикации CMS (CMS-8).</p>
+      <div class="spec-grid">
+        <div class="spec-card">
+          <h3>Обложка</h3>
+          <table>
+            <tr><td>Пропорции</td><td>16:9 — одна картинка для карточки и страницы</td></tr>
+            <tr><td>Загрузка</td><td>1920×1080 px, JPG или WebP, до 400 КБ</td></tr>
+            <tr><td>Безопасная зона</td><td>центральные 75 % ширины (4:3): лица и главный объект — здесь, чтобы не обрезались в превью соцсетей</td></tr>
+            <tr><td>Десктоп</td><td>на ширину сетки 1200 px</td></tr>
+            <tr><td>Мобильный</td><td>на всю ширину экрана, без скругления</td></tr>
+            <tr><td>Нет обложки</td><td>блок скрыт, под шапкой сразу «Поделиться»</td></tr>
+            <tr><td>Превью ссылки (og:image)</td><td>та же обложка, кадрирование 1200×630 по центру</td></tr>
+          </table>
+        </div>
+        <div class="spec-card">
+          <h3>Типографика текста (Manrope)</h3>
+          <table>
+            <tr><td>Заголовок H1</td><td>48 / 54 px · 800 — мобильный 30 / 34</td></tr>
+            <tr><td>Аннотация</td><td>21 / 33 px · вторичный цвет — мобильный 17</td></tr>
+            <tr><td>Абзац</td><td>19 / 32 px — мобильный 17 / 29</td></tr>
+            <tr><td>Подзаголовок H2 / H3</td><td>30 и 22 px · 800 — мобильный 24 и 20</td></tr>
+            <tr><td>Цитата</td><td>24 px · 600, линия акцента слева</td></tr>
+            <tr><td>Дата, подписи</td><td>14–15 px · вторичный цвет</td></tr>
+            <tr><td>Колонка текста</td><td>760 px ≈ 70 знаков в строке</td></tr>
+          </table>
+        </div>
+        <div class="spec-card">
+          <h3>Поля новости → блоки страницы</h3>
+          <ul>
+            <li>Рубрика — плашка над заголовком; ссылка на ленту с фильтром.</li>
+            <li>Дата публикации — формат «1 октября 2026»; в карточке — «01.10.2026».</li>
+            <li>Время чтения — считается автоматически, можно отключить.</li>
+            <li>Заголовок — до 90 знаков; длинный переносится, не обрезается.</li>
+            <li>Аннотация — до 250 знаков; та же строка в карточке и в превью ссылки.</li>
+            <li>Текст — подзаголовок, абзац, список, цитата, фото с подписью, ссылка.</li>
+            <li>Теги — из общего словаря с проектами (ТЕГ-1).</li>
+            <li>Связанные проекты — 0–3; нет — блок скрыт.</li>
+          </ul>
+        </div>
+        <div class="spec-card">
+          <h3>Соцсети и каналы</h3>
+          <ul>
+            <li>«Поделиться» — Telegram, VK, MAX + «Скопировать ссылку». Только ссылки, без сторонних скриптов (НОВ-3).</li>
+            <li>«Обсудить в канале» — ссылки на посты именно этой новости. Редактор вставляет адрес поста в поле канала.</li>
+            <li>Канал без поста — карточка не выводится. Нет ни одного поста — блок скрыт, каналы НИИ остаются в шапке и футере.</li>
+            <li>Набор каналов — КАН-1: Telegram, MAX, VK, Дзен, Яндекс Подкасты, Rutube. Иконки — временные монограммы до знаков из брендбуков платформ.</li>
+            <li>Ссылки в каналы — с UTM по правилам SMM (С-4).</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="st-demo">
+        <div>
+          <div class="lbl">Состояние · длинный заголовок, без обложки</div>
+          <div class="mini">
+            <span class="tag dir">Рубрика</span>
+            <h4>Заголовок новости на максимум — девяносто знаков, переносится на три строки и не обрезается</h4>
+            <p>Аннотация сразу под заголовком; обложки нет — следом идёт полоса «Поделиться».</p>
+            <div class="bar"></div><div class="bar" style="width:80%"></div>
+          </div>
+        </div>
+        <div>
+          <div class="lbl">Состояние · нет проектов и постов в каналах</div>
+          <div class="mini">
+            <p style="font-weight:700;color:var(--text)">Теги</p>
+            <div class="tags" style="margin:8px 0 14px"><span class="tag">ЭЭГ</span><span class="tag">тег</span></div>
+            <p>Блоки «Связанные проекты» и «Обсудить в канале» скрыты целиком. Ниже — «Поделиться» и «Все новости».</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer id="kontakty">
+  <div class="wrap">
+    <div class="ft">
+      <div>
+        <a class="logo" href="01_главная.html"><span class="logo-samsmu">логотип<br>СамГМУ</span><span class="logo-name">НИИ нейронаук<small>СамГМУ Минздрава России</small></span></a>
+        <p style="margin-top:20px">Научно-исследовательский институт нейронаук ФГБОУ ВО СамГМУ Минздрава России</p><p class="ft-note">НИИ не оказывает медицинскую помощь. Запись на приём — в <a href="https://clinica.samsmu.ru/" target="_blank" rel="noopener">Клиниках СамГМУ</a>.</p>
+      </div>
+      <div><h4>Разделы</h4><ul><li><a href="01_главная.html">Главная</a></li><li><a href="01_главная.html#napravleniya">Направления</a></li><li><a href="01_главная.html#o-centre">Наш подход</a></li><li><a href="01_главная.html#proekty">Проекты</a></li><li><a href="01_главная.html#o-nii">О НИИ</a></li><li><a href="11_команда.html">Команда</a></li><li><a href="10_новости.html">Новости</a></li><li><a href="#kontakty">Контакты</a></li></ul></div>
+      <div><h4>Каналы</h4><div class="chs" style="flex-wrap:wrap"><span class="chi">TG</span><span class="chi">MAX</span><a class="chi" href="https://vk.com/nsri_samsmu" target="_blank" rel="noopener">VK</a><span class="chi">Дз</span><span class="chi">ЯП</span><span class="chi">RT</span></div></div>
+      <div><h4>Контакты</h4><ul><li>e.p.bubnova@samsmu.ru</li><li>+7 (846) 374-10-04 доб. 4132</li><li>443079, Самара, ул. Гагарина, 18</li><li><a href="https://vk.com/nsri_samsmu" target="_blank" rel="noopener">vk.com/nsri_samsmu</a></li></ul></div>
+    </div>
+    <div class="ft-bottom"><span>© ФГБОУ ВО СамГМУ Минздрава России</span><span class="ph">Политика обработки данных — ссылка после заключения юриста</span></div>
+  </div>
+</footer>
+<script src="nav.js"></script>
+</body>
+</html>

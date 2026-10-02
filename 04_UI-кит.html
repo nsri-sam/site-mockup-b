@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Мини-UI-кит — направление Б «Лабораторная строгость»</title>
+<link rel="stylesheet" href="b.css">
+<style>
+.kit { padding: 48px 0 80px; }
+.kit > .wrap > h1 { font-size: 44px; margin-bottom: 8px; }
+.kit > .wrap > p { color: var(--muted); margin-bottom: 16px; }
+.ks { padding: 48px 0; border-top: 1px solid var(--line); display: grid; grid-template-columns: 220px 1fr; gap: 48px; }
+.ks > h2 { font-size: 22px; }
+.ks > h2 small { display: block; font-size: 13px; font-weight: 600; color: var(--muted); letter-spacing: 0; margin-top: 6px; line-height: 1.45; }
+.sw { display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; }
+.swc { border: 1px solid var(--line); border-radius: var(--r); overflow: hidden; font-size: 13px; }
+.swc i { display: block; height: 72px; }
+.swc div { padding: 10px 12px; line-height: 1.4; }
+.swc b { display: block; font-size: 14px; }
+.swc code { font-family: inherit; font-weight: 700; color: var(--muted); }
+.swc em { font-style: normal; display: block; color: var(--muted); }
+.type { display: grid; gap: 0; }
+.trow { display: grid; grid-template-columns: 170px 1fr; gap: 24px; align-items: baseline; padding: 14px 0; border-bottom: 1px solid var(--line); }
+.trow small { font-size: 13px; color: var(--muted); font-weight: 600; line-height: 1.4; }
+.states { display: grid; grid-template-columns: repeat(4, auto) 1fr; gap: 16px 32px; align-items: center; justify-items: start; }
+.states .lbl { font-size: 12px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+.fields { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px 32px; }
+.fields .lbl { font-size: 12px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; color: var(--mark); margin-bottom: 8px; }
+.cards { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 28px; align-items: start; }
+.cards .lbl { font-size: 12px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; color: var(--mark); margin-bottom: 8px; }
+.row { display: flex; flex-wrap: wrap; gap: 16px 28px; align-items: center; }
+.icons { display: grid; grid-template-columns: repeat(6, 1fr); gap: 16px; }
+.icons div { display: grid; justify-items: start; gap: 8px; font-size: 14px; font-weight: 600; }
+.grid-demo { display: grid; grid-template-columns: repeat(12, 1fr); gap: 24px; height: 64px; }
+.grid-demo i { background: rgba(91,42,134,.08); border-left: 1px solid rgba(91,42,134,.3); border-right: 1px solid rgba(91,42,134,.3); }
+.gnote { font-size: 14px; color: var(--muted); margin-top: 12px; }
+.dark { background: var(--foot); padding: 20px; border-radius: var(--r); display: flex; gap: 8px; }
+</style>
+</head>
+<body>
+<div class="mock">МАКЕТ · шаг 2 · мини-UI-кит · направление Б «Лабораторная строгость»</div>
+<div class="kit"><div class="wrap">
+  <h1>Мини-UI-кит</h1>
+  <p>Шрифт Manrope (SIL OFL 1.1) · радиус 4 px · сетка 12 колонок · все цвета — CSS-переменные в <code>b.css</code>. Контраст посчитан по формуле WCAG 2.1.</p>
+
+  <div class="ks"><h2>Цвета<small>Текст — не ниже 4,5:1, элементы интерфейса — не ниже 3:1</small></h2>
+    <div class="sw">
+      <div class="swc"><i style="background:#1C1830"></i><div><b>Текст</b><code>#1C1830</code><em>на белом 17,2:1</em></div></div>
+      <div class="swc"><i style="background:#55506A"></i><div><b>Вторичный</b><code>#55506A</code><em>7,7:1 · на полосе 6,9:1</em></div></div>
+      <div class="swc"><i style="background:#5B2A86"></i><div><b>Акцент, CTA</b><code>#5B2A86</code><em>белый на нём 9,9:1</em></div></div>
+      <div class="swc"><i style="background:#472069"></i><div><b>Акцент hover</b><code>#472069</code><em>белый на нём 12,5:1</em></div></div>
+      <div class="swc"><i style="background:#C2185B"></i><div><b>Маркер, фокус</b><code>#C2185B</code><em>на белом 5,9:1</em></div></div>
+      <div class="swc"><i style="background:#8A8499"></i><div><b>Рамка поля</b><code>#8A8499</code><em>на белом 3,6:1</em></div></div>
+      <div class="swc"><i style="background:#B3261E"></i><div><b>Ошибка</b><code>#B3261E</code><em>6,5:1 · на #FDF1F0 5,9:1</em></div></div>
+      <div class="swc"><i style="background:#F4F1F7"></i><div><b>Полоса</b><code>#F4F1F7</code><em>фон разделов</em></div></div>
+      <div class="swc"><i style="background:#D9D3E0"></i><div><b>Линии</b><code>#D9D3E0</code><em>декор, 1,5:1</em></div></div>
+      <div class="swc"><i style="background:#1C1830;box-shadow:inset 0 -24px 0 #C9C3D3"></i><div><b>Футер</b><code>#1C1830 / #C9C3D3</code><em>10,0:1</em></div></div>
+    </div>
+  </div>
+
+  <div class="ks"><h2>Типографика<small>Десктоп / мобильный. Интерлиньяж текста 1,6</small></h2>
+    <div class="type">
+      <div class="trow"><small>H1 · 56 / 30 px · 800</small><span style="font-size:56px;font-weight:800;letter-spacing:-.03em;line-height:1.08">От гипотезы — к прототипу</span></div>
+      <div class="trow"><small>H2 · 40 / 28 px · 800</small><span style="font-size:40px;font-weight:800;letter-spacing:-.02em;line-height:1.15">Направления прикладных исследований</span></div>
+      <div class="trow"><small>H3 · 24 / 20 px · 800</small><span style="font-size:24px;font-weight:800">Нейродиагностика и мониторинг</span></div>
+      <div class="trow"><small>Лид · 20 / 17 px · 400</small><span style="font-size:20px;color:var(--muted)">Исследования и разработки на базе СамГМУ</span></div>
+      <div class="trow"><small>Текст · 18 / 16 px · 400</small><span>Респонденты проходили этапы оформления услуги, а мы фиксировали взгляд, ЭЭГ и физиологические реакции.</span></div>
+      <div class="trow"><small>Подпись · 13–15 px · 600</small><span style="font-size:14px;font-weight:600;color:var(--muted)">Этап: экспериментальная проверка гипотез · 2025</span></div>
+      <div class="trow"><small>Название раздела · 14 px · 800</small><span class="sec-num" style="margin:0">Направления</span></div>
+    </div>
+  </div>
+
+  <div class="ks"><h2>Кнопки<small>Один главный CTA на экран. Фокус — рамка-маркер 3 px</small></h2>
+    <div class="states">
+      <span class="lbl">Обычная</span><span class="lbl">Наведение</span><span class="lbl">Фокус</span><span class="lbl">Неактивная</span><span></span>
+      <button class="btn">Обсудить исследование</button><button class="btn is-hover">Обсудить исследование</button><button class="btn is-focus">Обсудить исследование</button><button class="btn is-disabled" disabled>Обсудить исследование</button><span class="lbl">Главная</span>
+      <button class="btn-sec">Подписаться</button><button class="btn-sec is-hover">Подписаться</button><button class="btn-sec is-focus">Подписаться</button><button class="btn-sec is-disabled">Подписаться</button><span class="lbl">Второстепенная</span>
+      <a class="link">Смотреть проекты</a><a class="link is-hover">Смотреть проекты</a><a class="link is-focus">Смотреть проекты</a><span style="color:var(--disabled);font-weight:700;font-size:16px">Смотреть проекты</span><span class="lbl">Ссылка</span>
+    </div>
+  </div>
+
+  <div class="ks"><h2>Поля формы<small>Подпись над полем, подсказка под ним, ошибка — текстом и цветом, не только цветом</small></h2>
+    <div class="fields">
+      <div><div class="lbl">Обычное</div><div class="field"><label>Как к вам обращаться? <span class="req">*</span></label><input class="inp" placeholder="Имя или как вам удобно"><span class="hint">Фамилия и должность не нужны</span></div></div>
+      <div><div class="lbl">Фокус</div><div class="field"><label>Контактный e-mail <span class="req">*</span></label><input class="inp is-focus" value="anna@company.ru"><span class="hint">Для ответа по заявке</span></div></div>
+      <div><div class="lbl">Ошибка</div><div class="field"><label>Контактный e-mail <span class="req">*</span></label><input class="inp is-error" value="anna@company"><span class="err">Проверьте адрес: в нём не хватает домена</span></div></div>
+      <div><div class="lbl">Источник заявки</div><div style="font-size:14px;color:var(--muted);border-left:3px solid var(--accent);padding:6px 0 6px 12px;line-height:1.45">Вы пришли со страницы: <b style="color:var(--text)">Нейроисследование пользовательского пути</b></div><span class="hint" style="display:block;margin-top:8px">Показывается только при переходе со страницы проекта или направления</span></div>
+      <div><div class="lbl">Неактивное (во время отправки)</div><div class="field"><label>Как к вам обращаться?</label><input class="inp is-disabled" value="Анна" disabled></div></div>
+      <div><div class="lbl">Согласие</div><div class="consent">Место под согласие — по заключению юриста</div></div>
+    </div>
+  </div>
+
+  <div class="ks"><h2>Теги и статусы<small>Словарь тегов — бриф, И.8; фильтр по тегам под вопросом</small></h2>
+    <div style="display:grid;gap:20px">
+      <div class="row"><span class="tag dir">Нейромаркетинг</span><span class="tag">ЭЭГ</span><span class="tag is-hover">айтрекинг (наведение)</span><span class="tag is-on">биометрия (выбран в фильтре)</span></div>
+      <div class="row"><span class="status done">Завершён</span><span class="status">Разрабатывается</span><span class="status">Пилот НИР</span><span class="status ph-st">Статус — уточнить</span></div>
+    </div>
+  </div>
+
+  <div class="ks"><h2>Карточки<small>Проект — рамка 1 px: фото, направление, название; при наведении рамка акцентная, на фото — описание и «Подробнее». Новость — без рамки, при наведении на обложке краткая суть</small></h2>
+    <div class="cards">
+      <div><div class="lbl">Проект · обычная</div><div class="pcard"><div class="pc-media"><div class="photo-ph"><span>Фото проекта</span></div><div class="nc-sum"><p class="ph">Краткое описание проекта — поле «что решает» из CMS, до 250 знаков.</p><span class="more-b">Подробнее</span></div></div><div class="pcard-b"><span class="tag dir">Нейромаркетинг</span><h3>Нейроисследование пользовательского пути</h3><p class="nc-lead ph">Краткое описание проекта — поле «что решает» из CMS.</p></div></div></div>
+      <div><div class="lbl">Проект · наведение и фокус, длинное название</div><div class="pcard is-hover"><div class="pc-media"><div class="photo-ph"><span>Фото проекта</span></div><div class="nc-sum"><p class="ph">Краткое описание проекта — поле «что решает» из CMS, до 250 знаков: какую задачу решает проект и для кого. На тач-экранах этот текст стоит под названием, три строки.</p><span class="more-b">Подробнее</span></div></div><div class="pcard-b"><span class="tag dir">Реабилитация</span><h3>Социально-бытовая реабилитация с эрготерапией в VR-окружении</h3></div></div></div>
+      <div><div class="lbl">Новость · обычная</div><div class="ncard"><div class="nc-media"><div class="photo-ph"><span>Фото к новости</span></div><div class="nc-sum"><p class="ph">Краткая суть новости — аннотация из CMS, до 250 знаков.</p><span class="more-l">Читать новость →</span></div></div><time class="ph">ДД.ММ.ГГГГ</time><h3 class="ph">Заголовок новости — плейсхолдер</h3><p class="nc-lead ph">Краткая суть новости — аннотация из CMS, до 250 знаков.</p><div class="tags"><span class="tag">тег</span><span class="tag">тег</span></div></div></div>
+      <div><div class="lbl">Новость · наведение и фокус: краткая суть на обложке</div><div class="ncard is-hover"><div class="nc-media"><div class="photo-ph"><span>Фото к новости</span></div><div class="nc-sum"><p class="ph">Краткая суть новости — аннотация из CMS, до 250 знаков: что произошло и почему это важно. На тач-экранах этот же текст стоит под заголовком, три строки.</p><span class="more-l">Читать новость →</span></div></div><time class="ph">ДД.ММ.ГГГГ</time><h3 class="ph">Заголовок новости — плейсхолдер</h3><div class="tags"><span class="tag">тег</span></div></div></div>
+    </div>
+  </div>
+
+  <div class="ks"><h2>Иконки каналов<small>Временные монограммы. Финал — официальные знаки из брендбуков платформ</small></h2>
+    <div style="display:grid;gap:20px">
+      <div class="icons"><div><span class="chi lg">TG</span>Telegram</div><div><span class="chi lg">MAX</span>MAX</div><div><span class="chi lg">VK</span>VK</div><div><span class="chi lg">Дз</span>Дзен</div><div><span class="chi lg">ЯП</span>Яндекс Подкасты</div><div><span class="chi lg">RT</span>Rutube</div></div>
+      <div class="row"><span class="chi">TG</span><span style="font-size:14px;color:var(--muted)">32 px — хедер, 48 px — блок каналов</span><div class="dark"><span class="chi" style="background:transparent;border-color:#4A4460;color:#fff">TG</span><span class="chi" style="background:transparent;border-color:#4A4460;color:#fff">VK</span></div><span style="font-size:14px;color:var(--muted)">на тёмном — футер</span></div>
+    </div>
+  </div>
+
+  <div class="ks"><h2>Сетка<small>1440 / 768 / 360 px</small></h2>
+    <div><div class="grid-demo"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+    <p class="gnote">Десктоп: контейнер 1280 px, поля 40 px, 12 колонок, промежуток 24 px. Планшет: 8 колонок, поля 32 px. Мобильный: 4 колонки, поля 20 px, промежуток 16 px. Вертикальный ритм: разделы 96 / 56 px.</p></div>
+  </div>
+</div></div>
+</body>
+</html>

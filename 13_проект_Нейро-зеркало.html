@@ -1,0 +1,250 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>«Нейро-зеркало» — страница проекта, макет шага 2, направление Б</title>
+<link rel="stylesheet" href="b.css">
+<style>
+.crumbs { font-size: 14px; color: var(--muted); padding: 24px 0 0; }
+.crumbs a { color: var(--accent); font-weight: 600; }
+.crumbs i { font-style: normal; margin: 0 8px; color: var(--line); }
+.phead { padding: 40px 0 56px; border-bottom: 1px solid var(--line); }
+.phead .top { display: flex; gap: 16px; align-items: center; margin-bottom: 24px; }
+.phead h1 { font-size: 52px; max-width: 16em; margin-bottom: 16px; }
+.phead .fullname { font-size: 15px; color: var(--muted); max-width: 52em; margin-bottom: 24px; }
+.phead .lead { font-size: 20px; color: var(--muted); max-width: 40em; }
+.ptags { margin-top: 24px; }
+.facts { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 2px solid var(--text); margin-top: 40px; }
+.facts div { padding: 18px 20px 0 0; }
+.facts div + div { padding-left: 20px; border-left: 1px solid var(--line); }
+.facts small { display: block; font-size: 12px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin-bottom: 6px; }
+.facts b { font-size: 16px; font-weight: 700; line-height: 1.4; }
+.cover { margin: 0; }
+.cover .photo-ph { aspect-ratio: 16/9; border-radius: var(--r); }
+
+.body { display: grid; grid-template-columns: 240px 1fr; gap: 80px; padding: 80px 0 96px; }
+.toc { position: sticky; top: 104px; align-self: start; display: grid; gap: 2px; font-size: 15px; font-weight: 600; }
+.toc a { padding: 8px 0 8px 14px; border-left: 2px solid var(--line); color: var(--muted); }
+.toc a.on { border-color: var(--accent); color: var(--text); }
+.art { display: grid; gap: 64px; max-width: 780px; }
+.art section h2 { font-size: 30px; margin-bottom: 20px; }
+.art .sec-num { margin-bottom: 8px; }
+.art p { font-size: 18px; }
+.art p + p { margin-top: 14px; }
+.methods { display: grid; grid-template-columns: repeat(2, 1fr); border-top: 1px solid var(--line); margin-top: 28px; }
+.methods div { padding: 18px 20px 18px 0; border-bottom: 1px solid var(--line); font-size: 17px; font-weight: 700; display: flex; gap: 14px; align-items: baseline; }
+.methods div:nth-child(even) { padding-left: 20px; border-left: 1px solid var(--line); }
+.methods span { font-size: 13px; font-weight: 800; color: var(--mark); }
+.sub-parts { display: grid; gap: 16px; }
+.sub-part { border: 1px solid var(--line); border-left: 4px solid var(--accent); border-radius: var(--r); padding: 32px; background: var(--band); }
+.sub-part .lbl { font-size: 12px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; color: var(--accent); margin-bottom: 10px; }
+.sub-part h3 { font-size: 24px; margin-bottom: 12px; }
+.sub-part p { font-size: 17px !important; color: var(--text); }
+.sub-part .tags { margin-top: 20px; }
+.cycle-bar { display: grid; grid-template-columns: repeat(4, 1fr); gap: 4px; margin-top: 20px; }
+.cycle-bar div { padding: 12px 14px; font-size: 14px; font-weight: 700; line-height: 1.3; background: var(--band); color: var(--muted); border-top: 3px solid var(--line); }
+.cycle-bar div.on { background: #fff; color: var(--text); border-top-color: var(--accent); box-shadow: inset 0 0 0 1px var(--line); }
+.cycle-bar b { display: block; font-size: 11px; color: var(--mark); letter-spacing: .08em; }
+.team { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+.person { display: flex; gap: 16px; align-items: center; border: 1px solid var(--line); border-radius: var(--r); padding: 16px; }
+.person .ava { width: 64px; height: 64px; border-radius: 50%; background: var(--ph); flex: none; display: grid; place-items: center; font-size: 10px; color: var(--muted); text-align: center; }
+.person b { display: block; font-size: 16px; }
+.person small { font-size: 14px; color: var(--muted); }
+.note { font-size: 14px; color: var(--muted); border-left: 3px solid var(--line); padding: 4px 0 4px 14px; }
+.equip { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+.equip div { border: 1px solid var(--line); border-radius: var(--r); padding: 16px; display: grid; gap: 6px; }
+.equip b { font-size: 16px; }
+.equip small { font-size: 13px; color: var(--muted); }
+.mi-note { display: flex; gap: 14px; align-items: flex-start; margin-top: 24px; padding: 14px 18px; border: 1px solid var(--line); border-left: 4px solid var(--mark); border-radius: var(--r); background: #fff; font-size: 15px; line-height: 1.5; max-width: 52em; }
+.mi-note b { white-space: nowrap; font-size: 12px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; color: var(--mark); padding-top: 2px; }
+.mock-flag { margin-top: 12px; font-size: 13px; color: var(--muted); border: 1px dashed var(--line); border-radius: var(--r); padding: 8px 12px; }
+
+.cta-band { background: var(--text); color: #fff; padding: 72px 0; }
+.cta-band .in { display: flex; justify-content: space-between; align-items: center; gap: 48px; }
+.cta-band h2 { color: #fff; font-size: 36px; }
+.cta-band p { color: var(--foot-text); margin-top: 12px; font-size: 17px; }
+.cta-band .btn { background: #fff; color: var(--accent); }
+.cta-band .btn:hover { background: var(--band); }
+.more { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+
+@media (max-width: 767px) {
+  .crumbs { font-size: 13px; padding-top: 16px; }
+  .phead { padding: 24px 0 36px; }
+  .phead .top { flex-wrap: wrap; gap: 10px; margin-bottom: 16px; }
+  .phead h1 { font-size: 30px; margin-bottom: 16px; }
+  .phead .lead { font-size: 17px; }
+  .facts { grid-template-columns: 1fr 1fr; margin-top: 32px; }
+  .facts div, .facts div + div { padding: 14px 12px 14px 0; border-left: 0; border-bottom: 1px solid var(--line); }
+  .facts div:nth-child(even) { padding-left: 12px; border-left: 1px solid var(--line); }
+  .phead .fullname { font-size: 14px; margin-bottom: 16px; }
+  .ptags { margin-top: 18px; }
+  .equip { grid-template-columns: 1fr; }
+  .mi-note { flex-direction: column; gap: 6px; font-size: 14px; }
+  .cover .photo-ph { aspect-ratio: 16/9; }
+  .body { grid-template-columns: 1fr; gap: 0; padding: 48px 0 56px; }
+  .toc { display: none; }
+  .art { gap: 44px; }
+  .art section h2 { font-size: 24px; margin-bottom: 14px; }
+  .art p { font-size: 16px; }
+  .methods { grid-template-columns: 1fr; }
+  .methods div, .methods div:nth-child(even) { padding: 14px 0; border-left: 0; font-size: 16px; }
+  .sub-part { padding: 20px; }
+  .sub-part h3 { font-size: 20px; }
+  .sub-part p { font-size: 16px !important; }
+  .cycle-bar { grid-template-columns: 1fr 1fr; }
+  .team { grid-template-columns: 1fr; }
+  .cta-band { padding: 48px 0; }
+  .cta-band .in { flex-direction: column; align-items: stretch; gap: 24px; }
+  .cta-band h2 { font-size: 26px; }
+  .more { grid-template-columns: 1fr; gap: 16px; }
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Перейти к содержанию</a>
+<div class="mock">МАКЕТ · шаг 2 · страница проекта «Нейро-зеркало» по согласованной карточке 02.10.2026 · пунктирная рамка — не хватает данных или микротекст на согласовании · серые поля — места под реальные фото</div>
+
+<header>
+  <div class="wrap hd">
+    <a class="logo" href="01_главная.html"><span class="logo-samsmu">логотип<br>СамГМУ</span><span class="logo-name">НИИ нейронаук<small>СамГМУ Минздрава России</small></span></a>
+    <nav id="menu" aria-label="Главное меню"><a href="01_главная.html">Главная</a><a href="01_главная.html#napravleniya">Направления</a><a href="06_проекты.html" class="on" aria-current="page">Проекты</a><div class="has-sub"><a href="01_главная.html#o-nii" class="sub-t">О НИИ</a><div class="nav-sub" aria-label="О НИИ"><a href="01_главная.html#o-centre">Наш подход</a><a href="01_главная.html#o-nii">История НИИ</a><a href="12_структура.html">Структура НИИ</a><a href="11_команда.html">Команда</a></div></div><a href="10_новости.html">Новости</a><a href="#kontakty">Контакты</a><a class="btn nav-cta" href="01_главная.html#obsudit-nir">Обсудить исследование</a></nav>
+    <div class="hd-right">
+      <div class="chs"><span class="chi">TG</span><span class="chi">MAX</span><a class="chi" href="https://vk.com/nsri_samsmu" target="_blank" rel="noopener">VK</a><span class="chi">Дз</span></div>
+      <a class="btn btn-hd" href="01_главная.html#obsudit-nir">Обсудить</a>
+      <button class="burger" type="button" aria-label="Открыть меню" aria-controls="menu" aria-expanded="false"><i></i></button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+  <div class="wrap">
+    <div class="crumbs"><a href="01_главная.html">Главная</a><i>/</i><a href="06_проекты.html">Проекты</a><i>/</i><a href="06_проекты.html#neirodiagnostika">Нейродиагностика и мониторинг</a><i>/</i><span>«Нейро-зеркало»</span></div>
+    <div class="phead">
+      <div class="top"><span class="tag dir">Нейродиагностика и мониторинг</span><span class="status">НИР</span></div>
+      <h1>«Нейро-зеркало»</h1>
+      <p class="fullname">Аппаратно-программный комплекс в виде нейротехнологической системы «Нейро-зеркало» для мониторинга и сохранения когнитивного здоровья лиц старшего возраста</p>
+      <p class="lead">Разрабатываемая система для регулярного скрининга и мониторинга когнитивного состояния людей 60 лет и старше и подбора когнитивных тренировок. Диагноз не ставит: результаты интерпретирует специалист.</p>
+      <div class="tags ptags"><span class="tag">когнитивный скрининг</span><span class="tag">анализ речи</span><span class="tag">компьютерное зрение</span><span class="tag">машинное обучение</span><span class="tag">когнитивные тренировки</span><span class="tag">люди 60+</span></div>
+      <div class="facts">
+        <div><small>Направление</small><b>Нейродиагностика и мониторинг</b></div>
+        <div><small>Период</small><b>Январь 2026 — декабрь 2028</b></div>
+        <div><small>Заказчик</small><b>Государственное задание Минздрава России</b></div>
+      </div>
+      <div class="mi-note"><b>МИ в разработке</b><span>Медицинское изделие в разработке, не зарегистрировано. Система не ставит диагноз и не заменяет приём врача.</span></div>
+    </div>
+  </div>
+
+  <div class="wrap body">
+    <nav class="toc" aria-label="Разделы страницы">
+      <a class="on" href="#zadacha">Задача</a><a href="#metody">Решение и методы</a><a href="#sostavnye-chasti">Составные части</a><a href="#rezultat">Результат</a><a href="#komanda">Команда</a><a href="#oborudovanie">Оборудование</a>
+    </nav>
+    <div class="art">
+      <details class="toc-m"><summary>Содержание страницы</summary><nav aria-label="Разделы страницы"><a href="#zadacha">Задача</a><a href="#metody">Решение и методы</a><a href="#sostavnye-chasti">Составные части</a><a href="#rezultat">Результат</a><a href="#komanda">Команда</a><a href="#oborudovanie">Оборудование</a></nav></details>
+      <section id="zadacha">
+        <div class="sec-num">Задача</div>
+        <h2>Что нужно создать</h2>
+        <p>Нужно создать отечественную систему, которая позволит регулярно и без сложного оборудования оценивать когнитивное состояние людей 60 лет и старше, отслеживать его динамику и подбирать когнитивные тренировки. Система поддерживает решение специалиста и не заменяет очный приём врача. В перспективе — подготовка к регистрации как программного обеспечения — медицинского изделия с искусственным интеллектом.</p>
+      </section>
+      <div class="cover"><div class="photo-ph"><span>Обложка — ожидается от руководителя проекта: реальное фото 16:9, без лиц участников<br>пока фото нет, на сайте блок скрыт и под паспортом сразу идёт текст</span></div></div>
+
+      <section id="metody">
+        <div class="sec-num">Решение и методы</div>
+        <h2>Как устроен скрининг</h2>
+        <p>Пользователь проходит сессии на персональном компьютере с камерой и микрофоном. Базовый скрининг включает видеоанализ и опросник тревоги и депрессии, расширенный — аудиоверсию теста MoCA и социально-бытовую ситуационную задачу. По итогам строится профиль по когнитивным доменам (внимание, память, речь, абстракция) и подбирается курс тренировок. Повторный скрининг после курса показывает динамику.</p>
+        <div class="methods">
+          <div><span>01</span>Цифровые когнитивные тесты, в том числе аудиоверсия MoCA</div>
+          <div><span>02</span>Распознавание и анализ речи</div>
+          <div><span>03</span>Компьютерное зрение: видеоанализ, пульс по видео (rPPG)</div>
+          <div><span>04</span>Госпитальная шкала тревоги и депрессии (HADS)</div>
+          <div><span>05</span>Машинное обучение для анализа цифровых показателей</div>
+          <div><span>06</span>Адаптивные когнитивные тренировки</div>
+        </div>
+        <div class="cycle-bar" aria-label="Этап полного цикла">
+          <div><b>01</b>Гипотеза</div><div><b>02</b>Научная проработка идеи</div><div><b>03</b>Экспериментальная проверка гипотез</div><div class="on"><b>04</b>Разработка прототипа</div>
+        </div>
+      </section>
+
+      <section id="sostavnye-chasti">
+        <div class="sec-num">Составные части исследования</div>
+        <div class="sub-parts">
+          <div class="sub-part">
+            <div class="lbl">Входит в этот проект</div>
+            <h3>Аудиоверсия теста MoCA</h3>
+            <p>11 заданий голосом с анализом речевых показателей.</p>
+            <div class="tags"><span class="tag">MoCA</span><span class="tag">анализ речи</span></div>
+          </div>
+          <div class="sub-part">
+            <div class="lbl">Входит в этот проект</div>
+            <h3>Социально-бытовая ситуационная задача</h3>
+            <p>Пересказ бытового сюжета и решение по нему.</p>
+            <div class="tags"><span class="tag">ситуационная задача</span><span class="tag">память</span></div>
+          </div>
+        </div>
+        <p class="mock-flag">Только в макете: вторая составная часть публикуется после утверждения методики ситуационной задачи. Если её не утвердят, блок и упоминание в разделе «Решение и методы» убираются.</p>
+      </section>
+
+      <section id="rezultat">
+        <div class="sec-num">Результат</div>
+        <h2>Что сделано на сегодня</h2>
+        <p>На данный момент создан экспериментальный образец программного обеспечения и подготовлена программная документация на него; ведутся работы по экспериментальному подтверждению его работоспособности. Цель проекта к концу 2028 года — прототип, проверенный в условиях, приближенных к реальному применению.</p>
+      </section>
+
+      <section id="komanda">
+        <div class="sec-num">Команда</div>
+        <h2>Кто ведёт проект</h2>
+        <div class="team">
+          <div class="person"><span class="ava">фото</span><div><b>Сергеева Мария Станиславовна</b><small>Руководитель проекта · ведущий специалист лаборатории нейроинтерфейсов и нейротехнологий</small></div></div>
+          <div class="person"><span class="ava">фото</span><div><b>Адельшин Павел Александрович</b><small>Руководитель команды разработки · ведущий разработчик</small></div></div>
+          <div class="person"><span class="ava">фото</span><div><b>Мельникова Дарья Дмитриевна</b><small>Тимлид, ML-инженер · специалист лаборатории нейроинтерфейсов и нейротехнологий</small></div></div>
+          <div class="person"><span class="ava">фото</span><div><b>Бубнова Екатерина Петровна</b><small>Куратор проекта · аналитик</small></div></div>
+        </div>
+        <p class="mock-flag">Только в макете: в карточке не отмечены согласия сотрудников на публикацию ФИО и фото. До отметок на сайте выводятся только роли.</p>
+      </section>
+
+      <section id="oborudovanie">
+        <div class="sec-num">Оборудование</div>
+        <h2>На чём работает система</h2>
+        <div class="equip">
+          <div><b>Персональный компьютер с камерой и микрофоном</b><small class="ph">Модель — ожидается от руководителя проекта</small></div>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <section class="cta-band">
+    <div class="wrap in">
+      <div><h2>Есть похожая исследовательская задача?</h2><p class="ph">Опишите её своими словами — обсудим, как её проверить.</p></div>
+      <a class="btn" href="01_главная.html?project=neiro-zerkalo&amp;direction=neirodiagnostika#obsudit-nir">Обсудить похожую задачу</a>
+    </div>
+  </section>
+
+  <section class="block band">
+    <div class="wrap">
+      <div class="sec-head"><div><div class="sec-num">Ещё проекты</div><h2>Другие проекты</h2></div><div class="sec-foot" style="margin:0"><a class="link" href="06_проекты.html">Все проекты</a></div></div>
+      <div class="more">
+        <a class="pcard" href="02_проект.html"><div class="pc-media"><div class="photo-ph"><span>Фото проекта</span></div><div class="nc-sum"><p class="ph">Как потенциальные клиенты банка реагируют на этапы оформления услуги на сайте.</p><span class="more-b">Подробнее</span></div></div><div class="pcard-b"><span class="tag dir">Нейромаркетинг</span><h3>Нейроисследование пользовательского пути</h3><p class="nc-lead ph">Как потенциальные клиенты банка реагируют на этапы оформления услуги на сайте.</p></div></a>
+        <a class="pcard" href="14_проект_CROATLE.html"><div class="pc-media"><div class="photo-ph"><span>Фото проекта</span></div><div class="nc-sum"><p>Оценка подвижности суставов конечностей по видео с обычной веб-камеры: компьютерное зрение измеряет углы и амплитуду движений при стандартизированных упражнениях и показывает динамику восстановления. Исследовательский прототип.</p><span class="more-b">Подробнее</span></div></div><div class="pcard-b"><span class="tag dir">Реабилитация</span><h3>CROATLE</h3><p class="nc-lead">Оценка подвижности суставов конечностей по видео с обычной веб-камеры: компьютерное зрение измеряет углы и амплитуду движений при стандартизированных упражнениях и показывает динамику восстановления. Исследовательский прототип.</p></div></a>
+        <a class="pcard" href="02_проект.html"><div class="pc-media"><div class="photo-ph"><span>Фото проекта</span></div><div class="nc-sum"><p class="ph">Краткое описание проекта — поле «что решает» из CMS, до 250 знаков.</p><span class="more-b">Подробнее</span></div></div><div class="pcard-b"><span class="tag dir">Нейродиагностика и мониторинг</span><h3>Портативная ЭЭГ-гарнитура в виде наушников-вкладышей</h3><p class="nc-lead ph">Краткое описание проекта — поле «что решает» из CMS.</p></div></a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer id="kontakty">
+  <div class="wrap">
+    <div class="ft">
+      <div>
+        <a class="logo" href="01_главная.html"><span class="logo-samsmu">логотип<br>СамГМУ</span><span class="logo-name">НИИ нейронаук<small>СамГМУ Минздрава России</small></span></a>
+        <p style="margin-top:20px">Научно-исследовательский институт нейронаук ФГБОУ ВО СамГМУ Минздрава России</p><p class="ft-note">НИИ не оказывает медицинскую помощь. Запись на приём — в <a href="https://clinica.samsmu.ru/" target="_blank" rel="noopener">Клиниках СамГМУ</a>.</p>
+      </div>
+      <div><h4>Разделы</h4><ul><li><a href="01_главная.html">Главная</a></li><li><a href="01_главная.html#napravleniya">Направления</a></li><li><a href="01_главная.html#o-centre">Наш подход</a></li><li><a href="01_главная.html#proekty">Проекты</a></li><li><a href="01_главная.html#o-nii">О НИИ</a></li><li><a href="11_команда.html">Команда</a></li><li><a href="10_новости.html">Новости</a></li><li><a href="#kontakty">Контакты</a></li></ul></div>
+      <div><h4>Каналы</h4><div class="chs" style="flex-wrap:wrap"><span class="chi">TG</span><span class="chi">MAX</span><a class="chi" href="https://vk.com/nsri_samsmu" target="_blank" rel="noopener">VK</a><span class="chi">Дз</span><span class="chi">ЯП</span><span class="chi">RT</span></div></div>
+      <div><h4>Контакты</h4><ul><li>e.p.bubnova@samsmu.ru</li><li>+7 (846) 374-10-04 доб. 4132</li><li>443079, Самара, ул. Гагарина, 18</li><li><a href="https://vk.com/nsri_samsmu" target="_blank" rel="noopener">vk.com/nsri_samsmu</a></li></ul></div>
+    </div>
+    <div class="ft-bottom"><span>© ФГБОУ ВО СамГМУ Минздрава России</span><span class="ph">Политика обработки данных — ссылка после заключения юриста</span></div>
+  </div>
+</footer>
+<script src="nav.js"></script>
+</body>
+</html>

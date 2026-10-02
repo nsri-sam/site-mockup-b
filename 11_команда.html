@@ -1,0 +1,268 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Команда — макет шага 2, направление Б</title>
+<link rel="stylesheet" href="b.css">
+<style>
+.crumbs { font-size: 14px; color: var(--muted); padding: 24px 0 0; }
+.crumbs a { color: var(--accent); font-weight: 600; }
+.crumbs i { font-style: normal; margin: 0 8px; color: var(--line); }
+.lhead { padding: 40px 0 40px; display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: end; }
+.lhead h1 { font-size: 52px; }
+.lhead p { font-size: 18px; color: var(--muted); }
+
+.team-photo { margin: 0; }
+.team-photo img { width: 100%; aspect-ratio: 3/2; object-fit: cover; border-radius: var(--r); display: block; }
+.team-photo figcaption { font-size: 14px; color: var(--muted); margin-top: 12px; display: inline-block; }
+
+.tblock { padding: 80px 0 0; }
+.tblock:last-of-type, .tlast { padding-bottom: 96px; }
+.tblock h2 { font-size: 34px; margin-bottom: 32px; }
+
+.lead-card { display: grid; grid-template-columns: 320px 1fr; gap: 48px; align-items: start; border-top: 2px solid var(--text); padding-top: 32px; }
+.lead-card .photo-ph { aspect-ratio: 4/5; border-radius: var(--r); }
+.lead-card h3 { font-size: 28px; line-height: 1.25; margin-bottom: 8px; }
+.lead-card .pos { font-size: 17px; color: var(--muted); margin-bottom: 24px; }
+.lead-card .bio { font-size: 17px; max-width: 40em; margin-bottom: 24px; }
+.lead-card .areas { display: flex; gap: 8px; flex-wrap: wrap; }
+
+.lbl { font-size: 13px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin-bottom: 10px; }
+.lab { border-top: 2px solid var(--text); }
+.lab + .lab { margin-top: 0; }
+.lab-d summary { list-style: none; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 24px; padding: 28px 0; }
+.lab-d summary::-webkit-details-marker { display: none; }
+.lab-d summary h3 { font-size: 26px; line-height: 1.25; color: var(--text); }
+.lab-d summary:hover h3 { color: var(--accent); }
+.lab-t { flex: none; width: 40px; height: 40px; border: 1.5px solid var(--line); border-radius: 50%; position: relative; }
+.lab-t::before, .lab-t::after { content: ""; position: absolute; left: 50%; top: 50%; width: 14px; height: 2px; background: var(--accent); transform: translate(-50%, -50%); }
+.lab-t::after { transform: translate(-50%, -50%) rotate(90deg); }
+.lab-d[open] .lab-t::after { display: none; }
+.lab-in { display: grid; grid-template-columns: 1.2fr 1fr; gap: 48px; padding-bottom: 32px; }
+.lab-about p { font-size: 17px; margin-bottom: 20px; max-width: 36em; }
+.meth { list-style: none; display: grid; gap: 6px; font-size: 15px; color: var(--muted); }
+.meth li { padding-left: 16px; position: relative; }
+.meth li::before { content: ""; position: absolute; left: 0; top: .7em; width: 8px; height: 2px; background: var(--mark); }
+.lab-head { display: grid; grid-template-columns: 160px 1fr; gap: 24px; align-items: start; background: var(--band); padding: 24px; border-radius: var(--r); }
+.lab-head .photo-ph { aspect-ratio: 4/5; border-radius: var(--r); }
+.lab-head b { display: block; font-size: 20px; line-height: 1.3; margin-bottom: 8px; }
+.lab-head p { font-size: 14px; color: var(--muted); margin-bottom: 12px; }
+.lab-head a { font-size: 15px; font-weight: 600; color: var(--accent); }
+.lab-sl { margin-top: 8px; }
+.lab .people { border-top: 0; padding-top: 8px; padding-bottom: 48px; }
+
+.prof { display: grid; grid-template-columns: 220px 1fr; gap: 48px; border-top: 2px solid var(--text); padding-top: 32px; }
+.prof .photo-ph { aspect-ratio: 4/5; border-radius: var(--r); }
+.prof h3 { font-size: 26px; margin-bottom: 8px; }
+.prof .pos { font-size: 17px; color: var(--muted); margin-bottom: 20px; max-width: 40em; }
+.prof details summary { list-style: none; cursor: pointer; display: inline-flex; align-items: center; gap: 10px; font-weight: 700; color: var(--accent); }
+.prof details summary::-webkit-details-marker { display: none; }
+.prof details summary::after { content: "+"; font-size: 20px; line-height: 1; }
+.prof details[open] summary::after { content: "−"; }
+.prof details ul { list-style: none; display: grid; gap: 8px; font-size: 15px; margin-top: 16px; max-width: 46em; }
+.prof details li { padding-left: 16px; position: relative; }
+.prof details li::before { content: ""; position: absolute; left: 0; top: .7em; width: 8px; height: 2px; background: var(--mark); }
+
+.staff-h { display: flex; justify-content: space-between; align-items: baseline; gap: 24px; margin-bottom: 32px; }
+.staff-h h2 { margin-bottom: 0; }
+.people { display: grid; grid-template-columns: repeat(4, 1fr); gap: 48px 24px; border-top: 2px solid var(--text); padding-top: 32px; }
+.person .photo-ph { aspect-ratio: 4/5; border-radius: var(--r); margin-bottom: 16px; }
+.person h3 { font-size: 18px; line-height: 1.35; margin-bottom: 6px; }
+.person p { font-size: 15px; line-height: 1.45; color: var(--muted); }
+
+.cta-band { background: var(--text); color: #fff; padding: 64px 0; }
+.cta-band .in { display: flex; justify-content: space-between; align-items: center; gap: 48px; }
+.cta-band h2 { color: #fff; font-size: 34px; }
+.cta-band p { color: var(--foot-text); margin-top: 12px; font-size: 17px; }
+.cta-band .btn { background: #fff; color: var(--accent); }
+
+.spec { padding: 56px 0 72px; border-top: 2px dashed var(--line); }
+.spec h2 { font-size: 28px; margin-bottom: 8px; }
+.spec > .wrap > p { color: var(--muted); font-size: 16px; margin-bottom: 32px; max-width: 46em; }
+.spec-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.spec-card { border: 1px solid var(--line); border-radius: var(--r); padding: 24px; background: #fff; }
+.spec-card h3 { font-size: 18px; margin-bottom: 12px; }
+.spec-card ul { list-style: none; display: grid; gap: 8px; font-size: 14px; }
+.spec-card li { padding-left: 16px; position: relative; }
+.spec-card li::before { content: ""; position: absolute; left: 0; top: .65em; width: 8px; height: 2px; background: var(--mark); }
+
+@media (max-width: 767px) {
+  .crumbs { font-size: 13px; padding-top: 16px; }
+  .lhead { grid-template-columns: 1fr; gap: 12px; padding: 24px 0 28px; }
+  .lhead h1 { font-size: 32px; }
+  .lhead p { font-size: 16px; }
+  .team-photo figcaption { font-size: 13px; }
+  .tblock { padding-top: 48px; }
+  .tblock:last-of-type, .tlast { padding-bottom: 56px; }
+  .tblock h2 { font-size: 24px; margin-bottom: 20px; }
+  .lead-card { grid-template-columns: 1fr; gap: 20px; padding-top: 24px; }
+  .lead-card .photo-ph { max-width: 240px; }
+  .lead-card h3 { font-size: 22px; }
+  .lead-card .pos, .lead-card .bio { font-size: 16px; }
+  .lab-d summary { padding: 20px 0; }
+  .lab-d summary h3 { font-size: 19px; }
+  .lab-t { width: 32px; height: 32px; }
+  .lab-in { grid-template-columns: 1fr; gap: 20px; padding-bottom: 20px; }
+  .lab-about p { font-size: 15px; }
+  .lab-head { grid-template-columns: 96px 1fr; gap: 16px; padding: 16px; }
+  .lab-head b { font-size: 17px; }
+  .lab-head p { font-size: 13px; }
+  .lab .people { padding-bottom: 28px; }
+  .prof { grid-template-columns: 1fr; gap: 20px; padding-top: 24px; }
+  .prof .photo-ph { max-width: 200px; }
+  .prof h3 { font-size: 22px; }
+  .prof .pos { font-size: 15px; }
+  .staff-h { flex-direction: column; gap: 8px; margin-bottom: 20px; }
+  .people { grid-template-columns: 1fr 1fr; gap: 28px 16px; padding-top: 24px; }
+  .person .photo-ph { margin-bottom: 10px; }
+  .person h3 { font-size: 15px; }
+  .person p { font-size: 13px; }
+  .cta-band { padding: 48px 0; }
+  .cta-band .in { flex-direction: column; align-items: stretch; gap: 24px; }
+  .cta-band h2 { font-size: 26px; }
+  .spec { padding: 36px 0 48px; }
+  .spec-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body data-source="Страница «Команда»">
+<a class="skip" href="#main">Перейти к содержанию</a>
+<div class="mock">МАКЕТ · шаг 2 · страница «Команда» · пунктирная рамка — плейсхолдер текста, не публиковать · серые поля — места под портреты</div>
+
+<header>
+  <div class="wrap hd">
+    <a class="logo" href="01_главная.html"><span class="logo-samsmu">логотип<br>СамГМУ</span><span class="logo-name">НИИ нейронаук<small>СамГМУ Минздрава России</small></span></a>
+    <nav id="menu" aria-label="Главное меню"><a href="01_главная.html">Главная</a><a href="01_главная.html#napravleniya">Направления</a><a href="06_проекты.html">Проекты</a><div class="has-sub"><a href="01_главная.html#o-nii" class="sub-t on">О НИИ</a><div class="nav-sub" aria-label="О НИИ"><a href="01_главная.html#o-centre">Наш подход</a><a href="01_главная.html#o-nii">История НИИ</a><a href="12_структура.html">Структура НИИ</a><a href="11_команда.html" class="on" aria-current="page">Команда</a></div></div><a href="10_новости.html">Новости</a><a href="#kontakty">Контакты</a><a class="btn nav-cta" href="01_главная.html#obsudit-nir">Обсудить исследование</a></nav>
+    <div class="hd-right">
+      <div class="chs"><span class="chi">TG</span><span class="chi">MAX</span><a class="chi" href="https://vk.com/nsri_samsmu" target="_blank" rel="noopener">VK</a><span class="chi">Дз</span></div>
+      <a class="btn btn-hd" href="01_главная.html#obsudit-nir">Обсудить</a>
+      <button class="burger" type="button" aria-label="Открыть меню" aria-controls="menu" aria-expanded="false"><i></i></button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+  <div class="wrap">
+    <div class="crumbs"><a href="01_главная.html">Главная</a><i>/</i><span>Команда</span></div>
+    <div class="lhead">
+      <h1>Команда НИИ</h1>
+      <p class="ph">Нейрофизиологи, врачи, инженеры и аналитики данных ведут исследование от протокола до прототипа.</p>
+    </div>
+    <figure class="team-photo">
+      <img src="img/команда_НИИ_2400.jpg" alt="Коллектив НИИ нейронаук СамГМУ">
+      <figcaption class="ph">Коллектив НИИ нейронаук СамГМУ · подпись и год съёмки — уточнить</figcaption>
+    </figure>
+  </div>
+
+  <section class="tblock" aria-labelledby="h-lead">
+    <div class="wrap">
+      <h2 id="h-lead">Руководство</h2>
+      <article class="lead-card">
+        <div class="photo-ph"><span>Фото сотрудника<br>портрет 4:5</span></div>
+        <div>
+          <h3 class="ph">Фамилия Имя Отчество</h3>
+          <p class="pos ph">Директор НИИ нейронаук, д-р мед. наук</p>
+          <p class="bio ph">Краткая справка, 2–3 предложения: специализация, ключевые направления исследований, опыт. Текст — от сотрудника, согласует руководитель НИИ.</p>
+          <div class="areas"><span class="tag">нейрофизиология</span><span class="tag">ЭЭГ</span><span class="tag">сомнология</span></div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="tblock" aria-labelledby="h-staff">
+    <div class="wrap">
+      <div class="staff-h"><h2 id="h-staff">Сотрудники</h2><a class="link" href="12_структура.html">Лаборатории и руководители</a></div>
+      <div class="people">
+        <article class="person"><div class="photo-ph"><span>Фото сотрудника<br>портрет 4:5</span></div><h3 class="ph">Фамилия Имя Отчество</h3><p class="ph">Заместитель директора по научной работе, д-р мед. наук</p></article>
+        <article class="person"><div class="photo-ph"><span>Фото сотрудника<br>портрет 4:5</span></div><h3 class="ph">Фамилия Имя Отчество</h3><p class="ph">Ведущий научный сотрудник, д-р биол. наук</p></article>
+        <article class="person"><div class="photo-ph"><span>Фото сотрудника<br>портрет 4:5</span></div><h3 class="ph">Фамилия Имя Отчество</h3><p class="ph">Старший научный сотрудник, канд. мед. наук</p></article>
+        <article class="person"><div class="photo-ph"><span>Фото сотрудника<br>портрет 4:5</span></div><h3 class="ph">Фамилия Имя Отчество</h3><p class="ph">Научный сотрудник, врач-невролог</p></article>
+        <article class="person"><div class="photo-ph"><span>Фото сотрудника<br>портрет 4:5</span></div><h3 class="ph">Фамилия Имя Отчество</h3><p class="ph">Научный сотрудник, специалист по моделированию</p></article>
+        <article class="person"><div class="photo-ph"><span>Фото сотрудника<br>портрет 4:5</span></div><h3 class="ph">Фамилия Имя Отчество</h3><p class="ph">Научный сотрудник, специалист по VR</p></article>
+        <article class="person"><div class="photo-ph"><span>Фото сотрудника<br>портрет 4:5</span></div><h3 class="ph">Фамилия Имя Отчество</h3><p class="ph">Научный сотрудник, нейропсихолог</p></article>
+        <article class="person"><div class="photo-ph"><span>Фото сотрудника<br>портрет 4:5</span></div><h3 class="ph">Фамилия Имя Отчество</h3><p class="ph">Младший научный сотрудник, аналитик данных</p></article>
+        <article class="person"><div class="photo-ph"><span>Фото сотрудника<br>портрет 4:5</span></div><h3 class="ph">Фамилия Имя Отчество</h3><p class="ph">Младший научный сотрудник, программист</p></article>
+        <article class="person"><div class="photo-ph"><span>Фото сотрудника<br>портрет 4:5</span></div><h3 class="ph">Фамилия Имя Отчество</h3><p class="ph">Инженер-исследователь</p></article>
+        <article class="person"><div class="photo-ph"><span>Фото сотрудника<br>портрет 4:5</span></div><h3 class="ph">Фамилия Имя Отчество</h3><p class="ph">Инженер, специалист по айтрекингу</p></article>
+        <article class="person"><div class="photo-ph"><span>Фото сотрудника<br>портрет 4:5</span></div><h3 class="ph">Фамилия Имя Отчество</h3><p class="ph">Лаборант-исследователь — длинная должность в две строки для проверки переноса</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="tblock tlast" aria-labelledby="h-prof">
+    <div class="wrap">
+      <h2 id="h-prof">Приглашённый профессор</h2>
+      <article class="prof">
+        <div class="photo-ph"><span>Фото сотрудника<br>портрет 4:5</span></div>
+        <div>
+          <h3>D. Jude Hemanth (Д. Джуд Хемант)</h3>
+          <p class="pos">Профессор и заведующий кафедрой электроники и коммуникационных технологий, Институт технологий и наук Каруньи, Коимбатур, Тамилнад, Индия</p>
+          <details><summary>Подробнее</summary><ul><li>Степень PhD (анализ медицинских изображений с использованием методов мягких вычислений)</li><li>h-индекс — 41</li><li>Заместитель редактора журналов, индексируемых SCIE: IEEE Journal of Biomedical and Health Informatics, IEEE Transactions on Intelligent Transportation Systems, Earth Science Informatics (Springer), IET Image Processing</li><li>Международный эксперт по оценке исследовательских грантов в Национальном научном фонде Швейцарии и Национальном научном центре Польши</li><li>Научный сотрудник лабораторий CI2S (Аргентина), LAPISCO (Бразилия), RIADI (Тунис), исследовательского центра прикладного интеллекта Университета Крайовы (Румыния), группы цифрового здравоохранения Университета Вальядолида (Испания)</li><li>Входит в список «Топ 2 % ведущих учёных мира» Стэнфордского университета (2021–2025)</li><li>Научные интересы: вычислительный интеллект, обработка биомедицинских изображений, методы оптимизации, системы поддержки принятия решений, машинное обучение</li></ul></details>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="cta-band">
+    <div class="wrap in">
+      <div><h2>Нужна консультация специалиста?</h2><p class="ph">Опишите задачу — подберём специалистов и предложим, как её проверить.</p></div>
+      <a class="btn" href="01_главная.html#obsudit-nir">Обсудить исследование</a>
+    </div>
+  </section>
+
+  <!-- Спецификация шаблона: только для макета -->
+  <section class="spec" aria-label="Спецификация шаблона для разработчика">
+    <div class="wrap">
+      <div class="sec-num">Только в макете</div>
+      <h2>Спецификация страницы «Команда»</h2>
+      <p>Страница собирается из CMS: общее фото и карточки сотрудников. Фото и ФИО публикуются только с письменного согласия сотрудника (ст. 152.1 ГК РФ, 152-ФЗ); без согласия карточка не выводится.</p>
+      <div class="spec-grid">
+        <div class="spec-card">
+          <h3>Руководство</h3>
+          <ul>
+            <li>Карточка директора: портрет 4:5, ФИО, должность и степень, справка до 400 знаков, до 5 тегов из словаря ТЕГ-1.</li>
+            <li>Если в CMS отмечено несколько руководителей, они идут друг под другом.</li>
+          </ul>
+        </div>
+        <div class="spec-card">
+          <h3>Сотрудники</h3>
+          <ul>
+            <li>Описание лабораторий и их руководителей — на отдельной странице «Структура НИИ» (раздел «О НИИ»); здесь только карточки людей.</li>
+            <li>Приглашённый профессор — отдельный блок; полная справка скрыта под «Подробнее».</li>
+            <li>Поля сотрудника: портрет 4:5, ФИО, должность, учёная степень (необязательно).</li>
+            <li>Порядок — полем «порядок» (CMS-10); по умолчанию по должности, затем по алфавиту.</li>
+            <li>Сетка 4 колонки, на мобильном 2. Длинные ФИО и должность переносятся, ряд не ломается.</li>
+            <li>Нет портрета — нейтральная серая заглушка без силуэта.</li>
+          </ul>
+        </div>
+        <div class="spec-card">
+          <h3>Фото</h3>
+          <ul>
+            <li>Общее фото — 3:2, от 2400 px по ширине, сжатие для веба до ~500 КБ.</li>
+            <li>Портреты — одинаковый фон и свет, по грудь, от 1200 px по короткой стороне, без генеративной обработки.</li>
+            <li>Alt общего фото — «Коллектив НИИ нейронаук СамГМУ»; alt портрета — ФИО сотрудника.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer id="kontakty">
+  <div class="wrap">
+    <div class="ft">
+      <div>
+        <a class="logo" href="01_главная.html"><span class="logo-samsmu">логотип<br>СамГМУ</span><span class="logo-name">НИИ нейронаук<small>СамГМУ Минздрава России</small></span></a>
+        <p style="margin-top:20px">Научно-исследовательский институт нейронаук ФГБОУ ВО СамГМУ Минздрава России</p><p class="ft-note">НИИ не оказывает медицинскую помощь. Запись на приём — в <a href="https://clinica.samsmu.ru/" target="_blank" rel="noopener">Клиниках СамГМУ</a>.</p>
+      </div>
+      <div><h4>Разделы</h4><ul><li><a href="01_главная.html">Главная</a></li><li><a href="01_главная.html#napravleniya">Направления</a></li><li><a href="01_главная.html#o-centre">Наш подход</a></li><li><a href="06_проекты.html">Проекты</a></li><li><a href="01_главная.html#o-nii">О НИИ</a></li><li><a href="11_команда.html">Команда</a></li><li><a href="10_новости.html">Новости</a></li><li><a href="#kontakty">Контакты</a></li></ul></div>
+      <div><h4>Каналы</h4><div class="chs" style="flex-wrap:wrap"><span class="chi">TG</span><span class="chi">MAX</span><a class="chi" href="https://vk.com/nsri_samsmu" target="_blank" rel="noopener">VK</a><span class="chi">Дз</span><span class="chi">ЯП</span><span class="chi">RT</span></div></div>
+      <div><h4>Контакты</h4><ul><li>e.p.bubnova@samsmu.ru</li><li>+7 (846) 374-10-04 доб. 4132</li><li>443079, Самара, ул. Гагарина, 18</li><li><a href="https://vk.com/nsri_samsmu" target="_blank" rel="noopener">vk.com/nsri_samsmu</a></li></ul></div>
+    </div>
+    <div class="ft-bottom"><span>© ФГБОУ ВО СамГМУ Минздрава России</span><span class="ph">Политика обработки данных — ссылка после заключения юриста</span></div>
+  </div>
+</footer>
+<script src="nav.js"></script>
+</body>
+</html>

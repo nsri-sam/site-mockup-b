@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Все проекты — макет шага 2, направление Б</title>
+<link rel="stylesheet" href="b.css">
+<style>
+.crumbs { font-size: 14px; color: var(--muted); padding: 24px 0 0; }
+.crumbs a { color: var(--accent); font-weight: 600; }
+.crumbs i { font-style: normal; margin: 0 8px; color: var(--line); }
+.lhead { padding: 40px 0 40px; display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: end; }
+.lhead h1 { font-size: 52px; }
+.lhead p { font-size: 18px; color: var(--muted); }
+
+.fbar { position: sticky; top: 80px; z-index: 3; background: rgba(255,255,255,.97); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.fbar .wrap { display: flex; align-items: center; justify-content: space-between; gap: 24px; padding-top: 16px; padding-bottom: 16px; }
+.flt { display: flex; gap: 8px; flex-wrap: wrap; }
+.flt-l { font-size: 12px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); margin-right: 8px; align-self: center; }
+.flt button { font-family: inherit; font-size: 15px; font-weight: 700; line-height: 1.2; color: var(--text); background: #fff; border: 1.5px solid var(--line); border-radius: var(--r); padding: 10px 14px; cursor: pointer; display: inline-flex; gap: 8px; align-items: center; white-space: nowrap; transition: border-color .2s, background .2s; }
+.flt button b { font-size: 12px; font-weight: 800; color: var(--muted); }
+.flt button:hover { border-color: var(--accent); }
+.flt button:focus-visible { outline: 3px solid var(--mark); outline-offset: 2px; }
+.flt button[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: #fff; }
+.flt button[aria-pressed="true"] b { color: #E3D6EF; }
+.count { font-size: 14px; color: var(--muted); white-space: nowrap; }
+.count b { color: var(--text); }
+
+.list { padding: 48px 0 96px; }
+.grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.grid .pcard[hidden] { display: none; }
+.empty { border: 1.5px dashed var(--field); border-radius: var(--r); padding: 48px; text-align: center; display: grid; gap: 16px; justify-items: center; }
+.empty[hidden] { display: none; }
+.empty h2 { font-size: 26px; }
+.empty p { color: var(--muted); font-size: 16px; max-width: 34em; }
+
+.cta-band { background: var(--text); color: #fff; padding: 64px 0; }
+.cta-band .in { display: flex; justify-content: space-between; align-items: center; gap: 48px; }
+.cta-band h2 { color: #fff; font-size: 34px; }
+.cta-band p { color: var(--foot-text); margin-top: 12px; font-size: 17px; }
+.cta-band .btn { background: #fff; color: var(--accent); }
+
+.spec { padding: 56px 0 72px; border-top: 2px dashed var(--line); }
+.spec h2 { font-size: 28px; margin-bottom: 8px; }
+.spec > .wrap > p { color: var(--muted); font-size: 16px; margin-bottom: 32px; max-width: 46em; }
+.spec-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.spec-card { border: 1px solid var(--line); border-radius: var(--r); padding: 24px; background: #fff; }
+.spec-card h3 { font-size: 18px; margin-bottom: 12px; }
+.spec-card ul { list-style: none; display: grid; gap: 8px; font-size: 14px; }
+.spec-card li { padding-left: 16px; position: relative; }
+.spec-card li::before { content: ""; position: absolute; left: 0; top: .65em; width: 8px; height: 2px; background: var(--mark); }
+
+@media (max-width: 767px) {
+  .crumbs { font-size: 13px; padding-top: 16px; }
+  .lhead { grid-template-columns: 1fr; gap: 12px; padding: 24px 0 28px; }
+  .lhead h1 { font-size: 32px; }
+  .lhead p { font-size: 16px; }
+  .fbar { top: 64px; }
+  .fbar .wrap { flex-direction: column; align-items: stretch; gap: 10px; padding-top: 12px; padding-bottom: 12px; }
+  .flt { flex-wrap: wrap; }
+  .flt-l { display: none; }
+  .flt button { padding: 10px 12px; font-size: 14px; min-height: 44px; }
+  .list { padding: 28px 0 56px; }
+  .grid { grid-template-columns: 1fr; gap: 16px; }
+  .empty { padding: 28px 20px; }
+  .cta-band { padding: 48px 0; }
+  .cta-band .in { flex-direction: column; align-items: stretch; gap: 24px; }
+  .cta-band h2 { font-size: 26px; }
+  .spec { padding: 36px 0 48px; }
+  .spec-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Перейти к содержанию</a>
+<div class="mock">МАКЕТ · шаг 2 · все проекты с фильтром по направлениям · пунктирная рамка — плейсхолдер текста, не публиковать · серые поля — места под реальные фото</div>
+
+<header>
+  <div class="wrap hd">
+    <a class="logo" href="01_главная.html"><span class="logo-samsmu">логотип<br>СамГМУ</span><span class="logo-name">НИИ нейронаук<small>СамГМУ Минздрава России</small></span></a>
+    <nav id="menu" aria-label="Главное меню"><a href="01_главная.html">Главная</a><a href="01_главная.html#napravleniya">Направления</a><a href="06_проекты.html" class="on" aria-current="page">Проекты</a><div class="has-sub"><a href="01_главная.html#o-nii" class="sub-t">О НИИ</a><div class="nav-sub" aria-label="О НИИ"><a href="01_главная.html#o-centre">Наш подход</a><a href="01_главная.html#o-nii">История НИИ</a><a href="12_структура.html">Структура НИИ</a><a href="11_команда.html">Команда</a></div></div><a href="10_новости.html">Новости</a><a href="#kontakty">Контакты</a><a class="btn nav-cta" href="01_главная.html#obsudit-nir">Обсудить исследование</a></nav>
+    <div class="hd-right">
+      <div class="chs"><span class="chi">TG</span><span class="chi">MAX</span><a class="chi" href="https://vk.com/nsri_samsmu" target="_blank" rel="noopener">VK</a><span class="chi">Дз</span></div>
+      <a class="btn btn-hd" href="01_главная.html#obsudit-nir">Обсудить</a>
+      <button class="burger" type="button" aria-label="Открыть меню" aria-controls="menu" aria-expanded="false"><i></i></button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+  <div class="wrap">
+    <div class="crumbs"><a href="01_главная.html">Главная</a><i>/</i><span>Проекты</span></div>
+    <div class="lhead">
+      <h1>Проекты</h1>
+      <p class="ph">Прикладные исследования и разработки НИИ в трёх направлениях. Выберите направление, чтобы увидеть только его проекты.</p>
+    </div>
+  </div>
+
+  <div class="fbar">
+    <div class="wrap">
+      <div class="flt" role="group" aria-label="Фильтр по направлению">
+        <span class="flt-l">Направление</span>
+        <button type="button" data-f="all" aria-pressed="true">Все <b>6</b></button>
+        <button type="button" data-f="neirodiagnostika" aria-pressed="false">Нейродиагностика и мониторинг <b>3</b></button>
+        <button type="button" data-f="reabilitaciya" aria-pressed="false">Реабилитация <b>2</b></button>
+        <button type="button" data-f="neiromarketing" aria-pressed="false">Нейромаркетинг <b>1</b></button>
+      </div>
+      <div class="count" aria-live="polite">Показано: <b id="cnt">6</b> из 6</div>
+    </div>
+  </div>
+
+  <section class="list" aria-label="Список проектов">
+    <div class="wrap">
+      <div class="grid">
+        <a class="pcard" data-dir="neirodiagnostika" href="13_проект_Нейро-зеркало.html"><div class="pc-media"><div class="photo-ph"><span>Фото проекта: реальная съёмка</span></div><div class="nc-sum"><p>Разрабатываемая система для регулярного скрининга и мониторинга когнитивного состояния людей 60 лет и старше и подбора когнитивных тренировок. Диагноз не ставит: результаты интерпретирует специалист.</p><span class="more-b">Подробнее</span></div></div><div class="pcard-b">
+          <span class="tag dir">Нейродиагностика и мониторинг</span><h3>«Нейро-зеркало»</h3><p class="nc-lead">Разрабатываемая система для регулярного скрининга и мониторинга когнитивного состояния людей 60 лет и старше и подбора когнитивных тренировок. Диагноз не ставит: результаты интерпретирует специалист.</p></div></a>
+        <a class="pcard" data-dir="reabilitaciya" href="14_проект_CROATLE.html"><div class="pc-media"><div class="photo-ph"><span>Фото проекта: реальная съёмка</span></div><div class="nc-sum"><p>Оценка подвижности суставов конечностей по видео с обычной веб-камеры: компьютерное зрение измеряет углы и амплитуду движений при стандартизированных упражнениях и показывает динамику восстановления. Исследовательский прототип.</p><span class="more-b">Подробнее</span></div></div><div class="pcard-b">
+          <span class="tag dir">Реабилитация</span><h3>CROATLE</h3><p class="nc-lead">Оценка подвижности суставов конечностей по видео с обычной веб-камеры: компьютерное зрение измеряет углы и амплитуду движений при стандартизированных упражнениях и показывает динамику восстановления. Исследовательский прототип.</p></div></a>
+        <a class="pcard" data-dir="neiromarketing" href="02_проект.html"><div class="pc-media"><div class="photo-ph"><span>Фото проекта: реальная съёмка<br>(без логотипов заказчика)</span></div><div class="nc-sum"><p class="ph">Как потенциальные клиенты банка реагируют на этапы оформления услуги на сайте — и где путь можно упростить.</p><span class="more-b">Подробнее</span></div></div><div class="pcard-b">
+          <span class="tag dir">Нейромаркетинг</span><h3>Нейроисследование пользовательского пути</h3><p class="nc-lead ph">Как потенциальные клиенты банка реагируют на этапы оформления услуги на сайте.</p></div></a>
+        <a class="pcard" data-dir="reabilitaciya" href="02_проект.html"><div class="pc-media"><div class="photo-ph"><span>Фото проекта: реальная съёмка</span></div><div class="nc-sum"><p class="ph">Разработка комплекса для реабилитации методами эрготерапии в виртуальной реальности с тактильной обратной связью. Медицинское изделие в разработке.</p><span class="more-b">Подробнее</span></div></div><div class="pcard-b">
+          <span class="tag dir">Реабилитация</span><h3>Социально-бытовая реабилитация с эрготерапией в VR-окружении</h3><p class="nc-lead ph">Разработка комплекса для реабилитации методами эрготерапии в виртуальной реальности с тактильной обратной связью. Медицинское изделие в разработке.</p></div></a>
+        <a class="pcard" data-dir="neirodiagnostika" href="02_проект.html"><div class="pc-media"><div class="photo-ph"><span>Фото проекта: реальная съёмка</span></div><div class="nc-sum"><p class="ph">Исследование окуломоторных показателей и зрачковой реакции. Медицинское изделие в разработке, не зарегистрировано.</p><span class="more-b">Подробнее</span></div></div><div class="pcard-b">
+          <span class="tag dir">Нейродиагностика и мониторинг</span><h3>Аппаратно-программный комплекс для ранней диагностики травматического повреждения головного мозга (разработка)</h3><p class="nc-lead ph">Исследование окуломоторных показателей и зрачковой реакции. Медицинское изделие в разработке, не зарегистрировано.</p></div></a>
+        <a class="pcard" data-dir="neirodiagnostika" href="02_проект.html"><div class="pc-media"><div class="photo-ph"><span>Фото проекта: реальная съёмка</span></div><div class="nc-sum"><p class="ph">Малоканальная ЭЭГ-гарнитура в виде наушников-вкладышей и мобильное приложение для оценки ночного сна.</p><span class="more-b">Подробнее</span></div></div><div class="pcard-b">
+          <span class="tag dir">Нейродиагностика и мониторинг</span><h3>Портативная ЭЭГ-гарнитура в виде наушников-вкладышей</h3><p class="nc-lead ph">ЭЭГ-гарнитура-вкладыш и мобильное приложение для оценки ночного сна.</p></div></a>
+      </div>
+      <div class="empty" hidden>
+        <h2>В этом направлении пока нет опубликованных проектов</h2>
+        <p>Посмотрите проекты других направлений или опишите свою задачу — предложим, как её проверить.</p>
+        <button type="button" class="btn-sec" data-f="all">Показать все проекты</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-band">
+    <div class="wrap in">
+      <div><h2>Не нашли похожий проект?</h2><p class="ph">Опишите задачу своими словами — предложим, как её проверить.</p></div>
+      <a class="btn" href="01_главная.html#obsudit-nir">Обсудить исследование</a>
+    </div>
+  </section>
+
+  <!-- Спецификация шаблона: только для макета -->
+  <section class="spec" aria-label="Спецификация шаблона для разработчика">
+    <div class="wrap">
+      <div class="sec-num">Только в макете</div>
+      <h2>Спецификация страницы «Все проекты»</h2>
+      <p>Список собирается из CMS автоматически: все опубликованные проекты; «Заморожен» и «Требуется уточнение» не выводятся (ПРТ-7). Сначала флагманы в ручном порядке, затем остальные — по дате обновления.</p>
+      <div class="spec-grid">
+        <div class="spec-card">
+          <h3>Фильтр по направлениям</h3>
+          <ul>
+            <li>Кнопки: «Все» и три направления. Выбрана одна; выбранная залита акцентом.</li>
+            <li>Показываются только карточки выбранного направления; число в кнопке — сколько их.</li>
+            <li>Выбор сохраняется в адресе (<code>#neiromarketing</code>) — на отфильтрованный список можно сослаться со страницы направления или из хлебных крошек.</li>
+            <li>Фильтр работает без перезагрузки; строка «Показано: N из M» озвучивается экранным диктором.</li>
+            <li>На десктопе панель фильтра прилипает под шапкой; на мобильном кнопки переносятся на новую строку.</li>
+          </ul>
+        </div>
+        <div class="spec-card">
+          <h3>Карточка проекта</h3>
+          <ul>
+            <li>На карточке: фото 16:9, плашка направления, название. Статус, этап и год — только на странице проекта.</li>
+            <li>Наведение и фокус с клавиатуры: поверх фото — краткое описание (поле «что решает», до 250 знаков, обрезка на 5-й строке) и кнопка «Подробнее».</li>
+            <li>Ссылка — вся карточка, ведёт на страницу проекта.</li>
+            <li>Описание всегда стоит под названием: 2 строки на десктопе, 3 на тач-экранах; при наведении — целиком поверх фото.</li>
+          </ul>
+        </div>
+        <div class="spec-card">
+          <h3>Состояния</h3>
+          <ul>
+            <li>В направлении нет проектов — блок «Пока нет опубликованных проектов» с кнопкой «Показать все проекты»; кнопка направления с нулём остаётся активной.</li>
+            <li>Больше 12 проектов — кнопка «Показать ещё» под сеткой, по 9 карточек.</li>
+            <li>Фильтр по тегам — вариант на будущее (бриф, прил. И, п. 8); в этом макете не показан.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer id="kontakty">
+  <div class="wrap">
+    <div class="ft">
+      <div>
+        <a class="logo" href="01_главная.html"><span class="logo-samsmu">логотип<br>СамГМУ</span><span class="logo-name">НИИ нейронаук<small>СамГМУ Минздрава России</small></span></a>
+        <p style="margin-top:20px">Научно-исследовательский институт нейронаук ФГБОУ ВО СамГМУ Минздрава России</p><p class="ft-note">НИИ не оказывает медицинскую помощь. Запись на приём — в <a href="https://clinica.samsmu.ru/" target="_blank" rel="noopener">Клиниках СамГМУ</a>.</p>
+      </div>
+      <div><h4>Разделы</h4><ul><li><a href="01_главная.html">Главная</a></li><li><a href="01_главная.html#napravleniya">Направления</a></li><li><a href="01_главная.html#o-centre">Наш подход</a></li><li><a href="06_проекты.html">Проекты</a></li><li><a href="01_главная.html#o-nii">О НИИ</a></li><li><a href="11_команда.html">Команда</a></li><li><a href="10_новости.html">Новости</a></li><li><a href="#kontakty">Контакты</a></li></ul></div>
+      <div><h4>Каналы</h4><div class="chs" style="flex-wrap:wrap"><span class="chi">TG</span><span class="chi">MAX</span><a class="chi" href="https://vk.com/nsri_samsmu" target="_blank" rel="noopener">VK</a><span class="chi">Дз</span><span class="chi">ЯП</span><span class="chi">RT</span></div></div>
+      <div><h4>Контакты</h4><ul><li>e.p.bubnova@samsmu.ru</li><li>+7 (846) 374-10-04 доб. 4132</li><li>443079, Самара, ул. Гагарина, 18</li><li><a href="https://vk.com/nsri_samsmu" target="_blank" rel="noopener">vk.com/nsri_samsmu</a></li></ul></div>
+    </div>
+    <div class="ft-bottom"><span>© ФГБОУ ВО СамГМУ Минздрава России</span><span class="ph">Политика обработки данных — ссылка после заключения юриста</span></div>
+  </div>
+</footer>
+<script src="nav.js"></script>
+<script>
+// Макет: фильтр проектов по направлению, выбор хранится в адресе
+(function () {
+  var btns = document.querySelectorAll(".flt button");
+  var cards = document.querySelectorAll(".grid .pcard");
+  var empty = document.querySelector(".empty");
+  var cnt = document.getElementById("cnt");
+  function apply(f) {
+    var shown = 0;
+    cards.forEach(function (c) {
+      var on = f === "all" || c.dataset.dir === f;
+      c.hidden = !on;
+      if (on) shown++;
+    });
+    btns.forEach(function (b) { b.setAttribute("aria-pressed", String(b.dataset.f === f)); });
+    cnt.textContent = shown;
+    empty.hidden = shown > 0;
+  }
+  function fromHash() {
+    var h = location.hash.slice(1);
+    var ok = Array.prototype.some.call(btns, function (b) { return b.dataset.f === h; });
+    apply(ok ? h : "all");
+  }
+  document.addEventListener("click", function (e) {
+    var b = e.target.closest("[data-f]");
+    if (!b) return;
+    var f = b.dataset.f;
+    history.replaceState(null, "", f === "all" ? location.pathname : "#" + f);
+    apply(f);
+  });
+  window.addEventListener("hashchange", fromHash);
+  fromHash();
+})();
+</script>
+</body>
+</html>
