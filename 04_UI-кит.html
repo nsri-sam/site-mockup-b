@@ -23,16 +23,16 @@
 .trow { display: grid; grid-template-columns: 170px 1fr; gap: 24px; align-items: baseline; padding: 14px 0; border-bottom: 1px solid var(--line); }
 .trow small { font-size: 13px; color: var(--muted); font-weight: 600; line-height: 1.4; }
 .states { display: grid; grid-template-columns: repeat(4, auto) 1fr; gap: 16px 32px; align-items: center; justify-items: start; }
-.states .lbl { font-size: 12px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+.states .lbl { font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
 .fields { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px 32px; }
-.fields .lbl { font-size: 12px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; color: var(--mark); margin-bottom: 8px; }
+.fields .lbl { font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--mark); margin-bottom: 8px; }
 .cards { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 28px; align-items: start; }
-.cards .lbl { font-size: 12px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; color: var(--mark); margin-bottom: 8px; }
+.cards .lbl { font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--mark); margin-bottom: 8px; }
 .row { display: flex; flex-wrap: wrap; gap: 16px 28px; align-items: center; }
 .icons { display: grid; grid-template-columns: repeat(6, 1fr); gap: 16px; }
 .icons div { display: grid; justify-items: start; gap: 8px; font-size: 14px; font-weight: 600; }
 .grid-demo { display: grid; grid-template-columns: repeat(12, 1fr); gap: 24px; height: 64px; }
-.grid-demo i { background: rgba(91,42,134,.08); border-left: 1px solid rgba(91,42,134,.3); border-right: 1px solid rgba(91,42,134,.3); }
+.grid-demo i { background: rgba(0,108,180,.08); border-left: 1px solid rgba(0,108,180,.3); border-right: 1px solid rgba(0,108,180,.3); }
 .gnote { font-size: 14px; color: var(--muted); margin-top: 12px; }
 .dark { background: var(--foot); padding: 20px; border-radius: var(--r); display: flex; gap: 8px; }
 </style>
@@ -41,28 +41,25 @@
 <div class="mock">МАКЕТ · шаг 2 · мини-UI-кит · направление Б «Лабораторная строгость»</div>
 <div class="kit"><div class="wrap">
   <h1>Мини-UI-кит</h1>
-  <p>Шрифт Manrope (SIL OFL 1.1) · радиус 4 px · сетка 12 колонок · все цвета — CSS-переменные в <code>b.css</code>. Контраст посчитан по формуле WCAG 2.1.</p>
+  <p>Шрифты руководства СамГМУ: Open Sans — заголовки и кнопки, Montserrat — текст. Цвета — из того же руководства. Контраст посчитан по формуле WCAG 2.1.</p>
 
   <div class="ks"><h2>Цвета<small>Текст — не ниже 4,5:1, элементы интерфейса — не ниже 3:1</small></h2>
     <div class="sw">
-      <div class="swc"><i style="background:#1C1830"></i><div><b>Текст</b><code>#1C1830</code><em>на белом 17,2:1</em></div></div>
-      <div class="swc"><i style="background:#55506A"></i><div><b>Вторичный</b><code>#55506A</code><em>7,7:1 · на полосе 6,9:1</em></div></div>
-      <div class="swc"><i style="background:#5B2A86"></i><div><b>Акцент, CTA</b><code>#5B2A86</code><em>белый на нём 9,9:1</em></div></div>
-      <div class="swc"><i style="background:#472069"></i><div><b>Акцент hover</b><code>#472069</code><em>белый на нём 12,5:1</em></div></div>
-      <div class="swc"><i style="background:#C2185B"></i><div><b>Маркер, фокус</b><code>#C2185B</code><em>на белом 5,9:1</em></div></div>
-      <div class="swc"><i style="background:#8A8499"></i><div><b>Рамка поля</b><code>#8A8499</code><em>на белом 3,6:1</em></div></div>
-      <div class="swc"><i style="background:#B3261E"></i><div><b>Ошибка</b><code>#B3261E</code><em>6,5:1 · на #FDF1F0 5,9:1</em></div></div>
-      <div class="swc"><i style="background:#F4F1F7"></i><div><b>Полоса</b><code>#F4F1F7</code><em>фон разделов</em></div></div>
-      <div class="swc"><i style="background:#D9D3E0"></i><div><b>Линии</b><code>#D9D3E0</code><em>декор, 1,5:1</em></div></div>
-      <div class="swc"><i style="background:#1C1830;box-shadow:inset 0 -24px 0 #C9C3D3"></i><div><b>Футер</b><code>#1C1830 / #C9C3D3</code><em>10,0:1</em></div></div>
+      <div class="swc"><i style="background:#000000"></i><div><b>Текст</b><code>#000000</code><em>на белом 21:1</em></div></div>
+      <div class="swc"><i style="background:#006CB4"></i><div><b>Синий, CTA</b><code>#006CB4</code><em>белый на нём 5,5:1</em></div></div>
+      <div class="swc"><i style="background:#004E82"></i><div><b>Синий hover</b><code>#004E82</code><em>белый на нём 8,7:1</em></div></div>
+      <div class="swc"><i style="background:#3091D1"></i><div><b>Светло-синий</b><code>#3091D1</code><em>рамка поля, на белом 3,4:1</em></div></div>
+      <div class="swc"><i style="background:#EDEDED"></i><div><b>Полоса</b><code>#EDEDED</code><em>фон разделов</em></div></div>
+      <div class="swc"><i style="background:#B3261E"></i><div><b>Ошибка</b><code>#B3261E</code><em>состояние формы, не из палитры</em></div></div>
+      <div class="swc"><i style="background:#000000;box-shadow:inset 0 -24px 0 #FFFFFF"></i><div><b>Футер</b><code>#000000 / #FFFFFF</code><em>21:1</em></div></div>
     </div>
   </div>
 
   <div class="ks"><h2>Типографика<small>Десктоп / мобильный. Интерлиньяж текста 1,6</small></h2>
     <div class="type">
-      <div class="trow"><small>H1 · 56 / 30 px · 800</small><span style="font-size:56px;font-weight:800;letter-spacing:-.03em;line-height:1.08">От гипотезы — к прототипу</span></div>
-      <div class="trow"><small>H2 · 40 / 28 px · 800</small><span style="font-size:40px;font-weight:800;letter-spacing:-.02em;line-height:1.15">Направления прикладных исследований</span></div>
-      <div class="trow"><small>H3 · 24 / 20 px · 800</small><span style="font-size:24px;font-weight:800">Нейродиагностика и мониторинг</span></div>
+      <div class="trow"><small>H1 · Open Sans · 56 / 30 px · 700</small><span style="font-family:'Open Sans',sans-serif;font-size:56px;font-weight:700;letter-spacing:-.03em;line-height:1.08">От гипотезы — к прототипу</span></div>
+      <div class="trow"><small>H2 · Open Sans · 40 / 28 px · 700</small><span style="font-family:'Open Sans',sans-serif;font-size:40px;font-weight:700;letter-spacing:-.02em;line-height:1.15">Направления прикладных исследований</span></div>
+      <div class="trow"><small>H3 · Open Sans · 24 / 20 px · 700</small><span style="font-family:'Open Sans',sans-serif;font-size:24px;font-weight:700">Нейродиагностика и мониторинг</span></div>
       <div class="trow"><small>Лид · 20 / 17 px · 400</small><span style="font-size:20px;color:var(--muted)">Исследования и разработки на базе СамГМУ</span></div>
       <div class="trow"><small>Текст · 18 / 16 px · 400</small><span>Респонденты проходили этапы оформления услуги, а мы фиксировали взгляд, ЭЭГ и физиологические реакции.</span></div>
       <div class="trow"><small>Подпись · 13–15 px · 600</small><span style="font-size:14px;font-weight:600;color:var(--muted)">Этап: экспериментальная проверка гипотез · 2025</span></div>
