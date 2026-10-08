@@ -45,15 +45,27 @@
 .cyc h3 { font-size: 22px; margin-bottom: 12px; }
 .cyc p { font-size: 16px; color: var(--muted); }
 .cyc .arrow { position: absolute; top: -13px; right: -12px; width: 24px; height: 24px; background: #fff; border: 2px solid var(--text); border-radius: 50%; display: grid; place-items: center; font-size: 12px; font-weight: 700; z-index: 1; }
-.hist { display: grid; grid-template-columns: 1fr 1.4fr; gap: 64px; }
+.hist { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; }
+.hist-intro h2 { margin-bottom: 20px; }
 .hist-intro p { font-size: 18px; color: var(--muted); }
 .hist-intro p + p { margin-top: 14px; }
 .hist-intro .hist-src { font-size: 13px; margin-top: 16px; }
 .labs { margin-top: 28px; padding-top: 24px; border-top: 1px solid var(--line); }
 .labs h3 { font-size: 20px; line-height: 1.3; margin-bottom: 14px; }
-.labs ul { list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 10px 32px; font-size: 16px; }
+.labs ul { list-style: none; display: grid; grid-template-columns: 1fr; gap: 8px; font-size: 16px; }
 .labs li { padding-left: 18px; position: relative; }
 .labs li::before { content: ""; position: absolute; left: 0; top: .7em; width: 8px; height: 2px; background: var(--mark); }
+.gzd h3 { font-size: 20px; line-height: 1.3; margin-bottom: 24px; }
+.tl { list-style: none; }
+.tl li { position: relative; display: grid; grid-template-columns: 56px 1fr; gap: 0 20px; padding: 0 0 26px 36px; font-size: 16px; line-height: 1.5; }
+.tl li::before { content: ""; position: absolute; left: 0; top: 4px; width: 16px; height: 16px; border: 2px solid var(--accent); border-radius: 50%; background: var(--bg); box-sizing: border-box; }
+.tl li::after { content: ""; position: absolute; left: 7px; top: 22px; bottom: 2px; width: 2px; background: var(--line); }
+.tl li:last-child { padding-bottom: 0; }
+.tl li:last-child::after { display: none; }
+.tl li.now::before { background: var(--accent); }
+.tl-y { font-family: "Open Sans", sans-serif; font-weight: 700; font-size: 18px; line-height: 1.35; color: var(--accent); }
+.tl .more-l { display: inline-block; margin-top: 8px; font-size: 15px; font-weight: 700; color: var(--accent); border-bottom: 1.5px solid var(--mark); padding-bottom: 1px; }
+.gzd .hist-src { font-size: 13px; margin-top: 20px; }
 
 .flag { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
 .staff5 { display: grid; grid-template-columns: repeat(5, 1fr); gap: 24px; }
@@ -114,7 +126,9 @@
   .cyc b { margin-bottom: 6px; }
   .cyc h3 { font-size: 19px; margin-bottom: 6px; }
   .cyc p { font-size: 15px; }
-  .hist { grid-template-columns: 1fr; gap: 12px; }
+  .hist { grid-template-columns: 1fr; gap: 40px; }
+  .gzd h3 { font-size: 17px; margin-bottom: 18px; }
+  .tl li { grid-template-columns: 1fr; gap: 2px; padding-left: 30px; padding-bottom: 22px; }
   .hist-intro p { font-size: 16px; }
   .labs { margin-top: 20px; padding-top: 18px; }
   .labs h3 { font-size: 17px; margin-bottom: 10px; }
@@ -238,11 +252,9 @@
   <section class="block" id="o-nii">
     <div class="wrap">
       <div class="hist">
-        <div>
+        <div class="hist-intro">
           <div class="sec-num">О НИИ</div>
           <h2>История</h2>
-        </div>
-        <div class="hist-intro">
           <p>НИИ нейронаук СамГМУ создан 1 февраля 2021 года приказом ректора № 25 от 28.01.2021 на основании решения Учёного совета университета от 27.11.2020. Институт сформирован как ответ на глобальные вызовы в области нейронаук, медицины и цифровых технологий.</p>
           <p>Научная деятельность охватывает фундаментальные, прикладные и трансляционные исследования: от принципов работы нервной системы до нейротехнологий для медицины и инженерных систем.</p>
           <div class="labs">
@@ -255,6 +267,16 @@
             </ul>
           </div>
           <p class="hist-src ph">Только в макете. Источник: официальная страница НИИ нейронаук на samsmu.ru</p>
+        </div>
+        <div class="gzd">
+          <h3>Государственные задания на разработку медицинских изделий</h3>
+          <ol class="tl">
+            <li><span class="tl-y">2023</span><p>Разработка реабилитационного комплекса для двигательной реабилитации с использованием мультисенсорной биологической обратной связи и способа персонификации его применения на основе объективного контроля нейропластичности коры головного мозга</p></li>
+            <li><span class="tl-y">2024</span><p>Разработка аппаратно-программного комплекса для медицинской и социально-бытовой реабилитации пациентов методами эрготерапии на основе виртуальной реальности с использованием нейронных сетей и тактильной обратной связи</p></li>
+            <li><span class="tl-y">2025</span><p>Разработка аппаратно-программного комплекса для скрининговой диагностики черепно-мозговой травмы</p></li>
+            <li class="now"><span class="tl-y">2026</span><div><p>Разработка аппаратно-программного комплекса (АПК) в виде нейротехнологической системы <span style="white-space:nowrap">«Нейро-зеркало»</span> для мониторинга и сохранения когнитивного здоровья лиц старшего возраста</p><a class="more-l" href="13_проект_Нейро-зеркало.html">Страница проекта →</a></div></li>
+          </ol>
+          <p class="hist-src ph">Только в макете. Названия госзаданий — со слов владельца, сверить с документами ГЗД</p>
         </div>
       </div>
     </div>
