@@ -60,9 +60,14 @@
 .struct:focus-visible { outline: 3px solid var(--mark); outline-offset: 2px; }
 
 .flag { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
-.team-photo { margin: 0; }
-.team-photo img { width: 100%; aspect-ratio: 21/9; object-fit: cover; object-position: 50% 28%; border-radius: var(--r); display: block; }
-.team-photo figcaption { font-size: 14px; color: var(--muted); margin-top: 12px; display: inline-block; }
+.staff5 { display: grid; grid-template-columns: repeat(5, 1fr); gap: 24px; }
+.staff { display: flex; flex-direction: column; background: #fff; border: 1px solid var(--line); border-radius: var(--r); overflow: hidden; }
+.staff .photo-ph { aspect-ratio: 4/5; border-bottom: 1px solid var(--line); }
+.staff-b { padding: 20px; display: flex; flex-direction: column; flex: 1; }
+.staff h3 { font-size: 18px; line-height: 1.3; margin-bottom: 8px; }
+.staff .pos { font-size: 15px; line-height: 1.45; color: var(--muted); }
+.staff .proj { font-size: 14px; line-height: 1.45; margin-top: 16px; padding-top: 14px; border-top: 1px solid var(--line); }
+@media (min-width: 768px) and (max-width: 1199px) { .staff5 { grid-template-columns: repeat(3, 1fr); } }
 .sec-foot { display: flex; justify-content: flex-end; margin-top: 40px; }
 
 .nums { display: grid; grid-template-columns: repeat(7, 1fr); row-gap: 28px; align-items: start; border-top: 2px solid var(--text); padding-top: 32px; }
@@ -120,8 +125,13 @@
   .struct ul { font-size: 15px; }
   .struct .btn-sec { justify-self: start; }
   .flag { grid-template-columns: 1fr; gap: 16px; }
-  .team-photo img { aspect-ratio: 3/2; object-position: 50% 50%; }
-  .team-photo figcaption { font-size: 13px; }
+  .staff5 { grid-template-columns: 1fr; gap: 16px; }
+  .staff { display: grid; grid-template-columns: 112px 1fr; }
+  .staff .photo-ph { border-bottom: 0; border-right: 1px solid var(--line); padding: 8px; font-size: 11px; }
+  .staff-b { padding: 16px; }
+  .staff h3 { font-size: 16px; margin-bottom: 4px; }
+  .staff .pos { font-size: 14px; }
+  .staff .proj { font-size: 13px; margin-top: 10px; padding-top: 10px; }
   .sec-foot { justify-content: flex-start; margin-top: 28px; }
   .nums { grid-template-columns: 1fr 1fr; row-gap: 24px; padding-top: 24px; }
   .nums .num, .nums .num:nth-child(2) { padding: 0 12px; }
@@ -263,10 +273,27 @@
   <section class="block band" id="komanda">
     <div class="wrap">
       <div class="sec-head"><div><div class="sec-num">Команда</div><h2>Команда НИИ</h2></div><p class="sub ph">Нейрофизиологи, врачи, инженеры и аналитики данных ведут исследование от протокола до прототипа.</p></div>
-      <figure class="team-photo">
-        <img src="img/команда_НИИ_2400.jpg" alt="Коллектив НИИ нейронаук СамГМУ" loading="lazy">
-        <figcaption class="ph">Коллектив НИИ нейронаук СамГМУ · подпись и год съёмки — уточнить</figcaption>
-      </figure>
+      <div class="staff5">
+        <article class="staff"><div class="photo-ph"><span>Фото сотрудника<br>портрет 4:5</span></div><div class="staff-b">
+          <h3>Захаров Александр Владимирович</h3>
+          <p class="pos">Директор НИИ нейронаук, канд. мед. наук</p>
+          <p class="proj">Участвовал в разработке 4 медицинских изделий по государственному заданию. Руководитель проекта по разработке медицинского изделия ReviX.</p></div></article>
+        <article class="staff"><div class="photo-ph"><span>Фото сотрудника<br>портрет 4:5</span></div><div class="staff-b">
+          <h3>Романчук Наталья Петровна</h3>
+          <p class="pos">Заведующая лабораторией нейроморфных систем</p>
+          <p class="proj">Руководитель проекта по разработке медицинского изделия для ранней диагностики травматического повреждения головного мозга.</p></div></article>
+        <article class="staff"><div class="photo-ph"><span>Фото сотрудника<br>портрет 4:5</span></div><div class="staff-b">
+          <h3>Сергеева Мария Станиславовна</h3>
+          <p class="pos">Ведущий специалист лаборатории нейроинтерфейсов и нейротехнологий, канд. биол. наук</p>
+          <p class="proj">Руководитель проекта по разработке медицинского изделия для мониторинга и сохранения когнитивного здоровья лиц старшего возраста.</p></div></article>
+        <article class="staff"><div class="photo-ph"><span>Фото сотрудника<br>портрет 4:5</span></div><div class="staff-b">
+          <h3>Адельшин Павел Александрович</h3>
+          <p class="pos">Технический руководитель междисциплинарной команды разработки</p></div></article>
+        <article class="staff"><div class="photo-ph"><span>Фото сотрудника<br>портрет 4:5</span></div><div class="staff-b">
+          <h3>Бубнова Екатерина Петровна</h3>
+          <p class="pos">Аналитик</p>
+          <p class="proj">Куратор проекта по разработке медицинского изделия для мониторинга и сохранения когнитивного здоровья лиц старшего возраста.</p></div></article>
+      </div>
       <div class="sec-foot"><a class="link" href="11_команда.html">Вся команда</a></div>
     </div>
   </section>
