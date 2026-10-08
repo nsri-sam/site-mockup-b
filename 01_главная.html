@@ -49,6 +49,11 @@
 .hist-intro p { font-size: 18px; color: var(--muted); }
 .hist-intro p + p { margin-top: 14px; }
 .hist-intro .hist-src { font-size: 13px; margin-top: 16px; }
+.labs { margin-top: 28px; padding-top: 24px; border-top: 1px solid var(--line); }
+.labs h3 { font-size: 20px; line-height: 1.3; margin-bottom: 14px; }
+.labs ul { list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 10px 32px; font-size: 16px; }
+.labs li { padding-left: 18px; position: relative; }
+.labs li::before { content: ""; position: absolute; left: 0; top: .7em; width: 8px; height: 2px; background: var(--mark); }
 
 .flag { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
 .staff5 { display: grid; grid-template-columns: repeat(5, 1fr); gap: 24px; }
@@ -111,6 +116,9 @@
   .cyc p { font-size: 15px; }
   .hist { grid-template-columns: 1fr; gap: 12px; }
   .hist-intro p { font-size: 16px; }
+  .labs { margin-top: 20px; padding-top: 18px; }
+  .labs h3 { font-size: 17px; margin-bottom: 10px; }
+  .labs ul { grid-template-columns: 1fr; gap: 8px; font-size: 15px; }
   .flag { grid-template-columns: 1fr; gap: 16px; }
   .staff5 { grid-template-columns: 1fr; gap: 16px; }
   .staff { display: grid; grid-template-columns: 112px 1fr; }
@@ -237,6 +245,15 @@
         <div class="hist-intro">
           <p>НИИ нейронаук СамГМУ создан 1 февраля 2021 года приказом ректора № 25 от 28.01.2021 на основании решения Учёного совета университета от 27.11.2020. Институт сформирован как ответ на глобальные вызовы в области нейронаук, медицины и цифровых технологий.</p>
           <p>Научная деятельность охватывает фундаментальные, прикладные и трансляционные исследования: от принципов работы нервной системы до нейротехнологий для медицины и инженерных систем.</p>
+          <div class="labs">
+            <h3>В составе НИИ — четыре научные лаборатории</h3>
+            <ul>
+              <li>Математического нейромоделирования</li>
+              <li>Нейроинтерфейсов и нейротехнологий</li>
+              <li>Трансляционных исследований и персонализированной медицины</li>
+              <li>Нейроморфных систем</li>
+            </ul>
+          </div>
           <p class="hist-src ph">Только в макете. Источник: официальная страница НИИ нейронаук на samsmu.ru</p>
         </div>
       </div>
