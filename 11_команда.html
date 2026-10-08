@@ -43,18 +43,6 @@
 .lab-head a { font-size: 15px; font-weight: 600; color: var(--accent); }
 .lab .people { border-top: 0; padding-top: 8px; padding-bottom: 48px; }
 
-.prof { display: grid; grid-template-columns: 220px 1fr; gap: 48px; border-top: 2px solid var(--text); padding-top: 32px; }
-.prof .photo-ph { aspect-ratio: 4/5; border-radius: var(--r); }
-.prof h3 { font-size: 26px; margin-bottom: 8px; }
-.prof .pos { font-size: 17px; color: var(--muted); margin-bottom: 20px; max-width: 40em; }
-.prof details summary { list-style: none; cursor: pointer; display: inline-flex; align-items: center; gap: 10px; font-weight: 700; color: var(--accent); }
-.prof details summary::-webkit-details-marker { display: none; }
-.prof details summary::after { content: "+"; font-size: 20px; line-height: 1; }
-.prof details[open] summary::after { content: "−"; }
-.prof details ul { list-style: none; display: grid; gap: 8px; font-size: 15px; margin-top: 16px; max-width: 46em; }
-.prof details li { padding-left: 16px; position: relative; }
-.prof details li::before { content: ""; position: absolute; left: 0; top: .7em; width: 8px; height: 2px; background: var(--mark); }
-
 .staff-h { display: flex; justify-content: space-between; align-items: baseline; gap: 24px; margin-bottom: 32px; }
 .staff-h h2 { margin-bottom: 0; }
 .people { display: grid; grid-template-columns: repeat(4, 1fr); gap: 48px 24px; border-top: 2px solid var(--text); padding-top: 32px; }
@@ -97,10 +85,6 @@
   .lab-head b { font-size: 17px; }
   .lab-head p { font-size: 13px; }
   .lab .people { padding-bottom: 28px; }
-  .prof { grid-template-columns: 1fr; gap: 20px; padding-top: 24px; }
-  .prof .photo-ph { max-width: 200px; }
-  .prof h3 { font-size: 22px; }
-  .prof .pos { font-size: 15px; }
   .staff-h { flex-direction: column; gap: 8px; margin-bottom: 20px; }
   .people { grid-template-columns: 1fr 1fr; gap: 28px 16px; padding-top: 24px; }
   .person .photo-ph { margin-bottom: 10px; }
@@ -158,7 +142,7 @@
     </div>
   </section>
 
-  <section class="tblock" aria-labelledby="h-staff">
+  <section class="tblock tlast" aria-labelledby="h-staff">
     <div class="wrap">
       <div class="staff-h"><h2 id="h-staff">Сотрудники</h2><a class="link" href="12_структура.html">Лаборатории и руководители</a></div>
       <div class="people">
@@ -175,20 +159,6 @@
         <article class="person"><div class="photo-ph"><span>Фото сотрудника<br>портрет 4:5</span></div><h3 class="ph">Фамилия Имя Отчество</h3><p class="ph">Инженер, специалист по айтрекингу</p></article>
         <article class="person"><div class="photo-ph"><span>Фото сотрудника<br>портрет 4:5</span></div><h3 class="ph">Фамилия Имя Отчество</h3><p class="ph">Лаборант-исследователь — длинная должность в две строки для проверки переноса</p></article>
       </div>
-    </div>
-  </section>
-
-  <section class="tblock tlast" aria-labelledby="h-prof">
-    <div class="wrap">
-      <h2 id="h-prof">Приглашённый профессор</h2>
-      <article class="prof">
-        <div class="photo-ph"><span>Фото сотрудника<br>портрет 4:5</span></div>
-        <div>
-          <h3>D. Jude Hemanth (Д. Джуд Хемант)</h3>
-          <p class="pos">Профессор и заведующий кафедрой электроники и коммуникационных технологий, Институт технологий и наук Каруньи, Коимбатур, Тамилнад, Индия</p>
-          <details><summary>Подробнее</summary><ul><li>Степень PhD (анализ медицинских изображений с использованием методов мягких вычислений)</li><li>h-индекс — 41</li><li>Заместитель редактора журналов, индексируемых SCIE: IEEE Journal of Biomedical and Health Informatics, IEEE Transactions on Intelligent Transportation Systems, Earth Science Informatics (Springer), IET Image Processing</li><li>Международный эксперт по оценке исследовательских грантов в Национальном научном фонде Швейцарии и Национальном научном центре Польши</li><li>Научный сотрудник лабораторий CI2S (Аргентина), LAPISCO (Бразилия), RIADI (Тунис), исследовательского центра прикладного интеллекта Университета Крайовы (Румыния), группы цифрового здравоохранения Университета Вальядолида (Испания)</li><li>Входит в список «Топ 2 % ведущих учёных мира» Стэнфордского университета (2021–2025)</li><li>Научные интересы: вычислительный интеллект, обработка биомедицинских изображений, методы оптимизации, системы поддержки принятия решений, машинное обучение</li></ul></details>
-        </div>
-      </article>
     </div>
   </section>
 
@@ -217,7 +187,6 @@
           <h3>Сотрудники</h3>
           <ul>
             <li>Описание лабораторий и их руководителей — на отдельной странице «Структура НИИ» (раздел «О НИИ»); здесь только карточки людей.</li>
-            <li>Приглашённый профессор — отдельный блок; полная справка скрыта под «Подробнее».</li>
             <li>Поля сотрудника: портрет 4:5, ФИО, должность, учёная степень (необязательно).</li>
             <li>Порядок — полем «порядок» (CMS-10); по умолчанию по должности, затем по алфавиту.</li>
             <li>Сетка 4 колонки, на мобильном 2. Длинные ФИО и должность переносятся, ряд не ломается.</li>
