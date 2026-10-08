@@ -49,15 +49,6 @@
 .hist-intro p { font-size: 18px; color: var(--muted); }
 .hist-intro p + p { margin-top: 14px; }
 .hist-intro .hist-src { font-size: 13px; margin-top: 16px; }
-.struct { display: grid; grid-template-columns: 1fr 1.4fr auto; gap: 48px; align-items: center; margin-top: 64px; padding: 36px 40px; border: 1px solid var(--line); border-radius: var(--r); background: var(--band); }
-.struct h3 { font-size: 26px; line-height: 1.25; margin-bottom: 10px; }
-.struct p { font-size: 16px; color: var(--muted); }
-.struct ul { list-style: none; display: grid; gap: 8px; font-size: 16px; }
-.struct li { padding-left: 18px; position: relative; }
-.struct li::before { content: ""; position: absolute; left: 0; top: .7em; width: 8px; height: 2px; background: var(--mark); }
-.struct:hover h3 { color: var(--accent); }
-.struct:hover .btn-sec { background: #fff; }
-.struct:focus-visible { outline: 3px solid var(--mark); outline-offset: 2px; }
 
 .flag { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
 .staff5 { display: grid; grid-template-columns: repeat(5, 1fr); gap: 24px; }
@@ -120,10 +111,6 @@
   .cyc p { font-size: 15px; }
   .hist { grid-template-columns: 1fr; gap: 12px; }
   .hist-intro p { font-size: 16px; }
-  .struct { grid-template-columns: 1fr; gap: 20px; margin-top: 40px; padding: 24px 20px; }
-  .struct h3 { font-size: 21px; }
-  .struct ul { font-size: 15px; }
-  .struct .btn-sec { justify-self: start; }
   .flag { grid-template-columns: 1fr; gap: 16px; }
   .staff5 { grid-template-columns: 1fr; gap: 16px; }
   .staff { display: grid; grid-template-columns: 112px 1fr; }
@@ -159,7 +146,7 @@
 <header>
   <div class="wrap hd">
     <a class="logo" href="#"><span class="logo-samsmu">логотип<br>СамГМУ</span><span class="logo-name">НИИ нейронаук<small>СамГМУ Минздрава России</small></span></a>
-    <nav id="menu" aria-label="Главное меню"><a href="#napravleniya">Направления</a><a href="#proekty">Проекты</a><div class="has-sub"><a href="#o-nii" class="sub-t">О НИИ</a><div class="nav-sub" aria-label="О НИИ"><a href="#o-centre">Наш подход</a><a href="#o-nii">История НИИ</a><a href="12_структура.html">Структура НИИ</a><a href="#komanda">Команда</a></div></div><a href="#novosti">Новости</a><a href="#kontakty">Контакты</a><a class="btn nav-cta" href="#obsudit-nir">Обсудить исследование</a></nav>
+    <nav id="menu" aria-label="Главное меню"><a href="#napravleniya">Направления</a><a href="#proekty">Проекты</a><div class="has-sub"><a href="#o-nii" class="sub-t">О НИИ</a><div class="nav-sub" aria-label="О НИИ"><a href="#o-centre">Наш подход</a><a href="#o-nii">История НИИ</a><a href="#komanda">Команда</a></div></div><a href="#novosti">Новости</a><a href="#kontakty">Контакты</a><a class="btn nav-cta" href="#obsudit-nir">Обсудить исследование</a></nav>
     <div class="hd-right">
       <div class="chs"><span class="chi">TG</span><span class="chi">MAX</span><a class="chi" href="https://vk.com/nsri_samsmu" target="_blank" rel="noopener">VK</a><span class="chi">Дз</span></div>
       <a class="btn btn-hd" href="#obsudit-nir">Обсудить</a>
@@ -253,20 +240,6 @@
           <p class="hist-src ph">Только в макете. Источник: официальная страница НИИ нейронаук на samsmu.ru</p>
         </div>
       </div>
-      <a class="struct" href="12_структура.html">
-        <div>
-          <div class="sec-num">Структура НИИ</div>
-          <h3>Четыре научные лаборатории</h3>
-          <p>Направления, методы исследования и руководители лабораторий.</p>
-        </div>
-        <ul>
-          <li>Математического нейромоделирования</li>
-          <li>Нейроинтерфейсов и нейротехнологий</li>
-          <li>Трансляционных исследований и персонализированной медицины</li>
-          <li>Нейроморфных систем</li>
-        </ul>
-        <span class="btn-sec">Структура НИИ</span>
-      </a>
     </div>
   </section>
 
